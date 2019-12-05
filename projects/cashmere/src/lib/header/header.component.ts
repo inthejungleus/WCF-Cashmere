@@ -38,4 +38,11 @@ export class HeaderComponent {
         }
         window.location.href = url;
     }
+
+    homeUriIsRelative() {
+        if (typeof this.homeUri !== 'string') {
+            return true;
+        }
+        return !this.homeUri.startsWith('http');
+    }
 }
