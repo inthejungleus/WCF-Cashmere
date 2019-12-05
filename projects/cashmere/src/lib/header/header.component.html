@@ -1,6 +1,9 @@
 <div class="header">
     <div class="header-brand">
-        <a [routerLink]="homeUri" class="brand">
+        <a *ngIf="!homeUri.startsWith('http')" [routerLink]="homeUri" class="brand">
+            <img alt="Brand Icon" src="{{ brandIcon }}"/>
+        </a>
+        <a *ngIf="homeUri.startsWith('http')" [href]="homeUri" class="brand">
             <img alt="Brand Icon" src="{{ brandIcon }}"/>
         </a>
     </div>
