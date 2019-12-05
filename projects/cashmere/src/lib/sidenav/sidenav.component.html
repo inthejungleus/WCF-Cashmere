@@ -23,10 +23,10 @@
              (click)="triggerSidenavToggle($event)">
             <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
         </div>
-        <a *ngIf="!homeUri.startsWith('http')" [routerLink]="homeUri" class="brand">
+        <a *ngIf="homeUriIsRelative()" [routerLink]="homeUri" class="brand">
             <img src="{{ brandIcon }}"/>
         </a>
-        <a *ngIf="homeUri.startsWith('http')" [href]="homeUri" class="brand">
+        <a *ngIf="!homeUriIsRelative()" [href]="homeUri" class="brand">
             <img src="{{ brandIcon }}"/>
         </a>
     </div>
