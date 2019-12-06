@@ -182,6 +182,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         // This needs to be checked every cycle because we can't subscribe to form submissions
         if (this._ngControl) {
             this._updateErrorState();
+            this._updateDisableState();
         }
     }
 
@@ -214,6 +215,15 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
         if (oldState !== newState) {
             this._errorState = newState;
+        }
+    }
+
+    private _updateDisableState() {
+        const oldState = this._isDisabled;
+        const newState = this._ngControl.disabled;
+
+        if (oldState !== newState) {
+            this._isDisabled = newState || false;
         }
     }
 }
