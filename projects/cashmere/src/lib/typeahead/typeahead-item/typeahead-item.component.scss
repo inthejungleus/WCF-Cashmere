@@ -1,6 +1,7 @@
 @import '../../sass/_colors.scss';
 
 .result {
+    font-size: 16px;
     padding: 5px 15px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -9,9 +10,11 @@
 }
 
 .result:hover {
-    background-color: $info-bg;
+    background-color: $blue-light;
+    color: $gray-90;
 }
 
 .highlighted {
-    background-color: $info;
+    background-color: $wcf-blue;
+    color: white;
 }

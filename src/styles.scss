@@ -25,6 +25,7 @@ body {
     width: 95%;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 20px;
 
     ul {
         margin: 12px 0;
@@ -35,7 +36,7 @@ body {
         margin-bottom: 25px;
     }
     .hc-tile {
-        img {
+        > img {
             width: 100%;
             margin: 1rem 0;
             border: 1px solid $gray-10;
