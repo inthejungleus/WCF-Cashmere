@@ -57,6 +57,23 @@ p {
     line-height: 1.5;
     color: $text;
     margin-bottom: 1.14rem;
+    a {
+        text-decoration: underline;
+        color: $wcf-blue;
+        &:hover {
+            color: $primary-brand;
+            text-decoration: none;
+        }
+        &:active {
+            color: darken($primary-brand, 10%);
+            text-decoration: none;
+        }
+    }
+}
+
+// hypertext links
+a {
+    text-decoration: none;
 }
 
 // for inline code
@@ -98,20 +115,6 @@ pre {
         color: $text;
         border: unset;
         border-radius: unset;
-    }
-}
-
-// hyperlinks
-a {
-    text-decoration: underline;
-    color: $wcf-blue;
-    &:hover {
-        color: $primary-brand;
-        text-decoration: none;
-    }
-    &:active {
-        color: darken($primary-brand, 10%);
-        text-decoration: none;
     }
 }
 

@@ -10,14 +10,6 @@
     margin-top: 20px;
 }
 
-.docs-api-h3 {
-    @include fontSize(15px);
-    text-transform: uppercase;
-    color: $dark-blue;
-    font-weight: 600;
-    margin: 0 0 20px 0;
-}
-
 .docs-api-h4 {
     @include fontSize(22px);
     font-weight: 600;

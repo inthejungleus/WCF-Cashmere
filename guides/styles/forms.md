@@ -40,14 +40,13 @@ Forms should be broken into sections with common themes (e.g. Contact Informatio
 <li>Section headings should be spaced 24px below the <code>&lt;hr&gt;</code> and 32px above the input below.</li>
 </ul>
 
-![form buttons](/assets/form_examples/section_header.png)
+<img src="/assets/form_examples/section_header.png" alt="section headings" />
 
 <ul>
 <li>If the section heading is followed by section instructions, include the instructions as standard <code>&lt;p&gt;</code> and include 16px between the heading and the paragraph and 32px between the paragraph and the input below.</li>
 </ul>
 
-![form buttons](/assets/form_examples/section_header_instruction.png)
-
+<img src="/assets/form_examples/section_header_instruction.png" alt="section instructions" />
 
 :::
 :::
@@ -77,7 +76,8 @@ Forms should be broken into sections with common themes (e.g. Contact Informatio
 ## Buttons
 
 * Actions (buttons) should be spaced 32px below the final form `<hr>`.
-![form buttons](/assets/form_examples/buttons.png)
+
+<img src="/assets/form_examples/buttons.png" alt="button spacing" />
 
 :::
 :::
@@ -86,14 +86,14 @@ Forms should be broken into sections with common themes (e.g. Contact Informatio
 
 <ul><li>Add section / remove section</li></ul>
 
-![add remove](/assets/form_examples/add_remove_section.png)
+<img src="/assets/form_examples/add_remove_section.png" alt="add section" />
 
 <ul>
 <li>Info / Warning sections</li>
 <li>Non-labeled inputs</li>
 </ul>
 
-![form buttons](/assets/form_examples/header_input.png)
+<img src="/assets/form_examples/header_input.png" alt="non-labeled inputs">
 
 :::
 :::
