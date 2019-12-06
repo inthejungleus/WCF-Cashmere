@@ -17,6 +17,7 @@
 
     &[disabled] {
         cursor: not-allowed;
+        color: $gray-10;
     }
 
     &:-moz-ui-invalid {
