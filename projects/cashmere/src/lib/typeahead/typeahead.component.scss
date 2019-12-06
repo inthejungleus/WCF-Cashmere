@@ -5,7 +5,6 @@ hc-typeahead {
 }
 
 .highlight {
-    color: $wcf-red;
     font-weight: bold;
   }
 
@@ -21,7 +20,7 @@ hc-typeahead {
         min-width: 100%;
         background-color: $white;
         max-height: 200px;
-        z-index: 1000;
+        z-index: 900;
         overflow: auto;
     }
 
@@ -31,7 +30,7 @@ hc-typeahead {
 
     .show-all {
         position: absolute;
-        top: 15px;
+        top: 14px;
         right: 12px;
         color: $wcf-blue;
         cursor: pointer;
@@ -39,8 +38,8 @@ hc-typeahead {
 
     .search {
         position: absolute;
-        top: 15px;
-        left: 9px;
+        top: 14px;
+        left: 10px;
         color: $gray-30;
     }
 
