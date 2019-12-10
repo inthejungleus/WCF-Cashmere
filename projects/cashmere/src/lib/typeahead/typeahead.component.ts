@@ -212,7 +212,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                     this.showResultPanel();
                 }
 
-                this.markAsDirty();
+                this._markAsDirty();
                 this.onTouched();
 
                 // In case the search returns some of the same results but the top result
@@ -284,7 +284,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     private itemSelectedDefault(item) {
-        this.markAsDirty();
+        this._markAsDirty();
         this.onTouched();
         this.hideResultPanel();
         this.optionSelected.emit(item);
@@ -313,10 +313,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     private onTouched() {
-        this.markAsTouched();
+        this._markAsTouched();
     }
 
-    markAsDirty() {
+    _markAsDirty() {
         if (this._ngControl) {
             const control = this._ngControl.control;
             if (control) {
@@ -325,7 +325,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         }
     }
 
-    markAsTouched() {
+    _markAsTouched() {
         if (this._ngControl) {
             const control = this._ngControl.control;
             if (control) {
@@ -416,8 +416,8 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         }
     }
 
-    blurHandler(event) {
-        this.markAsTouched();
+    _blurHandler(event) {
+        this._markAsTouched();
         this.blur.emit(event);
     }
 }
