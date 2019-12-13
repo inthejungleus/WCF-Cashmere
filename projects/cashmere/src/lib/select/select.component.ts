@@ -1,17 +1,17 @@
 import {
     Component,
+    DoCheck,
+    ElementRef,
+    EventEmitter,
     forwardRef,
     HostBinding,
     Input,
-    ViewEncapsulation,
-    ElementRef,
     Optional,
-    DoCheck,
-    Self,
     Output,
-    EventEmitter
+    Self,
+    ViewEncapsulation
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import {ControlValueAccessor, FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 
@@ -115,9 +115,11 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         }
     }
 
-    private onChange: (val: any) => void = () => {};
+    private onChange: (val: any) => void = () => {
+    };
 
-    private onTouched: (val: any) => void = () => {};
+    private onTouched: (val: any) => void = () => {
+    };
 
     registerOnChange(fn: any) {
         this.onChange = fn;
@@ -150,6 +152,20 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
         if (oldState !== newState) {
             this._errorState = newState;
+        }
+    }
+
+    _blurHandler(event) {
+        this._markAsTouched();
+        this.blur.emit(event);
+    }
+
+    _markAsTouched() {
+        if (this._ngControl) {
+            const control = this._ngControl.control;
+            if (control) {
+                control.markAsTouched();
+            }
         }
     }
 }

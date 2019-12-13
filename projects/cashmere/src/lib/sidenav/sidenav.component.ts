@@ -107,6 +107,13 @@ export class SidenavComponent {
         this.drawer.toggle();
         this.sidenavOpen = !this.sidenavOpen;
     }
+
+    homeUriIsRelative() {
+        if (typeof this.homeUri !== 'string') {
+            return true;
+        }
+        return !this.homeUri.startsWith('http');
+    }
 }
 
 export interface IUser {

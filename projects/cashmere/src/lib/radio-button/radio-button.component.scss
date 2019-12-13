@@ -13,7 +13,7 @@
     display: block;
     position: relative;
     padding-left: 35px;
-    margin: 7px 0;
+    margin: 10px 0 6px;
     line-height: 1.5;
     cursor: pointer;
     -webkit-user-select: none;
@@ -65,25 +65,30 @@
         display: none;
     }
 
+    .hc-radio-content {
+        font-size: 16px;
+    }
+
     &.disabled {
         cursor: not-allowed;
-        color: $gray-300;
+        color: $gray-30;
 
         &:hover input ~ .hc-radio-overlay {
-            border-color: $gray-300;
+            border-color: $gray-30;
         }
 
         input:checked ~ .hc-radio-overlay {
-            background-color: $gray-200;
-            border-color: $gray-300;
+            background-color: $gray-05;
+            border-color: $gray-30;
         }
 
         .hc-radio-overlay {
-            background-color: $gray-200;
+            background-color: $gray-05;
+            border-color: $gray-30;
         }
 
         .hc-radio-overlay:after {
-            background: $gray-200;
+            background: $gray-05;
         }
     }
 }
