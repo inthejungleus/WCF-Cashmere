@@ -12,3 +12,9 @@ body {
     margin: -1px 5% 0 5%;
     padding-top: 1px;
 }
+
+@media (max-width: 767px) {
+    .page-content-footer {
+        min-height: calc(100vh - 504px);
+    }
+}
