@@ -7,9 +7,20 @@ import {IUser} from '@wcf-insurance/cashmere';
     styleUrls: ['header-demo.component.scss']
 })
 export class HeaderDemoComponent {
-    mobileView = false;
     user: IUser = {
         name: 'John Doe',
         avatar: '/src/assets/avatar.jpg'
     };
+
+    dummyContent: string[] = [];
+
+    addDummyContent() {
+        for (let i = 0; i < 50; i++) {
+            this.dummyContent.push(`Content ${i + 1}`);
+        }
+    }
+
+    removeDummyContent() {
+        this.dummyContent = [];
+    }
 }

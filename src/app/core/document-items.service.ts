@@ -76,6 +76,12 @@ const docs: DocItem[] = [
             'file-input-custom-label-and-color'
         ]
     },
+    {
+        id: 'footer',
+        name: 'Footer',
+        category: 'layout',
+        examples: ['footer-overview']
+    },
     {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
     {
         id: 'header',

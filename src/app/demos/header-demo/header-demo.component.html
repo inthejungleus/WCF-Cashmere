@@ -1,1 +1,13 @@
 <hc-header [username]="user.name" homeUri="/route-a" logoutUrl="/logout"></hc-header>
+
+<div class="page-content-footer">
+    <hc-tile>
+        <div class="buttons">
+            <button hc-button buttonStyle="primary" (click)="addDummyContent()" *ngIf="dummyContent.length < 1">Add Content</button>
+            <button hc-button buttonStyle="primary" (click)="removeDummyContent()" *ngIf="dummyContent.length > 0">Remove Content</button>
+        </div>
+        <div class="dummyItem" *ngFor="let item of dummyContent">{{item}}</div>
+    </hc-tile>
+</div>
+
+<hc-footer></hc-footer>
