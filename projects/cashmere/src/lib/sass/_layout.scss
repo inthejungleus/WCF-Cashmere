@@ -8,13 +8,13 @@ body {
 }
 
 .page-content-footer {
-    min-height: calc(100vh - 311px);
+    min-height: calc(100vh - 181px);
     margin: -1px 5% 0 5%;
     padding-top: 1px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 737px) {
     .page-content-footer {
-        min-height: calc(100vh - 504px);
+        min-height: calc(100vh - 291px);
     }
 }
