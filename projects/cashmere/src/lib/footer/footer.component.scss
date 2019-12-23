@@ -1,32 +1,35 @@
 @import '../sass/_typography.scss';
 
 .landingfooter {
-    background-color: $dark-blue;
-    height: 240px;
+    background-color: $blue-dark;
+    height: 110px;
     margin: 0;
-    padding-top: 2.85rem;
-    padding-bottom: 5rem;
+    padding-top: 1.85rem;
 
     > .row {
         margin: 0 auto;
-
-        img {
-
-        }
     }
 
     .footertext {
-        font-size: 16px;
+        font-size: 12px;
         line-height: 1.5;
         letter-spacing: normal;
         text-align: left;
         color: $gray-10;
         margin-bottom: 2rem;
     }
+
+    .footer-logo {
+        text-align: center;
+
+        > img {
+            width: 254px;
+        }
+    }
 }
 
 @media (max-width: 767px) {
     .landingfooter {
-        height: 433px;
+        height: 220px;
     }
 }
