@@ -76,6 +76,10 @@ nav {
         max-width: 100%;
         text-overflow: ellipsis;
 
+        a {
+            color: inherit;
+        }
+
         .user {
             position: relative;
             font-family: 'Montserrat', Arial, Helvetica, sans-serif;
