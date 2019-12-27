@@ -42,11 +42,13 @@
 <ng-template #navItems>
     <nav>
         <div class="sidenav-user" *ngIf="user">
-            <span class="user-avatar">
-                <img *ngIf="user.avatar" [src]="user.avatar"/>
-                <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
-            </span>
-            <span class="user">{{ user.name }}</span>
+            <a href="/myWcfOnline/updateProfile">
+                <span class="user-avatar">
+                    <img *ngIf="user.avatar" [src]="user.avatar"/>
+                    <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+                </span>
+                <span class="user">{{ user.name }}</span>
+            </a>
         </div>
         <hr class="sidenav-hr" *ngIf="user">
         <div class="sidenav-links">
