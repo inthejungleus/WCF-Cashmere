@@ -66,6 +66,10 @@ export class SidenavComponent {
     @Input()
     absolutePosition: boolean = false;
 
+    /** Contact phone number used in the bottom of the sidenav for Question/Comments */
+    @Input()
+    contactPhoneNumber: string;
+
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
 
