@@ -10,6 +10,7 @@ import {ComponentUsageComponent} from './component-viewer/component-usage/compon
 import {ComponentsComponent} from './components.component';
 import {ComponentsRouterModule} from './components-router.module';
 import {HighlightModule} from 'ngx-highlightjs';
+import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
@@ -20,7 +21,11 @@ import typescript from 'highlight.js/lib/languages/typescript';
  * NOTE: The name of each language must match the file name its imported from
  */
 export function hljsLanguages() {
-    return [{name: 'typescript', func: typescript}, {name: 'scss', func: scss}, {name: 'xml', func: xml}];
+    return [
+        {name: 'typescript', func: typescript},
+        {name: 'scss', func: scss},
+        {name: 'xml', func: xml}
+    ];
 }
 
 @NgModule({
@@ -32,6 +37,7 @@ export function hljsLanguages() {
             languages: hljsLanguages
         })
     ],
+    providers: [ApplicationInsightsService],
     declarations: [
         ComponentsComponent,
         ComponentViewerComponent,

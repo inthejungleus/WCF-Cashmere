@@ -25,7 +25,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 }
 
 .hc-calendar-header {
-    padding: $hc-calendar-padding $hc-calendar-padding 0 $hc-calendar-padding;
+    padding: 0 $hc-calendar-padding;
 }
 
 .hc-calendar-content {
@@ -35,7 +35,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 .hc-calendar-controls {
     display: flex;
-    margin: $hc-calendar-controls-vertical-padding $hc-calendar-controls-side-margin;
+    margin: 0 $hc-calendar-controls-side-margin $hc-calendar-controls-vertical-padding;
 }
 
 .hc-calendar-spacer {
@@ -44,7 +44,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 .hc-calendar-period-button.hc-md.hc-button.hc-link {
     min-width: 0;
-    padding: 10px;
+    padding: 13px 10px 10px 10px;
     min-width: inherit;
     text-decoration: none;
 }
@@ -104,12 +104,26 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     transform: $hc-calendar-next-icon-transform;
 }
 
-.hc-calendar-today-button.hc-md.hc-button.hc-link {
+.hc-calendar-today-button {
     font-weight: 600;
     color: $gray-90;
     min-width: inherit;
     padding: 2px 0 0 0;
     vertical-align: baseline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    font-size: calculateRem(15px);
+    line-height: 15px;
+}
+
+.hc-calendar-today-container {
+    text-align: center;
+}
+
+.hc-calendar-today-margin {
+    margin-bottom: 20px;
 }
 
 .hc-calendar-table {
@@ -142,4 +156,48 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 .hc-calendar-table-header th {
     @include fontSize(9px);
     color: $gray-500;
+}
+
+.hc-calendar-time-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.hc-calendar-time-picker hc-form-field {
+    margin: 0 3px;
+}
+
+.hc-calendar-time-picker input {
+    width: 25px;
+}
+
+.hc-calendar-time-controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.hc-calendar-time-controls button {
+    /* important is needed here to override hc-button properties */
+    height: 16px !important;
+    width: 16px !important;
+    line-height: 16px !important;
+    padding: 0 !important;
+}
+
+.hc-calendar-controls-icon {
+    line-height: 1 !important;
+}
+
+.hc-calendar-time-picker hc-select {
+    width: 70px;
+}
+
+.hc-calendar-time-picker > .hc-icon {
+    color: $slate-gray-400;
+    margin-right: 10px;
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
 }

@@ -24,19 +24,21 @@
     &:hover input ~ .hc-radio-overlay {
         border-color: $wcf-blue;
     }
+}
 
-    input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
+.hc-radio-overlay {
+    @include hc-radio-overlay();
+
+    &.disabled {
+        @include hc-radio-overlay-disabled();
+    }
 
         &:checked ~ .hc-radio-overlay {
             background-color: $wcf-blue;
             border-color: $wcf-blue;
 
-            &:after {
-                display: block;
-            }
+        &.disabled {
+            @include hc-radio-overlay-disabled();
         }
     }
 
@@ -53,17 +55,10 @@
         @include formFieldFocusTransition();
     }
 
-    .hc-radio-overlay:after {
-        top: 5px;
-        left: 5px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: $white;
-        content: '';
-        position: absolute;
-        display: none;
+    .hc-radio-input:checked ~ &.disabled {
+        @include hc-radio-overlay-checked-disabled();
     }
+}
 
     .hc-radio-content {
         font-size: 16px;

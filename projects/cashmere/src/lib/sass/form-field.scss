@@ -2,7 +2,6 @@
 @import '../sass/functions';
 @import '../sass/mixins';
 
-$mat-form-field-default-infix-width: 120px;
 $line-height: 1.5;
 $label-font-scale: 1;
 $border-thickness: 2px;
@@ -61,7 +60,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-flex-inline() {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     box-sizing: border-box;
 
     padding: 0 7px 0 0;
@@ -97,6 +96,8 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 @mixin hc-form-field-non-input-inline() {
     display: inline-flex;
     flex: 0 0 100%;
+    min-height: 35px;
+    align-items: center;
 }
 
 @mixin hc-form-field-prefix-suffix() {
@@ -117,6 +118,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-prefix {
     padding-left: 7px;
+}
+
+@mixin hc-form-field-suffix {
+    padding-right: 7px;
 }
 
 @mixin hc-form-field-infix() {
@@ -149,6 +154,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     height: 1em;
     font-size: inherit;
     vertical-align: baseline;
+}
+
+@mixin hc-form-field-no-label() {
+    border-top: none;
 }
 
 @mixin hc-form-field-label() {

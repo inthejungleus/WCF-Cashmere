@@ -1,0 +1,21 @@
+@import '../../sass/tab.scss';
+
+:host {
+    @include hc-tab();
+}
+
+.hc-tab-vertical {
+    @include hc-tab-vertical();
+
+    &.active {
+        @include hc-tab-vertical-active();
+    }
+}
+
+.hc-tab-horizontal {
+    @include hc-tab-horizontal();
+
+    &.active {
+        @include hc-tab-horizontal-active();
+    }
+}
