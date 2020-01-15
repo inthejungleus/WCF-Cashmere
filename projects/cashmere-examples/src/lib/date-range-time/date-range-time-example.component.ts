@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DateRangeOptions, DateRange} from '@healthcatalyst/cashmere';
+import {DateRange, DateRangeOptions} from '@wcf-insurance/cashmere';
 
 @Component({
     selector: 'hc-date-range-time-example',

@@ -7,17 +7,18 @@ $table-condensed-font-size: 13px;
 $header-border-thick: 1px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;
 $cell-padding-condensed: 6px 16px !default;
-$thead-font-size: 14px !default;
+$thead-bordered-font-size: 14px !default;
+$thead-font-size: 16px !default;
 $thead-font-color: $dark-blue !default;
 $thead-active-font-color: $green !default;
 $tbody-font-size: 15px !default;
 $tbody-font-color: $text !default;
 $row-color: $white !default;
-$row-color-alt: tint($slate-gray-100, 60%) !default;
+$row-color-alt: $gray-02 !default;
 $row-color-header: $slate-gray-100 !default;
 $row-color-footer: $slate-gray-100 !default;
 $row-color-hover: shade($slate-gray-100, 5%) !default;
-$row-color-action-hover: tint($primary-brand, 75%) !default;
+$row-color-action-hover: $gray-05 !default;
 $row-color-selected: $azure !default;
 $row-color-selected-hover: tint($azure, 20%) !default;
 $row-selected-font-color: $white;
@@ -50,12 +51,16 @@ $row-selected-border-color: $white;
 @mixin hc-table-header-cell() {
     color: $thead-font-color;
     font-size: $thead-font-size;
-    font-weight: 600;
+    font-weight: 400;
     vertical-align: bottom;
 }
 
+@mixin hc-table-header() {
+    border-bottom: 2px solid $gray-50;
+}
+
 @mixin hc-table-body() {
-    border: $table-border;
+    border: none;
     font-size: $tbody-font-size;
 }
 
@@ -75,10 +80,11 @@ $row-selected-border-color: $white;
 
 @mixin hc-table-body-cell() {
     vertical-align: top;
+    border-bottom: none !important;
 }
 
 @mixin hc-table-footer() {
-    font-size: $thead-font-size;
+    font-size: $tbody-font-size;
     font-weight: 600;
 }
 
@@ -111,12 +117,24 @@ $row-selected-border-color: $white;
     border: $table-border-transparent;
 }
 
+@mixin hc-bordered-table-header {
+    border: $table-border;
+}
+
 @mixin hc-bordered-table-cell() {
     border: $table-border;
 }
 
 @mixin hc-bordered-table-header-cell() {
     background-color: $row-color-header;
+    font-weight: 600;
+    font-size: $thead-bordered-font-size;
+}
+
+@mixin hc-bordered-table-footer() {
+    font-size: $thead-bordered-font-size;
+    font-weight: 600;
+    border-bottom: $table-border;
 }
 
 @mixin hc-bordered-table-footer-row() {

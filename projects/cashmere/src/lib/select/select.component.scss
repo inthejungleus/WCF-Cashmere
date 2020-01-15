@@ -74,7 +74,8 @@
     }
 }
 
-    .hc-form-field-invalid & {
-        @include hc-select-input-invalid();
+.hc-form-field-invalid {
+    .hc-select-input {
+        border: 1.5px solid $error;
     }
 }

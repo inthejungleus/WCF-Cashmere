@@ -116,13 +116,8 @@ apiDocsPackage.config((readTypeScriptModules: ReadTypeScriptModules, tsParser: T
 
     const typescriptPathMap: any = {};
 
-<<<<<<< HEAD
-    materialPackages.forEach(packageName => {
-        typescriptPathMap[`@wcf-insurance/cashmere`] = [`./lib/${packageName}/index.ts`];
-=======
     cashmerePackages.forEach(packageName => {
         typescriptPathMap[`@healthcatalyst/cashmere`] = [`./lib/${packageName}/index.ts`];
->>>>>>> master
     });
 
     // Add proper path mappings to the TSParser service of Dgeni. This ensures that properties

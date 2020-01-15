@@ -10,8 +10,8 @@ $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
 $field-height: 2.8571rem;
 
-$infix-padding-top: 0.6428571em; // 9px 
-$infix-padding-bottom: 0.5714285em;  // 8px
+$infix-padding-top: 0.6428571em; // 9px
+$infix-padding-bottom: 0.5714285em; // 8px
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -128,7 +128,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     display: block;
     position: relative;
     flex: auto;
-    min-width: $mat-form-field-default-infix-width;
     line-height: 1.3571428em; //19px
     padding: $infix-padding-top 10px $infix-padding-bottom;
 }

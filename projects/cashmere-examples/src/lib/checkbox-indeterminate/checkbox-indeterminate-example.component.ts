@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {CheckboxChangeEvent} from '@healthcatalyst/cashmere';
-import {FormGroup, FormArray, FormControl, FormBuilder} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 /**
  * @title Indeterminate Checkbox

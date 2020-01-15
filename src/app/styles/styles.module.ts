@@ -20,11 +20,9 @@ import {StylesComponent} from './styles.component';
 import {BrandColorDemoComponent} from './brand-color/brand-color-demo.component';
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
-import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 @NgModule({
     imports: [SharedModule, StylesRoutesModule],
-    providers: [ApplicationInsightsService],
     declarations: [
         StylesComponent,
         ColorDemoComponent,
@@ -47,4 +45,5 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
         TrademarksDemoComponent
     ]
 })
-export class StylesModule {}
+export class StylesModule {
+}

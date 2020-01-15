@@ -8,6 +8,10 @@
         @include hc-table-cell();
     }
 
+    thead {
+        @include hc-table-header();
+    }
+
     th {
         @include hc-table-header-cell();
     }
@@ -92,6 +96,10 @@
 .hc-table-borders {
     @include hc-bordered-table();
 
+    thead {
+        @include hc-bordered-table-header();
+    }
+
     td,
     th {
         @include hc-bordered-table-cell();
@@ -103,6 +111,10 @@
 
     .hc-footer-row {
         @include hc-bordered-table-footer-row();
+    }
+
+    tfoot {
+        @include hc-bordered-table-footer();
     }
 
     tfoot td {

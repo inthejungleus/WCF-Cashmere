@@ -18,7 +18,7 @@ To use the `EllipsisPipe`, import the `EllipsisPipeModule` into your app's `Cash
 
 ```ts
 import {NgModule} from '@angular/core';
-import {EllipsisPipeModule} from '@healthcatalyst/cashmere';
+import {EllipsisPipeModule} from '@wcf-insurance/cashmere';
 
 @NgModule({
     exports: [EllipsisPipeModule]
@@ -30,7 +30,7 @@ Alternatively, each pipe in Cashmere is also exported from `PipesModule`, if you
 
 ```ts
 import {NgModule} from '@angular/core';
-import {PipesModule} from '@healthcatalyst/cashmere';
+import {PipesModule} from '@wcf-insurance/cashmere';
 
 @NgModule({
     exports: [PipesModule]

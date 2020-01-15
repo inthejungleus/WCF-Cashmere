@@ -1,10 +1,8 @@
-import {Component, Input, ViewChild, ElementRef, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {titleCase} from 'change-case';
 import stackblitz from '@stackblitz/sdk';
-import {EXAMPLE_COMPONENTS} from '@healthcatalyst/cashmere-examples';
-import {ApplicationInsightsService} from '../../../../shared/application-insights/application-insights.service';
-import {expand} from 'rxjs/operators';
+import {EXAMPLE_COMPONENTS} from '@wcf-insurance/cashmere-examples';
 
 @Component({
     selector: 'hc-example-viewer',
@@ -18,17 +16,17 @@ export class ExampleViewerComponent implements OnInit {
     isInitialized = false;
     private _example: string;
     private allExampleFiles: FileHash = {};
-    private appInsights;
-    exampleFiles: Array<{name: string; contents: string}> = [];
+    exampleFiles: Array<{ name: string; contents: string }> = [];
 
     constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) {
-        this.appInsights = new ApplicationInsightsService();
+
     }
 
     @Input()
     get example() {
         return this._example;
     }
+
     set example(example: string) {
         this._example = example;
         if (example && this.isInitialized) {
@@ -66,10 +64,6 @@ export class ExampleViewerComponent implements OnInit {
         return fileName;
     }
 
-    logClick(tab: string) {
-        this.appInsights.logEvent(this._example, tab);
-    }
-
     async loadExample() {
         if (this.exampleContainer.length) {
             this.exampleContainer.clear();
@@ -98,8 +92,6 @@ export class ExampleViewerComponent implements OnInit {
         const containerPath = `src/app/example-container.component.ts`;
         exampleFiles[containerPath] = exampleFiles[containerPath].replace(/hc-example/g, `hc-${this.example}-example`);
         const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
-
-        this.appInsights.logEvent(this._example, 'StackBlitz');
 
         await stackblitz.openProject(
             {
