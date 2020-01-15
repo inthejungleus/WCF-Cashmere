@@ -171,12 +171,11 @@ export class MonthViewComponent implements AfterContentInit {
             const selectedYear = this._dateAdapter.getYear(this.activeDate);
             const selectedMonth = this._dateAdapter.getMonth(this.activeDate);
             const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
-            // Set hours for buffer to protect against date changing when different time zones
-            selectedDate.setHours(12);
 
+            // Default hours/minutes for buffer to protect against date changing when different time zones
             if (this._selected) {
-                selectedDate.setHours(this._selected.getHours());
-                selectedDate.setMinutes(this._selected.getMinutes());
+                selectedDate.setHours(this._selected.getHours() || 12);
+                selectedDate.setMinutes(this._selected.getMinutes() || 0);
             }
 
             this.selectedChange.emit(selectedDate);
