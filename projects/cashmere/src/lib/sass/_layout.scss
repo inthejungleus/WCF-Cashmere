@@ -10,17 +10,18 @@ body {
 }
 
 .page-content-footer {
-    padding-bottom: 150px;
+    min-height: calc(100vh - 194px);
+    padding-bottom: 50px;
 }
 
 @media (max-width: 767px) {
     .page-content-footer {
-        padding-bottom: 175px;
+        min-height: calc(100vh - 242px);
     }
 }
 
 @media (max-width: 468px) {
     .page-content-footer {
-        padding-bottom: 225px;
+        min-height: calc(100vh - 296px);
     }
 }

@@ -1,0 +1,23 @@
+<div class="hc-{{direction}}-tab-new-container">
+    <div class="hc-tab-new-bar-{{direction}}">
+        <div *ngFor="let tab of _tabs" class="hc-tab-new-width">
+            <a *ngIf="_routerEnabled" class="hc-tab-new-{{direction}} hc-text-ellipsis"
+               [routerLink]="tab.routerLink"
+               routerLinkActive="active"
+               (click)="_setActive(tab, $event)">
+                <ng-container *ngIf="tab._htmlTitle" [ngTemplateOutlet]="tab._htmlTitle.tabNewTitle"></ng-container>
+                {{tab.tabNewTitle}}
+            </a>
+            <a *ngIf="!_routerEnabled" class="hc-tab-new-{{direction}} hc-text-ellipsis"
+               [class.active]="tab._active"
+               (click)="_setActive(tab, $event)">
+                <ng-container *ngIf="tab._htmlTitle" [ngTemplateOutlet]="tab._htmlTitle.tabNewTitle"></ng-container>
+                {{tab.tabNewTitle}}
+            </a>
+        </div>
+    </div>
+    <div class="hc-tab-new-content-{{direction}}">
+        <router-outlet *ngIf="_routerEnabled"></router-outlet>
+        <ng-content *ngIf="!_routerEnabled"></ng-content>
+    </div>
+</div>
