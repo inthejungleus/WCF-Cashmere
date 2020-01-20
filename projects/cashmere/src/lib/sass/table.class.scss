@@ -168,9 +168,3 @@ th.hc-col-sortable-left {
         @include hc-table-header-active-sort-desc();
     }
 }
-
-.hc-no-hover-table {
-    tbody tr {
-        @include hc-no-hover-table-row();
-    }
-}

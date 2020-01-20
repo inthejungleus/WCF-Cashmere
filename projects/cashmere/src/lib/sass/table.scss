@@ -250,18 +250,8 @@ $row-selected-border-color: $white;
     }
 }
 
-@mixin hc-no-hover-table-row() {
-    &:nth-child(2n):hover {
-        background-color: $row-color;
-    }
-
-    &:nth-child(2n + 1):hover {
-        background-color: $row-color-alt;
-    }
-}
-
 @mixin hc-no-hover-table-row-selected() {
     &:hover {
-        background-color: $row-color-selected;
+        background-color: $row-color-selected !important;
     }
 }
