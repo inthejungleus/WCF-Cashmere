@@ -88,9 +88,11 @@ table.hc-table {
             &.hc-row-selected {
                 background-color: $row-color-selected;
                 color: $row-selected-font-color;
+
                 &:hover {
                     background-color: $row-color-selected-hover;
                 }
+
                 td {
                     border-color: $row-selected-border-color;
                 }
@@ -145,6 +147,7 @@ table.hc-table {
                 background-color: $row-color-action-hover;
                 cursor: pointer;
             }
+
             &.hc-row-selected:hover {
                 background-color: $row-color-selected-hover;
             }
@@ -156,6 +159,7 @@ table.hc-table {
             background-color: $row-color-action-hover;
             cursor: pointer;
         }
+
         &.hc-row-selected:hover {
             background-color: $row-color-selected-hover;
         }
@@ -165,6 +169,7 @@ table.hc-table {
     th.hc-table-justify-left,
     td.hc-table-justify-left {
         text-align: left;
+
         .hc-sort-header-container {
             justify-content: left;
         }
@@ -173,6 +178,7 @@ table.hc-table {
     th.hc-table-justify-right,
     td.hc-table-justify-right {
         text-align: right;
+
         .hc-sort-header-container {
             justify-content: right;
         }
@@ -181,6 +187,7 @@ table.hc-table {
     th.hc-table-justify-center,
     td.hc-table-justify-center {
         text-align: center;
+
         .hc-sort-header-container {
             justify-content: center;
         }
@@ -241,14 +248,8 @@ table.hc-table {
 
     &.hc-no-hover-table {
         tbody tr {
-            &:nth-child(2n):hover {
-                background-color: $row-color-alt;
-            }
-            &:nth-child(2n + 1):hover {
-                background-color: $row-color;
-            }
             &.hc-row-selected:hover {
-                background-color: $row-color-selected;
+                background-color: $row-color-selected !important;
             }
         }
     }

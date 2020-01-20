@@ -17,6 +17,11 @@ import {parseBooleanAttribute} from '../util';
 
 let uniqueId = 1;
 
+export class SelectChangeEvent {
+    constructor(public source: SelectComponent, public value: string) {
+    }
+}
+
 /** Select one of many options from a dropdown */
 @Component({
     selector: 'hc-select',
@@ -29,6 +34,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
+    _open: boolean = false;
     _componentId = this._uniqueInputId;
 
     /** Optional string of text to appear before selection is made */
@@ -86,6 +92,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @Output()
     readonly blur: EventEmitter<void> = new EventEmitter<void>();
 
+    /** Event emitted whenever the state changes */
+    @Output()
+    change = new EventEmitter<SelectChangeEvent>();
+
     private _value: string = '';
 
     @HostBinding('class.hc-select')
@@ -133,6 +143,17 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this._value = value;
     }
 
+    _change(event: Event, value: string) {
+        event.stopPropagation();
+        this.onChange(value);
+        this.value = value;
+        this._emitChangeEvent();
+    }
+
+    private _emitChangeEvent() {
+        this.change.emit(new SelectChangeEvent(this, this.value));
+    }
+
     ngDoCheck(): void {
         // This needs to be checked every cycle because we can't subscribe to form submissions
         if (this._ngControl) {
@@ -156,8 +177,13 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     _blurHandler(event) {
+        this._open = false;
         this._markAsTouched();
         this.blur.emit(event);
+    }
+
+    _clickHandler(event) {
+        this._open = !this._open;
     }
 
     _markAsTouched() {

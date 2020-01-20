@@ -1,20 +1,20 @@
 import {
-    Component,
-    ViewEncapsulation,
-    ChangeDetectionStrategy,
     AfterContentInit,
-    Input,
-    Output,
-    EventEmitter,
-    ViewChild,
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
     Optional,
-    Inject
+    Output,
+    ViewChild,
+    ViewEncapsulation
 } from '@angular/core';
-import {HcCalendarCellCssClasses, CalendarBodyComponent, HcCalendarCell} from '../calendar-body/calendar-body.component';
+import {CalendarBodyComponent, HcCalendarCell, HcCalendarCellCssClasses} from '../calendar-body/calendar-body.component';
 import {Directionality} from '@angular/cdk/bidi';
 import {createMissingDateImplError} from '../datetime/datepicker-errors';
-import {LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE} from '@angular/cdk/keycodes';
+import {DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, SPACE, UP_ARROW} from '@angular/cdk/keycodes';
 import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
 import {DateAdapter} from '../datetime/date-adapter';
 
@@ -39,6 +39,7 @@ export class MonthViewComponent implements AfterContentInit {
     get activeDate(): D {
         return this._activeDate;
     }
+
     set activeDate(value: D) {
         const oldActiveDate = this._activeDate;
         const validDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value)) || this._dateAdapter.today();
@@ -47,6 +48,7 @@ export class MonthViewComponent implements AfterContentInit {
             this._init();
         }
     }
+
     private _activeDate: D;
 
     /** The currently selected date. */
@@ -54,10 +56,12 @@ export class MonthViewComponent implements AfterContentInit {
     get selected(): D | null {
         return this._selected;
     }
+
     set selected(value: D | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._selectedDate = this._getDateInCurrentMonth(this._selected);
     }
+
     private _selected: D | null;
 
     /** The minimum selectable date. */
@@ -65,9 +69,11 @@ export class MonthViewComponent implements AfterContentInit {
     get minDate(): D | null {
         return this._minDate;
     }
+
     set minDate(value: D | null) {
         this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
+
     private _minDate: D | null;
 
     /** The maximum selectable date. */
@@ -75,9 +81,11 @@ export class MonthViewComponent implements AfterContentInit {
     get maxDate(): D | null {
         return this._maxDate;
     }
+
     set maxDate(value: D | null) {
         this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
+
     private _maxDate: D | null;
 
     /** Function used to filter which dates are selectable. */
@@ -123,7 +131,7 @@ export class MonthViewComponent implements AfterContentInit {
     _todayDate: number | null;
 
     /** The names of the weekdays. */
-    _weekdays: {long: string; narrow: string}[];
+    _weekdays: { long: string; narrow: string }[];
 
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
@@ -163,8 +171,12 @@ export class MonthViewComponent implements AfterContentInit {
             const selectedYear = this._dateAdapter.getYear(this.activeDate);
             const selectedMonth = this._dateAdapter.getMonth(this.activeDate);
             const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
-            // Set hours for buffer to protect against date changing when different time zones
-            selectedDate.setHours(12);
+
+            // Default hours/minutes for buffer to protect against date changing when different time zones
+            if (this._selected) {
+                selectedDate.setHours(this._selected.getHours() || 12);
+                selectedDate.setMinutes(this._selected.getMinutes() || 0);
+            }
 
             this.selectedChange.emit(selectedDate);
         }

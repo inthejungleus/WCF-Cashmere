@@ -27,7 +27,7 @@ import {ComponentPortal} from '@angular/cdk/portal';
 import {DatepickerInputDirective} from './datepicker-input/datepicker-input.directive';
 import {DialogService} from '../dialog/dialog.service';
 import {Directionality} from '@angular/cdk/bidi';
-import {DOCUMENT} from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
 import {take, filter} from 'rxjs/operators';
 import {ESCAPE, UP_ARROW} from '@angular/cdk/keycodes';
 
@@ -68,6 +68,29 @@ export class HcDatepickerContentBase {
 })
 export class DatepickerComponent implements OnDestroy {
     private _scrollStrategy: () => ScrollStrategy;
+
+    /**
+     * Whether the datepicker includes the calendar, time selector, or both. Defaults to `date`.
+     */
+    @Input()
+    mode: 'date' | 'time' | 'date-time' = 'date';
+
+    /**
+     * Whether the time picker uses a 12 or 24 hour clock. Defaults to 12.
+     */
+    @Input()
+    get hourCycle(): string | number {
+        return this._hourCycle;
+    }
+    set hourCycle( value: string | number ) {
+        if ( +value !== this._hourCycle) {
+            this._hourCycle = +value;
+            if ( this._selected ) {
+                this._selectedChanged.next(this._selected);
+            }
+        }
+    }
+    private _hourCycle: number = 12;
 
     /** An input indicating the type of the custom header component for the calendar, if set. */
     @Input()
@@ -419,7 +442,7 @@ export class DatepickerComponent implements OnDestroy {
                     originX: 'start',
                     originY: 'top',
                     overlayX: 'start',
-                    overlayY: 'bottom'
+                    overlayY: 'center'
                 },
                 {
                     originX: 'end',
@@ -431,7 +454,8 @@ export class DatepickerComponent implements OnDestroy {
                     originX: 'end',
                     originY: 'top',
                     overlayX: 'end',
-                    overlayY: 'bottom'
+                    overlayY: 'bottom',
+                    offsetY: 60
                 }
             ]);
     }

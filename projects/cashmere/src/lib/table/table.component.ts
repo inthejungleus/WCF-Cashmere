@@ -15,11 +15,11 @@ import {
     ChangeDetectorRef,
     Component,
     ElementRef,
+    HostBinding,
+    Input,
     IterableDiffers,
     Optional,
-    ViewEncapsulation,
-    HostBinding,
-    Input
+    ViewEncapsulation
 } from '@angular/core';
 import {Directionality} from '@angular/cdk/bidi';
 import {parseBooleanAttribute} from '../util';
@@ -49,9 +49,9 @@ export class HcTable<T> extends CdkTable<T> {
     @HostBinding('class.hc-table')
     _hostHcTableClass = true;
     @HostBinding('class.hc-table-borders')
-    _hostHcBordersClass = true;
+    _hostHcBordersClass = false;
 
-    /** Sets whether the table should have a 2px border around each cell (defaults to true) */
+    /** Sets whether the table should have a 2px border around each cell (defaults to false) */
     @Input()
     get borders(): boolean {
         return this._hostHcBordersClass;

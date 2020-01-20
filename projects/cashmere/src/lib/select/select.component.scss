@@ -1,27 +1,11 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-@import '../sass/mixins.scss';
+@import '../sass/select.scss';
 
 .hc-select {
-    display: inline-block;
-    width: 100%;
+    @include hc-select();
 }
 
 .hc-select-container {
-    position: relative;
-
-    //Firefox specific CSS to correct highlight on focus that does not cover the entire select box
-    select:-moz-focusring {
-        color: transparent;
-        text-shadow: 0 0 0 #000;
-    }
-
-    @-moz-document url-prefix() {
-        select:focus {
-            outline: $gray-500 dotted 1px;
-            outline-offset: -3px;
-        }
-    }
+    @include hc-select-container();
 }
 
 .hc-select-chevron {
@@ -47,6 +31,15 @@
         pointer-events: none;
         box-sizing: border-box;
         margin-top: 2px;
+        transform: rotate(0deg);
+        transition: transform 500ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+}
+
+.hc-select-chevron.open {
+    &:after {
+        transform: rotate(180deg);
+        transition: transform 500ms cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 }
 

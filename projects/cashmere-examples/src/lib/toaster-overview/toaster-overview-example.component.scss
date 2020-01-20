@@ -17,9 +17,28 @@
     display: block;
 }
 
+.example-field-half {
+    width: 45%;
+    display: inline-block;
+}
+
+.right-margin {
+    margin-right: 10%;
+}
+
 .button-row {
     display: block;
     width: 100%;
+}
+
+.progress-row {
+    display: flex;
+    align-items: end;
+    width: 100%;
+}
+
+.progress-input {
+    width: 130px;
 }
 
 .custom-toast {

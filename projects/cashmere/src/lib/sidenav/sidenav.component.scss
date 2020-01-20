@@ -118,6 +118,10 @@ nav {
         height: calc(100% - 164px);
     }
 
+    .sidenav-links.contact.user {
+        height: calc(100% - 95px);
+    }
+
     .logout {
         color: $white;
         font-size: 15px;

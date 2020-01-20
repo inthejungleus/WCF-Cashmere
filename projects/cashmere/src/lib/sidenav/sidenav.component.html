@@ -51,7 +51,7 @@
             </a>
         </div>
         <hr class="sidenav-hr" *ngIf="user">
-        <div [ngClass]="{'sidenav-links': true, 'contact': contactPhoneNumber}" class="sidenav-links">
+        <div [ngClass]="{'sidenav-links': true, 'contact': contactPhoneNumber, 'user': user}">
             <ng-content select="hc-sidenav-link"></ng-content>
             <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
                 <hc-icon class="icon-left" fontSet="fa" [fontIcon]="logoutIcon"></hc-icon>

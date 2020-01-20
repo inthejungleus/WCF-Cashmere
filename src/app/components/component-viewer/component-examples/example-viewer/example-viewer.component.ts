@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ElementRef, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {titleCase} from 'change-case';
 import stackblitz from '@stackblitz/sdk';
@@ -16,14 +16,17 @@ export class ExampleViewerComponent implements OnInit {
     isInitialized = false;
     private _example: string;
     private allExampleFiles: FileHash = {};
-    exampleFiles: Array<{name: string; contents: string}> = [];
+    exampleFiles: Array<{ name: string; contents: string }> = [];
 
-    constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) {}
+    constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) {
+
+    }
 
     @Input()
     get example() {
         return this._example;
     }
+
     set example(example: string) {
         this._example = example;
         if (example && this.isInitialized) {
@@ -89,6 +92,7 @@ export class ExampleViewerComponent implements OnInit {
         const containerPath = `src/app/example-container.component.ts`;
         exampleFiles[containerPath] = exampleFiles[containerPath].replace(/hc-example/g, `hc-${this.example}-example`);
         const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
+
         await stackblitz.openProject(
             {
                 files: exampleFiles,

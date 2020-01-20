@@ -15,7 +15,11 @@ import {FormsComponent} from './forms/forms.component';
 import {LoginPageComponent} from './login/login-page.component';
 import {StylesRoutesModule} from './styles-routes.module';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
+import {TrademarksDemoComponent} from './trademarks/trademarks-demo.component';
 import {StylesComponent} from './styles.component';
+import {BrandColorDemoComponent} from './brand-color/brand-color-demo.component';
+import {LogoDemoComponent} from './logo/logo-demo.component';
+import {ProductsDemoComponent} from './products/products-demo.component';
 
 @NgModule({
     imports: [SharedModule, StylesRoutesModule],
@@ -34,7 +38,12 @@ import {StylesComponent} from './styles.component';
         ErrorPagesComponent,
         LoginPageComponent,
         AboutModalComponent,
-        BreadcrumbsStyleDemoComponent
+        BreadcrumbsStyleDemoComponent,
+        BrandColorDemoComponent,
+        LogoDemoComponent,
+        ProductsDemoComponent,
+        TrademarksDemoComponent
     ]
 })
-export class StylesModule {}
+export class StylesModule {
+}

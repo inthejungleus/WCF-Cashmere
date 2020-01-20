@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {GuidesService} from './guides.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';

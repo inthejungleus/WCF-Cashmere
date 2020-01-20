@@ -62,6 +62,10 @@
     }
 }
 
+.hc-form-field-suffix {
+    @include hc-form-field-suffix();
+}
+
 .hc-form-field-prefix {
     @include hc-form-field-prefix();
 }
@@ -88,6 +92,10 @@
 
 .hc-form-field-label {
     @include hc-form-field-label();
+}
+
+.hc-form-field-no-label {
+    @include hc-form-field-no-label();
 }
 
 .hc-form-field-label-inline {
