@@ -44,4 +44,5 @@ export * from './lib/tile/index';
 export * from './lib/toaster/index';
 export * from './lib/typeahead/index';
 export * from './lib/typeform-survey/index';
+export * from './lib/wcf-tabs/index';
 export * from './lib/xanthos-file-upload/index';

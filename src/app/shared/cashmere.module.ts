@@ -41,6 +41,7 @@ import {
     ToasterModule,
     TypeaheadModule,
     TypeformSurveyModule,
+    WcfTabsModule,
     XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
 
@@ -87,6 +88,7 @@ import {
         ToasterModule,
         TypeaheadModule,
         TypeformSurveyModule,
+        WcfTabsModule,
         XanthosFileUploadModule
     ]
 })

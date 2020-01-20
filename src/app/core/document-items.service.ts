@@ -184,7 +184,18 @@ const docs: DocItem[] = [
         category: 'layout',
         examples: ['tabs-horizontal', 'tabs-vertical']
     },
-    {id: 'tile', name: 'Tile', category: 'layout', examples: ['tile-overview']},
+    {
+        id: 'wcf-tabs',
+        name: 'WCF Tabs',
+        category: 'layout',
+        examples: ['wcf-tabs-horizontal', 'wcf-tabs-vertical']
+    },
+    {
+        id: 'tile',
+        name: 'Tile',
+        category: 'layout',
+        examples: ['tile-overview']
+    },
     {id: 'toaster', name: 'Toaster Messages', category: 'popups', examples: ['toaster-overview']},
     {
         id: 'typeform-survey',
