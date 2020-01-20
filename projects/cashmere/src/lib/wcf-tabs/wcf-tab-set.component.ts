@@ -1,14 +1,14 @@
 import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output, EventEmitter} from '@angular/core';
-import {TabNewComponent} from './tab-new.component';
+import {WcfTabComponent} from './wcf-tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
 
-export class TabNewChangeEvent {
-    constructor(public index: number, public tab: TabNewComponent) {}
+export class WcfTabChangeEvent {
+    constructor(public index: number, public tab: WcfTabComponent) {}
 }
 
-export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabNewComponent[]) {
-    const tabNewTitles = tabsWithoutRouterLink.map(tab => tab.tabNewTitle);
-    throw Error(`Routerlink missing on ${tabNewTitles.join(',')}`);
+export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: WcfTabComponent[]) {
+    const wcfTabTitles = tabsWithoutRouterLink.map(tab => tab.wcfTabTitle);
+    throw Error(`Routerlink missing on ${wcfTabTitles.join(',')}`);
 }
 
 const supportedDirections = ['horizontal', 'vertical'];
@@ -28,21 +28,21 @@ export function invalidDefaultTab(tabVal: string) {
 }
 
 @Component({
-    selector: `hc-tab-new-set`,
-    templateUrl: './tab-new-set.component.html',
-    styleUrls: ['../sass/_tabs-new.scss']
+    selector: `hc-wcf-tab-set`,
+    templateUrl: './wcf-tab-set.component.html',
+    styleUrls: ['../sass/_wcf-tabs.scss']
 })
-export class TabNewSetComponent implements AfterContentInit {
+export class WcfTabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
     private _defaultTab: string = '0';
 
-    @ContentChildren(TabNewComponent)
-    _tabs: QueryList<TabNewComponent>;
+    @ContentChildren(WcfTabComponent)
+    _tabs: QueryList<WcfTabComponent>;
 
     /** Emits when the selected tab is changed */
     @Output()
-    selectedTabChange: EventEmitter<TabNewChangeEvent> = new EventEmitter();
+    selectedTabChange: EventEmitter<WcfTabChangeEvent> = new EventEmitter();
 
     /** Specify direction of tabs as either `horizontal` or `vertical`. Defaults to `vertical` */
     @Input()
@@ -91,7 +91,7 @@ export class TabNewSetComponent implements AfterContentInit {
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
-    selectTab(tab: number | TabNewComponent) {
+    selectTab(tab: number | WcfTabComponent) {
         if (typeof tab === 'number') {
             let i: number = 0;
 
@@ -106,7 +106,7 @@ export class TabNewSetComponent implements AfterContentInit {
         }
     }
 
-    _setActive(tab: TabNewComponent, event?: Event) {
+    _setActive(tab: WcfTabComponent, event?: Event) {
         let selectedTab: number = 0;
         let index: number = 0;
 
@@ -120,7 +120,7 @@ export class TabNewSetComponent implements AfterContentInit {
 
         tab.tabClick.emit(event);
         tab._active = true;
-        this.selectedTabChange.emit(new TabNewChangeEvent(selectedTab, tab));
+        this.selectedTabChange.emit(new WcfTabChangeEvent(selectedTab, tab));
     }
 
     private defaultToFirstTab() {

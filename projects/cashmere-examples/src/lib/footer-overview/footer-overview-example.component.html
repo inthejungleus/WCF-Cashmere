@@ -1,18 +1,8 @@
 <div class="header-example-container">
     <p>
-        The footer is set up to sit relative to other content on the page. In order to ensure that the footer sits at the bottom of 
-        the page, the div that holds the page content should be styled with a min-height attribute that calculates the height of the 
-        viewport (or the parent container) minus the combined height of the header and footer.
-    </p>
-    <p>
-        For example, with a header height of <code>72px</code> and a footer height of <code>122px</code>, the content container 
-        should be set to:
-    </p>
-    <code>
-        min-height: calc(100% - 194px);
-    </code>
-    <p>
-        Media queries may be used to keep footer content from running off the screen when the height of the footer changes.
+        In order for the footer to be properly placed/aligned on the overall page structure,
+        the addition of a class is necessary. The placement of the header, div, and footer
+        in relation to each other is also important:
     </p>
     <pre>
         &lt;hc-header ... &gt;&lt;/hc-header&gt;

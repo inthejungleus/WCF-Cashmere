@@ -1,35 +1,35 @@
-<div class="tab-new-demo">
-    <hc-tab-new-set direction="horizontal" (selectedTabChange)="selectionChanged($event)" #tabSet>
-        <hc-tab-new tabNewTitle='Pending Tasks'>
-            <div class="tab-new-content">
+<div class="wcf-tab-demo">
+    <hc-wcf-tab-set direction="horizontal" (selectedTabChange)="selectionChanged($event)" #tabSet>
+        <hc-wcf-tab wcfTabTitle='Pending Tasks'>
+            <div class="wcf-tab-content">
                 This is where pending tasks would go.
             </div>
-        </hc-tab-new>
-        <hc-tab-new>
-            <hc-tab-new-title>
+        </hc-wcf-tab>
+        <hc-wcf-tab>
+            <hc-wcf-tab-title>
                 <i class="fa fa-check" style="color: #00a859; font-size: 16px;"></i>  Complete Tasks
-            </hc-tab-new-title>
-            <div class="tab-new-content">
+            </hc-wcf-tab-title>
+            <div class="wcf-tab-content">
                 These are completed tasks
             </div>
-        </hc-tab-new>
-        <hc-tab-new>
-            <hc-tab-new-title>
+        </hc-wcf-tab>
+        <hc-wcf-tab>
+            <hc-wcf-tab-title>
                 <i class="fa fa-times" style="color: #f13c45; font-size: 16px;"></i> Incomplete Tasks
-            </hc-tab-new-title>
-            <div class="tab-new-content">
+            </hc-wcf-tab-title>
+            <div class="wcf-tab-content">
                 Incomplete tasks belong here.
             </div>
-        </hc-tab-new>
-        <hc-tab-new (tabClick)="addTask($event)">
-            <hc-tab-new-title>
+        </hc-wcf-tab>
+        <hc-wcf-tab (tabClick)="addTask($event)">
+            <hc-wcf-tab-title>
                 <span style="color: #00aeff; font-weight: 600;"><i class="fa fa-plus"></i> Add Task</span>
-            </hc-tab-new-title>
-            <div class="tab-new-content">
+            </hc-wcf-tab-title>
+            <div class="wcf-tab-content">
                 This is an example of a click handler on a tab.
             </div>
-        </hc-tab-new>
-    </hc-tab-new-set>
+        </hc-wcf-tab>
+    </hc-wcf-tab-set>
 </div>
 <br>
 <button hc-button title="Set Selection" buttonStyle="primary" (click)="tabSet.selectTab(1)">

@@ -178,10 +178,10 @@ const docs: DocItem[] = [
         examples: ['tabs-horizontal', 'tabs-vertical']
     },
     {
-        id: 'tabs-new',
-        name: 'Tabs (New)',
+        id: 'wcf-tabs',
+        name: 'WCF Tabs',
         category: 'layout',
-        examples: ['tabs-new-horizontal', 'tabs-new-vertical']
+        examples: ['wcf-tabs-horizontal', 'wcf-tabs-vertical']
     },
     {
         id: 'tile',

@@ -36,11 +36,11 @@ import {
     SubnavModule,
     TableModule,
     TabsModule,
-    TabsNewModule,
     TileModule,
     ToasterModule,
     TypeaheadModule,
     TypeformSurveyModule,
+    WcfTabsModule,
     XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
 
@@ -82,11 +82,11 @@ import {
         SubnavModule,
         TableModule,
         TabsModule,
-        TabsNewModule,
         TileModule,
         ToasterModule,
         TypeaheadModule,
         TypeformSurveyModule,
+        WcfTabsModule,
         XanthosFileUploadModule
     ]
 })

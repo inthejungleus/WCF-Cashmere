@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import {TabChangeEvent} from '@wcf-insurance/cashmere';
 
 /**
- * @title New Tab Styling with Event Handling
+ * @title WCF Tab Styling with Event Handling
  */
 
 @Component({
-  selector: 'hc-tabs-new-horizontal-example',
-  templateUrl: './tabs-new-horizontal-example.component.html',
-  styleUrls: ['./tabs-new-horizontal-example.component.scss']
+  selector: 'hc-wcf-tabs-horizontal-example',
+  templateUrl: './wcf-tabs-horizontal-example.component.html',
+  styleUrls: ['./wcf-tabs-horizontal-example.component.scss']
 })
-export class TabsNewHorizontalExampleComponent {
+export class WcfTabsHorizontalExampleComponent {
 
   selectedIndex: number = 0;
 

@@ -1,29 +1,29 @@
 @import './colors';
 
-.hc-horizontal-tab-new-container {
+.hc-horizontal-wcf-tab-container {
     height: auto;
     width: 100%;
 }
 
-.hc-vertical-tab-new-container {
+.hc-vertical-wcf-tab-container {
     height: 100%;
     width: 100%;
     display: flex;
 }
 
-.hc-tab-new-bar-vertical {
+.hc-wcf-tab-bar-vertical {
     padding: 0;
     background-color: $slate-gray-100;
     border-left: 1px solid $gray-30;
     width: 20%;
-    .hc-tab-new-width {
+    .hc-wcf-tab-width {
         &:last-child {
             border-bottom: $gray-30 1px solid;
         }
     }
 }
 
-.hc-tab-new-vertical {
+.hc-wcf-tab-vertical {
     background-color: $gray-05;
     color: $offblack;
     font-size: 16px;
@@ -43,30 +43,30 @@
     }
 }
 
-.hc-tab-new-content-vertical {
+.hc-wcf-tab-content-vertical {
     width: 80%;
     border: 1px solid $gray-30;
     border-left: none;
 }
 
-.hc-tab-new-bar-horizontal {
+.hc-wcf-tab-bar-horizontal {
     background-color: inherit;
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    .hc-tab-new-width {
+    .hc-wcf-tab-width {
         &:last-child {
             border-right: $gray-30 1px solid;
         }
     }
 }
 
-.hc-tab-new-width {
+.hc-wcf-tab-width {
     min-width: 0;
     border-top: 1px solid $gray-30;
 }
 
-.hc-tab-new-horizontal {
+.hc-wcf-tab-horizontal {
     background-color: $gray-05;
     border-top: $gray-05 4px solid;
     border-left: $gray-30 1px solid;
@@ -91,7 +91,7 @@
     }
 }
 
-.hc-tab-new-content-horizontal {
+.hc-wcf-tab-content-horizontal {
     background-color: inherit;
     width: 100%;
     height: 100%;

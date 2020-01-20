@@ -1,5 +1,5 @@
 import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter} from '@angular/core';
-import {HcTabNewTitleComponent} from './tab-new-title.component';
+import {HcWcfTabTitleComponent} from './wcf-tab-title.component';
 
 @Component({
     template: `
@@ -8,13 +8,13 @@ import {HcTabNewTitleComponent} from './tab-new-title.component';
             <ng-content></ng-content>
         </div>
     `,
-    selector: `hc-tab-new`,
+    selector: `hc-wcf-tab`,
     styles: []
 })
-export class TabNewComponent implements AfterContentInit {
+export class WcfTabComponent implements AfterContentInit {
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
-    tabNewTitle: string = '';
+    wcfTabTitle: string = '';
     /** Router path that the tab routes to. If one tab uses the routerLink in a tab set, all must use the router link.
      * Can be specified as '/path/2' or ['path', '2']
      */
@@ -26,14 +26,14 @@ export class TabNewComponent implements AfterContentInit {
     tabClick: EventEmitter<Event> = new EventEmitter();
 
     _active: boolean = false;
-    _htmlTitle: HcTabNewTitleComponent;
+    _htmlTitle: HcWcfTabTitleComponent;
 
-    @ContentChildren(HcTabNewTitleComponent)
-    _tabNewTitle: QueryList<HcTabNewTitleComponent>;
+    @ContentChildren(HcWcfTabTitleComponent)
+    _wcfTabTitle: QueryList<HcWcfTabTitleComponent>;
 
     ngAfterContentInit() {
-        if (this._tabNewTitle) {
-            this._htmlTitle = this._tabNewTitle.first;
+        if (this._wcfTabTitle) {
+            this._htmlTitle = this._wcfTabTitle.first;
         }
     }
 }
