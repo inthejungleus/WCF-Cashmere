@@ -18,7 +18,8 @@ import {parseBooleanAttribute} from '../util';
 let uniqueId = 1;
 
 export class SelectChangeEvent {
-    constructor(public source: SelectComponent, public value: string) {}
+    constructor(public source: SelectComponent, public value: string) {
+    }
 }
 
 /** Select one of many options from a dropdown */
@@ -32,6 +33,7 @@ export class SelectChangeEvent {
 export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _open: boolean = false;
 
     _componentId = this._uniqueInputId;
 
@@ -175,8 +177,13 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     _blurHandler(event) {
+        this._open = false;
         this._markAsTouched();
         this.blur.emit(event);
+    }
+
+    _clickHandler(event) {
+        this._open = !this._open;
     }
 
     _markAsTouched() {

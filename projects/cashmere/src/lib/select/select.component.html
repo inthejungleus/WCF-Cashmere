@@ -1,12 +1,16 @@
 <div class="hc-select-container">
-    <span class="hc-select-chevron"></span>
+    <span [ngClass]="{'hc-select-chevron': true, 'open': _open}"></span>
     <select
         #selectInput
         class="hc-select-input"
         [disabled]="disabled"
         (change)="_change($event, selectInput.value)"
         [value]="value"
-        (focus)="focus.next()"
+        (focus)="focus.next();"
+        (click)="_clickHandler($event)"
+        (keyup.escape)="_clickHandler($event)"
+        (keydown.space)="_clickHandler($event)"
+        (keydown.enter)="_clickHandler($event)"
         (blur)="_blurHandler($event)"
         [required]="required"
     >
