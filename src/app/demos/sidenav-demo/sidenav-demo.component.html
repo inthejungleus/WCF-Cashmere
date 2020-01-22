@@ -19,8 +19,8 @@
                     <hc-label>Job Name</hc-label>
                 </div>
                 <div class="col-sm-8">
-                    <hc-form-field>
-                        <input hcInput [formControl]="jobName">
+                    <hc-form-field inline="true">
+                        <input hcInput [formControl]="jobName" required>
                         <hc-error>A job name is required</hc-error>
                     </hc-form-field>
                 </div>
@@ -31,13 +31,23 @@
                     <hc-label>Run Frequency</hc-label>
                 </div>
                 <div class="col-sm-8">
-                    <hc-form-field>
+                    <hc-form-field inline="true">
                         <hc-select placeholder="Select frequency" [formControl]="runFrequency">
                             <option value="daily">Daily</option>
                             <option value="weekly">Weekly</option>
                             <option value="monthly">Monthly</option>
                         </hc-select>
                         <hc-error>Please select the run frequency for this item</hc-error>
+                    </hc-form-field>
+                </div>
+            </div>
+
+            <div class="row buffer">
+                <div class="col-sm-12">
+                    <hc-form-field>
+                        <hc-label>Not Inline:</hc-label>
+                        <input hcInput required [formControl]="notInline">
+                        <hc-error>A value is required</hc-error>
                     </hc-form-field>
                 </div>
             </div>

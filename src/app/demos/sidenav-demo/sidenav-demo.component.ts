@@ -18,6 +18,7 @@ export class SidenavDemoComponent implements OnInit {
 
     jobName = new FormControl('', [Validators.required]);
     runFrequency = new FormControl('', [Validators.required]);
+    notInline = new FormControl('', [Validators.required]);
 
     dummyContent: string[] = [];
 

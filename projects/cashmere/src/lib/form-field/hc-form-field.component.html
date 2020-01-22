@@ -2,11 +2,11 @@
     <span *ngIf="hasLabel" [ngClass]="inline ? 'hc-form-field-label-wrapper-inline' : 'hc-form-field-label-wrapper'">
         <label [ngClass]="inline ? 'hc-form-field-label-inline' : 'hc-form-field-label'" [attr.for]="_control._componentId">
             <ng-content select="hc-label"></ng-content>
-            <span class="hc-required-marker" aria-hidden="true" *ngIf="_control._isRequired && !_control._isDisabled">&nbsp;*</span>
         </label>
     </span>
     <div class="hc-form-field-content-wrapper">
-        <div *ngIf="_inputChildren.length" [ngClass]="{ 'hc-form-field-flex': !inline, 'hc-form-field-flex-inline': inline, 'hc-form-field-invalid': _shouldShowErrorMessages(), 'hc-form-field-input-focused': inputFocused }">
+        <div *ngIf="_inputChildren.length"
+             [ngClass]="{ 'hc-form-field-flex': !inline, 'hc-form-field-flex-inline': inline, 'hc-form-field-invalid': _shouldShowErrorMessages(), 'hc-form-field-input-focused': inputFocused }">
             <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
                 <ng-content select="[hcPrefix]"></ng-content>
             </div>
