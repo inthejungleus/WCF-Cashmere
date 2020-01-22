@@ -68,7 +68,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     border-radius: 1px;
 
     background: $white;
-
+    width: 100%;
 }
 
 @mixin hc-form-field-input-focused() {

@@ -3,17 +3,20 @@
 body {
     padding: 0 !important;
     margin: 0 !important;
+    background-color: #e9eaeb;
+}
+
+h2.app-title {
+    color: #707070;
+    padding: 28px 0;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .hc-drawer {
     background-color: #6e6f71;
     color: #b9babb;
-}
-
-.example-controls {
-    margin-bottom: 2.5em;
-    padding: 1em;
-    border-bottom: 1px solid gray;
 }
 
 .mobileView {
@@ -28,10 +31,22 @@ body {
     height: 100%;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 16px;
     margin: 0 5%;
 }
 
 .dummyItem {
     margin-bottom: 1em;
+    font-size: 21px;
+}
+
+.main-content {
+    background-color: #fff;
+    margin-bottom: 2em;
+    padding: 30px;
+}
+
+.row.buffer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
