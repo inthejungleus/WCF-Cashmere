@@ -15,10 +15,10 @@
         <h2 class="app-title">SideNav Demo</h2>
         <div class="main-content">
             <div class="row buffer">
-                <div class="col-sm-4">
-                    <hc-label>Job Name</hc-label>
+                <div class="col-sm-3">
+                    <label class="hc-form-field-label-inline">Job Name</label>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                     <hc-form-field inline="true">
                         <input hcInput [formControl]="jobName" required>
                         <hc-error>A job name is required</hc-error>
@@ -27,10 +27,10 @@
             </div>
 
             <div class="row buffer">
-                <div class="col-sm-4">
-                    <hc-label>Run Frequency</hc-label>
+                <div class="col-sm-3">
+                    <label class="hc-form-field-label-inline">Run Frequency</label>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                     <hc-form-field inline="true">
                         <hc-select placeholder="Select frequency" [formControl]="runFrequency">
                             <option value="daily">Daily</option>

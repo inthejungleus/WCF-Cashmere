@@ -48,10 +48,6 @@ describe('HcFormFieldComponent', () => {
             expect(labelElement.getAttribute('for')).toBe(inputElement.id);
         });
 
-        it('should show required marker', () => {
-            expect(labelElement.textContent).toMatch(/hola\s+\*/g);
-        });
-
         it('support disabled attribute', () => {
             const nativeFormField = formFieldDebugElement.nativeElement;
             expect(nativeFormField.classList.contains('hc-form-field-disabled')).toBe(
