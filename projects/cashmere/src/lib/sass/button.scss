@@ -264,6 +264,16 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-split-button-toggle-sm() {
+    padding: 3px 7px !important;
+
+    &::after {
+        width: 10px !important;
+        height: 6px !important;
+        margin-top: 1px !important;
+    }
+}
+
 @mixin hc-button-secondary-toggle() {
     min-width: auto;
     padding: 8px 12px;
