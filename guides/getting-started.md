@@ -1,6 +1,6 @@
 # Getting Started
 
-###### Last updated August 2, 2018
+###### Last updated September 21, 2019
 
 :::
 

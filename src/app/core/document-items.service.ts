@@ -3,10 +3,10 @@ import {Injectable} from '@angular/core';
 export interface DocItem {
     id: string;
     name: string;
-    // Category options are: 'forms', 'nav', 'layout', 'buttons', 'popups', 'table'
-    category: string;
+    category: 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
     examples?: string[];
     usageDoc?: boolean;
+    hideApi?: boolean;
 }
 
 const docs: DocItem[] = [
@@ -50,7 +50,7 @@ const docs: DocItem[] = [
         id: 'date-range',
         name: 'DateRange',
         category: 'forms',
-        examples: ['date-range'],
+        examples: ['date-range', 'date-range-time'],
         usageDoc: true
     },
     {
@@ -59,6 +59,7 @@ const docs: DocItem[] = [
         category: 'layout',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
+    {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
     {
         id: 'environment-ribbon',
         name: 'Environment Ribbon',
@@ -95,7 +96,7 @@ const docs: DocItem[] = [
         name: 'Input',
         category: 'forms',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-toggle-visible', 'input-phone-number', 'input-currency']
+        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area', 'input-toggle-visible', 'input-phone-number', 'input-currency']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
@@ -118,7 +119,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-overview', 'popover-menu', 'popover-tooltip'],
+        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-right-click', 'popover-overview'],
         usageDoc: true
     },
     {
@@ -150,6 +151,12 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
+        id: 'scroll-nav',
+        name: 'ScrollNav',
+        category: 'nav',
+        examples: ['scroll-nav']
+    },
+    {
         id: 'select',
         name: 'Select',
         category: 'forms',
@@ -177,7 +184,18 @@ const docs: DocItem[] = [
         category: 'layout',
         examples: ['tabs-horizontal', 'tabs-vertical']
     },
-    {id: 'tile', name: 'Tile', category: 'layout', examples: ['tile-overview']},
+    {
+        id: 'wcf-tabs',
+        name: 'WCF Tabs',
+        category: 'layout',
+        examples: ['wcf-tabs-horizontal', 'wcf-tabs-vertical']
+    },
+    {
+        id: 'tile',
+        name: 'Tile',
+        category: 'layout',
+        examples: ['tile-overview']
+    },
     {id: 'toaster', name: 'Toaster Messages', category: 'popups', examples: ['toaster-overview']},
     {
         id: 'typeform-survey',

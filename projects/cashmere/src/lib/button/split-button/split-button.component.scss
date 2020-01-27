@@ -9,7 +9,12 @@
     .hc-split-button-main {
         @include hc-split-button-main();
     }
+
     .hc-split-button-toggle {
         @include hc-split-button-toggle();
+
+        &.hc-sm {
+            @include hc-split-button-toggle-sm();
+        }
     }
 }

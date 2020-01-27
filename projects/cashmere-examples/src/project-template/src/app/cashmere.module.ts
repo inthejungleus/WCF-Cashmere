@@ -29,6 +29,7 @@ import {
     ProgressBarModule,
     ProgressIndicatorsModule,
     RadioButtonModule,
+    ScrollNavModule,
     RequirementModule,
     SelectModule,
     SidenavModule,
@@ -40,6 +41,7 @@ import {
     ToasterModule,
     TypeaheadModule,
     TypeformSurveyModule,
+    WcfTabsModule,
     XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
 
@@ -75,6 +77,7 @@ import {
         ProgressIndicatorsModule,
         RadioButtonModule,
         RequirementModule,
+        ScrollNavModule,
         SelectModule,
         SidenavModule,
         SortModule,
@@ -85,6 +88,7 @@ import {
         ToasterModule,
         TypeaheadModule,
         TypeformSurveyModule,
+        WcfTabsModule,
         XanthosFileUploadModule
     ]
 })

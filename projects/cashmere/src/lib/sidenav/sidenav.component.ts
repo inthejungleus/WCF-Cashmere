@@ -46,7 +46,7 @@ export class SidenavComponent {
     @Input()
     brandIcon: string = 'https://www.wcf.com/wcf-ui/common/images/WCF-Logo.svg';
 
-    /** Router link triggered when home icon is clicked */
+    /** Router link or URL triggered when home icon is clicked */
     @Input()
     homeUri: any[] | string = '';
 

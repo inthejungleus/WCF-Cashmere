@@ -7,4 +7,5 @@ import {Component} from '@angular/core';
     selector: 'hc-checkbox-disabled-example',
     templateUrl: 'checkbox-disabled-example.component.html'
 })
-export class CheckboxDisabledExampleComponent {}
+export class CheckboxDisabledExampleComponent {
+}

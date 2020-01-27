@@ -48,10 +48,6 @@ describe('HcFormFieldComponent', () => {
             expect(labelElement.getAttribute('for')).toBe(inputElement.id);
         });
 
-        it('should show required marker', () => {
-            expect(labelElement.textContent).toMatch(/hola\s+\*/g);
-        });
-
         it('support disabled attribute', () => {
             const nativeFormField = formFieldDebugElement.nativeElement;
             expect(nativeFormField.classList.contains('hc-form-field-disabled')).toBe(
@@ -141,7 +137,10 @@ class SimpleInput {
 
 @Component({
     template: `
-        <hc-form-field><input /></hc-form-field>
+        <hc-form-field>
+            <hc-label>Simple:</hc-label>
+            <input />
+        </hc-form-field>
     `
 })
 class InputMissingHcInput {}
@@ -149,6 +148,7 @@ class InputMissingHcInput {}
 @Component({
     template: `
         <hc-form-field>
+            <hc-label>Form Control Label:</hc-label>
             <input hcInput [formControl]="formControl" />
             <hc-error>Input is required</hc-error>
         </hc-form-field>

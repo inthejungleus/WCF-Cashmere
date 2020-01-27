@@ -22,7 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 /**
- * @title Filtered Table without Borders
+ * @title Filtered Table
  */
 @Component({
     selector: 'hc-table-filter-example',

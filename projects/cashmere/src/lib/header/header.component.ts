@@ -1,5 +1,5 @@
 import {Component, Input, ViewChild} from '@angular/core';
-import {HcPopoverAnchorDirective} from '../pop/popover-anchor.directive';
+import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
 
 @Component({
     selector: 'hc-header',

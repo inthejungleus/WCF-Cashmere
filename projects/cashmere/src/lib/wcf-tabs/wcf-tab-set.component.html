@@ -1,0 +1,23 @@
+<div class="hc-{{direction}}-wcf-tab-container">
+    <div class="hc-wcf-tab-bar-{{direction}}">
+        <div *ngFor="let tab of _tabs" class="hc-wcf-tab-width">
+            <a *ngIf="_routerEnabled" class="hc-wcf-tab-{{direction}} hc-text-ellipsis"
+               [routerLink]="tab.routerLink"
+               routerLinkActive="active"
+               (click)="_setActive(tab, $event)">
+                <ng-container *ngIf="tab._htmlTitle" [ngTemplateOutlet]="tab._htmlTitle.wcfTabTitle"></ng-container>
+                {{tab.wcfTabTitle}}
+            </a>
+            <a *ngIf="!_routerEnabled" class="hc-wcf-tab-{{direction}} hc-text-ellipsis"
+               [class.active]="tab._active"
+               (click)="_setActive(tab, $event)">
+                <ng-container *ngIf="tab._htmlTitle" [ngTemplateOutlet]="tab._htmlTitle.wcfTabTitle"></ng-container>
+                {{tab.wcfTabTitle}}
+            </a>
+        </div>
+    </div>
+    <div class="hc-wcf-tab-content-{{direction}}">
+        <router-outlet *ngIf="_routerEnabled"></router-outlet>
+        <ng-content *ngIf="!_routerEnabled"></ng-content>
+    </div>
+</div>

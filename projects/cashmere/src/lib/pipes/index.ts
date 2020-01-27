@@ -1,4 +1,4 @@
-export {EllipsisPipe} from './ellipsis.pipe';
+export {EllipsisPipe} from './ellipsis/ellipsis.pipe';
 export {PhonePipe} from './phone.pipe';
 export {SSNMaskedPipe} from './ssn-masked.pipe';
 export {SSNPipe} from './ssn.pipe';

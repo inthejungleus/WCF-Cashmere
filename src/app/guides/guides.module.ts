@@ -10,4 +10,5 @@ import {GuidesRoutesModule} from './guides-routes.module';
     declarations: [GuidesComponent, GuideComponent],
     providers: [GuidesService]
 })
-export class GuidesModule {}
+export class GuidesModule {
+}

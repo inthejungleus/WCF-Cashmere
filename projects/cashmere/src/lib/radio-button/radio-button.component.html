@@ -1,5 +1,7 @@
-<label class="hc-radio-container" [ngClass]="{'disabled': disabled}">
-    <input type="radio"
+<label class="hc-radio-container" [class.disabled]="disabled">
+    <input class="hc-radio-input"
+           [class.disabled]="disabled"
+           type="radio"
            [id]="_inputId"
            [attr.value]="value"
            [attr.name]="name"
@@ -12,7 +14,7 @@
            (blur)="_onBlur()"
            tabindex="0"
     />
-    <span class="hc-radio-overlay"></span>
+    <span class="hc-radio-overlay" [class.disabled]="disabled"></span>
     <div class="hc-radio-content">
         <ng-content></ng-content>
     </div>
