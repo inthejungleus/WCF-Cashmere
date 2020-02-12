@@ -10,7 +10,7 @@ import {By} from '@angular/platform-browser';
     `
 })
 export class TestIconComponent {
-    iconValue: string = 'fa-snowflake-o';
+    iconValue: string = 'fa-snowflake';
 }
 
 describe('IconComponent', () => {
@@ -32,7 +32,7 @@ describe('IconComponent', () => {
 
     it('should update the font class when the fontIcon value is changed', () => {
         let subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
-        expect(subnavComponent.nativeElement.classList.contains('fa-snowflake-o')).toBe(true);
+        expect(subnavComponent.nativeElement.classList.contains('fa-snowflake')).toBe(true);
 
         component.iconValue = 'fa-pied-piper';
         fixture.detectChanges();

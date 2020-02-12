@@ -60,7 +60,7 @@ export class SidenavComponent {
 
     /** Icon to be used for the logout link */
     @Input()
-    logoutIcon: string = 'fa-sign-out';
+    logoutIcon: string = 'fa-sign-out-alt';
 
     /** Change positioning to absolute - mostly just for convenience of playing nice with example docs */
     @Input()
