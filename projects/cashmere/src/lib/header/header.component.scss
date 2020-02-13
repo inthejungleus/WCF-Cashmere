@@ -31,7 +31,7 @@
 }
 
 .header-username {
-    height: 72px;
+    height: 60px;
     color: $white;
     cursor: pointer;
     transition: background-color 0.25s;
@@ -59,10 +59,6 @@
 
     max-width: 150px;
     display: flex;
-}
-
-.logout {
-    cursor: pointer;
 }
 
 .list-options a {
