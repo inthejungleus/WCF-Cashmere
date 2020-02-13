@@ -1,0 +1,14 @@
+<label class="switch">
+  <input type="checkbox"
+  [id]="_inputId"
+  [attr.value]="value"
+  [attr.name]="name"
+  [size]="size"
+  [tabIndex]="tabIndex"
+  [required]="required"
+  [checked]="checked"
+  [disabled]="disabled"
+  (change)="_stopChangeEvent($event)"
+  (click)="_clickEvent($event)"/>
+  <span class="slider round"></span>
+</label>
