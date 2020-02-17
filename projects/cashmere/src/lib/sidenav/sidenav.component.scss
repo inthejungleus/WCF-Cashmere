@@ -1,4 +1,5 @@
 @import '../sass/colors';
+@import '../sass/variables';
 
 $mobile-top-bar-height: 52px;
 
@@ -70,11 +71,23 @@ nav {
         color: $white;
         display: flex;
         align-items: center;
-        padding: 16px 20px 16px 26px;
+        padding: 16px 20px 6px 26px;
         white-space: normal;
         overflow: hidden;
         max-width: 100%;
         text-overflow: ellipsis;
+        cursor: pointer;
+
+        .header-username {
+            height: 38px;
+
+            .username {
+                width: 190px;
+                display: inline-block;
+                height: 15px;
+                vertical-align: middle;
+            }
+        }
 
         a {
             color: inherit;
@@ -82,7 +95,7 @@ nav {
 
         .user {
             position: relative;
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-family: $default-font-headings;
         }
 
         .user-avatar {
@@ -90,8 +103,8 @@ nav {
 
             img {
                 border-radius: 50%;
-                width: 36px;
-                height: 36px;
+                width: 20px;
+                height: 20px;
                 vertical-align: middle;
             }
 
@@ -156,6 +169,10 @@ nav {
             margin-right: 10px;
         }
     }
+}
+
+.hc-menu-panel {
+    width: 250px;
 }
 
 .sidenav-page-content {

@@ -8,8 +8,12 @@
         </a>
     </div>
     <div class="header-username" [hcPop]="_userMenu">
-        <span class="hc-text-ellipsis">{{ username }}</span>
-        <hc-icon *ngIf="username" fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+        <span class="user-avatar">
+            <img *ngIf="user?.avatar" [src]="user?.avatar"/>
+            <hc-icon *ngIf="!user?.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+        </span>
+        <span class="hc-text-ellipsis">{{ user?.name }}</span>
+        <hc-icon *ngIf="user" fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
         <hc-pop #userMenu [showArrow]="false">
             <div hcMenu>
                 <a hcMenuItem href="/myWcfOnline/updateProfile">

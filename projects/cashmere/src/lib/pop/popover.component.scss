@@ -12,6 +12,22 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
 @include cdk-overlay();
 
 .hc-pop-container {
+    &.hc-pop-above {
+        border-radius: 4px 4px 0 0;
+
+        .hc-menu-panel {
+            border-radius: 4px 4px 0 0;
+        }
+    }
+
+    &.hc-pop-below {
+        border-radius: 0 0 4px 4px;
+
+        .hc-menu-panel {
+            border-radius: 0 0 4px 4px;
+        }
+    }
+
     &.hc-pop-before.hc-pop-above {
         transform-origin: right bottom;
 
@@ -74,13 +90,18 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
         color: #333;
         padding: 12px;
         box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-        border-radius: 4px;
     }
 
     // Arrows
     $popover-arrow-width: 10px;
 
     &.hc-pop-show-arrow {
+        border-radius: 4px;
+
+        .hc-menu-panel {
+            border-radius: 4px;
+        }
+
         .hc-pop-arrow {
             display: block;
             width: $popover-arrow-width;
@@ -112,9 +133,11 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
     &.hc-pop-arrow-x-center .hc-pop-arrow {
         left: calc(50% - #{$popover-arrow-width - 4px});
     }
+
     &.hc-pop-arrow-x-start .hc-pop-arrow {
         left: 5px;
     }
+
     &.hc-pop-arrow-x-end .hc-pop-arrow {
         left: calc(100% - #{$popover-arrow-width * 2 - 5px});
     }
@@ -122,9 +145,11 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
     &.hc-pop-arrow-y-center .hc-pop-arrow {
         top: calc(50% - #{$popover-arrow-width - 4px});
     }
+
     &.hc-pop-arrow-y-start .hc-pop-arrow {
         top: 5px;
     }
+
     &.hc-pop-arrow-y-end .hc-pop-arrow {
         top: calc(100% - #{$popover-arrow-width * 2 - 5px});
     }

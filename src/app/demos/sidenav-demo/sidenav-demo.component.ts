@@ -13,7 +13,7 @@ export class SidenavDemoComponent implements OnInit {
     mobileView = false;
     user: IUser = {
         name: 'John Doe',
-        avatar: '/src/assets/avatar.jpg'
+        // avatar: '/src/assets/avatar.jpg'
     };
 
     jobName = new FormControl('', [Validators.required]);

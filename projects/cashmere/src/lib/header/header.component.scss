@@ -57,8 +57,23 @@
         max-width: 130px;
     }
 
-    max-width: 150px;
+    max-width: 200px;
     display: flex;
+
+    .user-avatar {
+        margin-right: 20px;
+
+        img {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        hc-icon {
+            vertical-align: middle;
+        }
+    }
 }
 
 .list-options a {
