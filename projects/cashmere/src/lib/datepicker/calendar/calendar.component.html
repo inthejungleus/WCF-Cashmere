@@ -53,14 +53,14 @@
 </ng-container>
 
 <div *ngIf="mode !== 'date'" class="hc-calendar-time-picker">
-    <hc-icon fontSet="fa" fontIcon="fa-clock-o"></hc-icon>
+    <hc-icon fontSet="fa" fontIcon="fa-clock"></hc-icon>
 
     <hc-form-field inline="true">
         <input hcInput
-            placeholder="hh"
-            [(ngModel)]="hours"
-            (keydown.arrowup)="_hoursUp()"
-            (keydown.arrowdown)="_hoursDown()"
+               placeholder="hh"
+               [(ngModel)]="hours"
+               (keydown.arrowup)="_hoursUp()"
+               (keydown.arrowdown)="_hoursDown()"
         />
         <span hcSuffix class="hc-calendar-time-controls">
             <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursUp()">
@@ -74,10 +74,10 @@
 
     <hc-form-field inline="true">
         <input hcInput
-            placeholder="mm"
-            [(ngModel)]="minutes"
-            (keydown.arrowup)="_minutesUp()"
-            (keydown.arrowdown)="_minutesDown()"
+               placeholder="mm"
+               [(ngModel)]="minutes"
+               (keydown.arrowup)="_minutesUp()"
+               (keydown.arrowdown)="_minutesDown()"
         />
         <span hcSuffix class="hc-calendar-time-controls">
             <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesUp()">

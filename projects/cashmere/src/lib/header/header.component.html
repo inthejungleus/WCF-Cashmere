@@ -8,17 +8,32 @@
         </a>
     </div>
     <div class="header-username" [hcPop]="_userMenu">
-        <span class="hc-text-ellipsis">{{ username }}</span>
-        <hc-icon *ngIf="username" fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+        <span class="user-avatar">
+            <img *ngIf="user?.avatar" [src]="user?.avatar"/>
+            <hc-icon *ngIf="!user?.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+        </span>
+        <span class="hc-text-ellipsis">{{ user?.name }}</span>
+        <hc-icon *ngIf="user" fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+        <hc-pop #userMenu [showArrow]="false">
+            <div hcMenu>
+                <a hcMenuItem href="/myWcfOnline/updateProfile">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-briefcase"></hc-icon>
+                    <span hcMenuText>My Profile</span>
+                </a>
+                <a hcMenuItem href="/myWcfOnline/changePassword.wcf">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-file-signature"></hc-icon>
+                    <span hcMenuText>Change My Password</span>
+                </a>
+                <a hcMenuItem href="/manange_my_policy">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-university"></hc-icon>
+                    <span hcMenuText>Manage My Policy</span>
+                </a>
+                <a hcMenuItem (click)="_logout()">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-sign-out-alt"></hc-icon>
+                    <span hcMenuText>Sign Out</span>
+                </a>
+            </div>
+        </hc-pop>
     </div>
 </div>
-<hc-pop #userMenu>
-    <ul class="list-options">
-        <li>
-            <a href="/myWcfOnline/updateProfile">Profile</a>
-        </li>
-        <li>
-            <span class="logout" (click)="_logout()">Logout</span>
-        </li>
-    </ul>
-</hc-pop>
+

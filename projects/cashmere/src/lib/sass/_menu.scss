@@ -8,13 +8,12 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
 @include cdk-overlay();
 
 .hc-menu-panel {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $default-font-family;
     display: flex;
     flex-direction: column;
     padding: 5px 16px;
     margin: -12px;
     background-color: $white;
-    border-radius: 4px;
 
     .hc-divider {
         width: auto;
@@ -29,9 +28,9 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
 button.hc-menu-item,
 a.hc-menu-item {
     @include fontSize(14px);
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: $offblack;
-    padding: 6px 16px;
+    font-family: $default-font-family;
+    color: $gray-90;
+    padding: 10px 16px;
     margin: 0 -16px;
     border: 0;
     background: 0 0;
@@ -44,16 +43,25 @@ a.hc-menu-item {
     }
 
     &:hover:not([disabled]) {
-        background-color: tint($blue, 70%);
-        color: $offblack;
+        background-color: $wcf-blue;
+        color: $white;
         cursor: pointer;
+
+        .hc-menu-icon {
+            color: $white;
+        }
     }
 
     .hc-menu-icon {
-        font-size: 16px;
-        height: 16px;
-        width: 16px;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
         margin-right: 14px;
+        color: $gray-70;
+    }
+
+    .hc-menu-text {
+        font-weight: 700;
     }
 
     .hc-menu-sub-text {

@@ -17,10 +17,19 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.app.json",
                         "stylePreprocessorOptions": {
-                            "includePaths": ["dist/cashmere"]
+                            "includePaths": [
+                                "dist/cashmere"
+                            ]
                         },
-                        "assets": ["src/assets", "src/favicon.ico", "src/web.config"],
-                        "styles": ["src/styles.scss"]
+                        "assets": [
+                            "src/assets",
+                            "src/favicon.ico",
+                            "src/web.config"
+                        ],
+                        "styles": [
+                            "src/styles.scss",
+                            "./node_modules/@fortawesome/fontawesome-free/css/all.css"
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -66,18 +75,32 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
-                        "styles": ["src/styles.scss"],
-                        "assets": ["src/assets", "src/favicon.ico", "src/web.config"],
+                        "styles": [
+                            "src/styles.scss",
+                            "./node_modules/@fortawesome/fontawesome-free/css/all.css"
+                        ],
+                        "assets": [
+                            "src/assets",
+                            "src/favicon.ico",
+                            "src/web.config"
+                        ],
                         "stylePreprocessorOptions": {
-                            "includePaths": ["dist/cashmere"]
+                            "includePaths": [
+                                "dist/cashmere"
+                            ]
                         }
                     }
                 },
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
+                        "tsConfig": [
+                            "src/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
                     }
                 }
             }
@@ -96,8 +119,12 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": ["e2e/tsconfig.e2e.json"],
-                        "exclude": ["**/node_modules/**"]
+                        "tsConfig": [
+                            "e2e/tsconfig.e2e.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
                     }
                 }
             }
@@ -130,8 +157,13 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": ["projects/cashmere/tsconfig.lib.json", "projects/cashmere/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
+                        "tsConfig": [
+                            "projects/cashmere/tsconfig.lib.json",
+                            "projects/cashmere/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
                     }
                 }
             }
@@ -165,8 +197,13 @@
                 "lint": {
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
-                        "tsConfig": ["projects/cashmere-examples/tsconfig.lib.json", "projects/cashmere-examples/tsconfig.spec.json"],
-                        "exclude": ["**/node_modules/**"]
+                        "tsConfig": [
+                            "projects/cashmere-examples/tsconfig.lib.json",
+                            "projects/cashmere-examples/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
                     }
                 }
             }
