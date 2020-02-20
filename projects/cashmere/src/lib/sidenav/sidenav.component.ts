@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, ViewChild} from '@angular/core';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {Drawer} from '../drawer/index';
+import {HcPopoverAnchorDirective} from '../pop';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
@@ -12,6 +13,9 @@ import {Drawer} from '../drawer/index';
 export class SidenavComponent {
 
     @ViewChild('leftOverDrawer') drawer: Drawer;
+
+    @ViewChild('userMenu')
+    _userMenu: HcPopoverAnchorDirective;
 
     @Input() set mobileView(isMobileView: boolean) {
         this._mobileView = isMobileView;
@@ -60,7 +64,7 @@ export class SidenavComponent {
 
     /** Icon to be used for the logout link */
     @Input()
-    logoutIcon: string = 'fa-sign-out';
+    logoutIcon: string = 'fa-sign-out-alt';
 
     /** Change positioning to absolute - mostly just for convenience of playing nice with example docs */
     @Input()

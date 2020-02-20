@@ -1,5 +1,6 @@
 import {Component, Input, ViewChild} from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
+import {IUser} from '../sidenav';
 
 @Component({
     selector: 'hc-header',
@@ -13,7 +14,7 @@ export class HeaderComponent {
 
     /** Display name of current user */
     @Input()
-    username: string = '';
+    user: IUser | null = null;
 
     /** Url to brand icon image file */
     @Input()

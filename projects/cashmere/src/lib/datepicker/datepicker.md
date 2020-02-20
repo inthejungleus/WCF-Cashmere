@@ -37,7 +37,7 @@ by using the `hcDatepickerToggleIcon` directive:
 <hc-form-field>
   <input hcInput [hcDatepicker]="picker" placeholder="Choose a date">
   <hc-datepicker-toggle hcSuffix [for]="picker">
-    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o">
+    <hc-icon fontSet="fa" fontIcon="fa-snowflake">
   </hc-datepicker-toggle>
   <hc-datepicker #picker></hc-datepicker>
 </hc-form-field>
