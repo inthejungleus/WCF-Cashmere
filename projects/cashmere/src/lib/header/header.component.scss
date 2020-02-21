@@ -31,7 +31,7 @@
 }
 
 .header-username {
-    height: 72px;
+    height: 60px;
     color: $white;
     cursor: pointer;
     transition: background-color 0.25s;
@@ -57,12 +57,23 @@
         max-width: 130px;
     }
 
-    max-width: 150px;
+    max-width: 200px;
     display: flex;
-}
 
-.logout {
-    cursor: pointer;
+    .user-avatar {
+        margin-right: 20px;
+
+        img {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        hc-icon {
+            vertical-align: middle;
+        }
+    }
 }
 
 .list-options a {

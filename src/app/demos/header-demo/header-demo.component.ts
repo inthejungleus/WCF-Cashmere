@@ -9,7 +9,7 @@ import {IUser} from '@wcf-insurance/cashmere';
 export class HeaderDemoComponent {
     user: IUser = {
         name: 'John Doe',
-        avatar: '/src/assets/avatar.jpg'
+        // avatar: '/src/assets/avatar.jpg'
     };
 
     dummyContent: string[] = [];
