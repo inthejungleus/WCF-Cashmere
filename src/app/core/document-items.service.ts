@@ -205,6 +205,13 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
+        id: 'toggle-switch',
+        name: 'Toggle Switch',
+        category: 'forms',
+        examples: ['toggle-switch', 'toggle-switch-checked', 'toggle-switch-disabled'],
+        usageDoc: true
+    },
+    {
         id: 'typeahead',
         name: 'Typeahead',
         category: 'forms',
