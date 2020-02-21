@@ -74,3 +74,19 @@ hc-typeahead {
         width: 100%;
     }
 }
+
+.result div p {
+    margin-bottom: 4px;
+}
+
+.result div p:first-child {
+    margin-top: 4px;
+}
+
+.result.highlighted div p {
+    color: #fff;
+}
+
+.result.highlighted:hover div p {
+    color: $gray-90;
+}

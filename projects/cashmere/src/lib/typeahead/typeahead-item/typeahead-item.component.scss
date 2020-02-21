@@ -18,3 +18,12 @@
     background-color: $wcf-blue;
     color: white;
 }
+
+.highlighted div p {
+    color: white;
+    margin-bottom: 4px;
+}
+
+.highlighted div p:last-child {
+    margin-bottom: 0;
+}
