@@ -12,6 +12,7 @@ import {
     Optional,
     Output,
     QueryList,
+    Renderer2,
     Self,
     ViewChild,
     ViewEncapsulation
@@ -76,6 +77,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     constructor(
         private _elementRef: ElementRef,
+        private renderer: Renderer2,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional() @Inject(DOCUMENT) private _document: any,
@@ -262,11 +264,13 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._highlighted = 0;
         this.setHighlighted(0, true);
         this._inputRef.nativeElement.focus();
+        this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
     }
 
     private hideResultPanel() {
         this._resultPanelHidden = true;
         this.closePanel();
+        this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
     }
 
     private closePanel() {
