@@ -7,9 +7,9 @@
     </hc-form-field>
 
     <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
-    <span #toggle>
+    <div class="toggle-button" #toggle>
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleShowResults()"></hc-icon>
-    </span>
+    </div>
 
     <div #results [ngClass]="{'typeahead-results':true, 'hidden': _resultPanelHidden}" *ngIf="_options.length > 0">
         <ng-content></ng-content>
