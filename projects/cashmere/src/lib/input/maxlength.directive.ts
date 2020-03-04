@@ -26,7 +26,7 @@ import {AfterViewInit, Directive, ElementRef, HostListener,
         }
 
         private update(length: number) {
-            if (length === this.hcMaxLength){
+            if (length === this.hcMaxLength) {
                 this.renderer.addClass(this.div, 'char-count-error');
             } else {
                 this.renderer.removeClass(this.div, 'char-count-error');
