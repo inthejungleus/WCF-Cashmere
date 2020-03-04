@@ -42,7 +42,7 @@
 <ng-template #navItems>
     <nav>
         <div class="sidenav-user" *ngIf="user">
-            <div class="header-username" [hcPop]="_userMenu">
+            <div class="header-username" [hcPop]="userMenu">
                 <span class="user-avatar">
                     <img *ngIf="user.avatar" [src]="user.avatar"/>
                     <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
@@ -59,7 +59,7 @@
                             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-file-signature"></hc-icon>
                             <span hcMenuText>Change My Password</span>
                         </a>
-                        <a hcMenuItem href="/manange_my_policy">
+                        <a hcMenuItem href="/manage_my_policy">
                             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-university"></hc-icon>
                             <span hcMenuText>Manage My Policy</span>
                         </a>
