@@ -56,7 +56,6 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     }
 
     private _type = 'input';
-    private _maxCharCount = 2000;
 
     /** Element id. */
     @Input()
