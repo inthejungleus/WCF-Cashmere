@@ -7,3 +7,11 @@
 textarea.hc-input {
     @include hc-textarea();
 }
+
+span.char-count {
+    @include hc-char-count();
+}
+
+.char-count-error {
+    @include hc-char-count-error();
+}

@@ -46,8 +46,18 @@
     // Only allow resizing along the Y axis.
     resize: vertical;
     overflow: auto;
+    min-height: 25px;
     // The 2px padding prevents scrollbars from appearing on Chrome even when they aren't needed.
     // We also add a negative margin to negate the effect of the padding on the layout.
     padding: 2px 0;
     margin: -2px 0;
+}
+
+@mixin hc-char-count() {
+    width: 100%;
+    text-align: right;
+}
+    
+@mixin hc-char-count-error {
+    color: $wcf-red;
 }
