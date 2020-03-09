@@ -39,7 +39,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     _searchTerm: FormControl;
     _resultPanelHidden = true;
-    _highlighted = 0;
 
     public _value = '';
     private _form: NgForm | FormGroupDirective | null;
@@ -97,8 +96,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     ngOnInit() {
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
-        this._highlighted = 0;
-
         document.body.addEventListener('click', this.handleClick.bind(this));
     }
 
@@ -141,8 +138,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._options.changes.subscribe(() => {
             this.listenForSelection();
             setTimeout(() => {
-                    let currentVal = this._options.length > 1 ? this._value : '';
-                    this.setHighlighted(0, true);
+                    this.setHighlighted(0, true, true);
                 }
             );
         });
@@ -169,35 +165,25 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         if ($event.keyCode === 27) {
             // handle esc key
             this.hideResultPanel();
-            this.setHighlighted(0, true);
         } else if ($event.keyCode === 40) {
             // handle arrow down
             if (this._resultPanelHidden) {
                 this.showResultPanel();
             } else {
-                if (this._highlighted < (this._options.length - 1) && this._options.length > 0) {
-                    this._highlighted += 1;
-                    this.changeHighlighted(this.DIRECTION.DOWN);
-                }
-
+                this.changeHighlighted(this.DIRECTION.DOWN);
                 this.scrollTop();
             }
         } else if ($event.keyCode === 38) {
             // handle arrow up
             if (!this._resultPanelHidden) {
-                if (this._highlighted > 0) {
-                    this._highlighted -= 1;
-                    this.changeHighlighted(this.DIRECTION.UP);
-                }
-
+                this.changeHighlighted(this.DIRECTION.UP);
                 this.scrollTop();
             }
         } else if ($event.keyCode === 13) {
             // handle enter key
-            $event.preventDefault();
-            $event.stopPropagation();
+            this._stopPropogation($event);
 
-            let theSelection = this._options.toArray()[this._highlighted];
+            let theSelection = this._options.toArray()[this._getHighlightedIndex()];
             if (theSelection) {
                 this.itemSelectedDefault(theSelection.value);
             } else {
@@ -207,7 +193,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             const value = this._inputRef.nativeElement.value;
             if (value.length === 0) {
                 this.valueChange.emit('');
-                this.setHighlighted(0, false);
             }
             if (value.length >= this.minChars && value !== this._value) {
                 if (this._resultPanelHidden) {
@@ -217,25 +202,20 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                 this._markAsDirty();
                 this.onTouched();
 
-                // In case the search returns some of the same results but the top result
-                // has moved down the list we need to remove the highlighting from it
-                // and add highlighting to the new number 1.
-                this.setHighlighted(0, false);
                 this.valueChange.emit(value);
-                setTimeout(() => this.setHighlighted(0, true));
             }
         }
     }
 
     private scrollTop() {
         if (this._resultPanel) {
-            this._resultPanel.nativeElement.scrollTop = this.getOptionScrollPosition(31, 200);
+            this._resultPanel.nativeElement.scrollTop = this.getOptionScrollPosition(34, 200);
         }
     }
 
     private getOptionScrollPosition(optionHeight: number, panelHeight: number): number {
         const currentScrollPosition = this._resultPanel.nativeElement.scrollTop;
-        const optionOffset = this._highlighted * optionHeight;
+        const optionOffset = this._getHighlightedIndex() * optionHeight;
 
         if (optionOffset < currentScrollPosition) {
             return optionOffset;
@@ -259,32 +239,13 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     private showResultPanel() {
         this._resultPanelHidden = false;
-
-        // set the first option as the highlighted option
-        this._highlighted = 0;
-        this.setHighlighted(0, true);
         this._inputRef.nativeElement.focus();
         this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
     }
 
     private hideResultPanel() {
         this._resultPanelHidden = true;
-        this.closePanel();
         this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
-    }
-
-    private closePanel() {
-        // remove highlighting from currently selected option
-        this.setHighlighted(this._highlighted, false);
-
-        // reset scroll
-        if (this._resultPanel) {
-            this._resultPanel.nativeElement.scrollTop = 0;
-        }
-
-        // set highlighted to the first one
-        this.setHighlighted(0, true);
-        this._highlighted = 0;
     }
 
     private itemSelectedDefault(item) {
@@ -295,18 +256,23 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     private changeHighlighted(direction: string) {
-        if (direction === this.DIRECTION.DOWN && this._highlighted > 0) {
-            this.setHighlighted(this._highlighted - 1, false);
-        } else if (direction === this.DIRECTION.UP && this._highlighted < (this._options.length - 1)) {
-            this.setHighlighted(this._highlighted + 1, false);
-        }
-
-        if (this._highlighted < this._options.length) {
-            this.setHighlighted(this._highlighted, true);
+        const currentHighlighted = this._getHighlightedIndex();
+        if (direction === this.DIRECTION.DOWN && currentHighlighted < this._options.length - 1) {
+            this.setHighlighted(currentHighlighted, false, false);
+            this.setHighlighted(currentHighlighted + 1, true, false);
+        } else if (direction === this.DIRECTION.UP && currentHighlighted > 0) {
+            this.setHighlighted(currentHighlighted, false, false);
+            this.setHighlighted(currentHighlighted - 1, true, false);
         }
     }
 
-    private setHighlighted(index: number, highlighted: boolean) {
+    private setHighlighted(index: number, highlighted: boolean, resetAll: boolean) {
+        if (resetAll) {
+            this._options.toArray().forEach((opt, ind) => {
+                opt._highlighted = false;
+            });
+        }
+
         const option = this._options.toArray()[index];
         if (option) {
             option._highlighted = highlighted;
@@ -423,5 +389,16 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     _blurHandler(event) {
         this._markAsTouched();
         this.blur.emit(event);
+    }
+
+    _getHighlightedIndex() {
+        let foundIndex = 0;
+        this._options.map((option, index) => {
+            if (option._highlighted) {
+                foundIndex = index;
+            }
+        });
+
+        return foundIndex;
     }
 }
