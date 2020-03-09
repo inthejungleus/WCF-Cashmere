@@ -3,7 +3,7 @@
         <a *ngIf="homeUriIsRelative()" [routerLink]="homeUri" class="brand">
             <img alt="Brand Icon" src="{{ brandIcon }}"/>
         </a>
-        <a [href]="homeUri" class="brand">
+        <a *ngIf="!homeUriIsRelative()" [href]="homeUri" class="brand">
             <img alt="Brand Icon" src="{{ brandIcon }}"/>
         </a>
     </div>
