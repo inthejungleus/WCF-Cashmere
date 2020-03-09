@@ -15,10 +15,10 @@ export class InputPasswordExampleComponent implements OnInit {
   ngOnInit() {
   }
 
-  togglePassword(){
+  togglePassword() {
     this.hiddenEye = !this.hiddenEye;
     this.pass = document.getElementById("password") as HTMLElement;
-    if(this.hiddenEye){
+    if (this.hiddenEye) {
       this.pass.setAttribute("type", "text");
     } else {
       this.pass.setAttribute("type", "password");
