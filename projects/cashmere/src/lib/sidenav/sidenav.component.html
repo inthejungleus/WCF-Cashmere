@@ -23,10 +23,10 @@
              (click)="triggerSidenavToggle($event)">
             <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
         </div>
-        <!-- <a *ngIf="homeUriIsRelative()" [routerLink]="homeUri" class="brand">
+        <a *ngIf="homeUriIsRelative()" [routerLink]="homeUri" class="brand">
             <img src="{{ brandIcon }}"/>
-        </a> -->
-        <a href="https://www.wcf.com/" class="brand">
+        </a>
+        <a *ngIf="!homeUriIsRelative()" [href]="homeUri" class="brand">
             <img src="{{ brandIcon }}"/>
         </a>
     </div>
