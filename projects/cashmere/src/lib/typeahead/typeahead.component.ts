@@ -22,6 +22,7 @@ import {TypeaheadItemComponent} from './typeahead-item/typeahead-item.component'
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 import {DOCUMENT} from '@angular/common';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'hc-typeahead',
@@ -73,6 +74,8 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @ViewChild('input') _inputRef: ElementRef;
     @ViewChild('results') _resultPanel: ElementRef;
     @ViewChild('toggle') _resultToggle: ElementRef;
+
+    _optionSubscriptions: Array<Subscription> = new Array<Subscription>();
 
     constructor(
         private _elementRef: ElementRef,
@@ -136,6 +139,12 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     ngAfterContentInit() {
         this._options.changes.subscribe(() => {
+            this._optionSubscriptions.forEach(subscription => {
+                subscription.unsubscribe();
+            });
+
+            this._optionSubscriptions = new Array<Subscription>();
+
             this.listenForSelection();
             setTimeout(() => {
                     this.setHighlighted(0, true, true);
@@ -146,9 +155,11 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     private listenForSelection() {
         this._options.toArray().forEach(option => {
-            option._selected.subscribe(() => {
+            const sub = option._selected.subscribe(() => {
                 this.itemSelectedDefault(option.value);
             });
+
+            this._optionSubscriptions.push(sub);
         });
     }
 
