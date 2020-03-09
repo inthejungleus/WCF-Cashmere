@@ -1,4 +1,5 @@
 <hc-form-field>
     <hc-label>Enter a long form answer:</hc-label>
-    <textarea hcInput rows="4" cols="50">You may use textareas with hcInput as well as inputs.</textarea>
+    <textarea hcInput rows="4" cols="50" [hcMaxLength]="1000">You may use textareas with hcInput as well as inputs.</textarea>
+    <hc-error>You've done something wrong.</hc-error>
 </hc-form-field>
