@@ -100,6 +100,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
         document.body.addEventListener('click', this.handleClick.bind(this));
+
+        if (this._options) {
+            this.listenForSelection();
+        }
     }
 
     private handleClick(event) {
