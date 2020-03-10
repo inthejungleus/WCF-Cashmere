@@ -102,7 +102,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         document.body.addEventListener('click', this.handleClick.bind(this));
 
         if (this._options) {
-            this.listenForSelection();
+            this.watchForContentChanges();
         }
     }
 
@@ -142,6 +142,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     ngAfterContentInit() {
+        this.watchForContentChanges();
+    }
+
+    private watchForContentChanges() {
         this._options.changes.subscribe(() => {
             this._optionSubscriptions.forEach(subscription => {
                 subscription.unsubscribe();
