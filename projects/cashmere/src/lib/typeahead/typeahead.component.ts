@@ -1,5 +1,5 @@
 import {
-    AfterContentInit,
+    AfterViewInit,
     Component,
     ContentChildren,
     DoCheck,
@@ -31,7 +31,7 @@ import {Subscription} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => TypeaheadComponent)}]
 })
-export class TypeaheadComponent extends HcFormControlComponent implements OnInit, AfterContentInit, ControlValueAccessor, DoCheck {
+export class TypeaheadComponent extends HcFormControlComponent implements OnInit, AfterViewInit, ControlValueAccessor, DoCheck {
 
     private DIRECTION = {
         UP: 'up',
@@ -100,10 +100,22 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
         document.body.addEventListener('click', this.handleClick.bind(this));
+    }
 
-        if (this._options) {
-            this.watchForContentChanges();
-        }
+    ngAfterViewInit() {
+        this._options.changes.subscribe(() => {
+            this._optionSubscriptions.forEach(subscription => {
+                subscription.unsubscribe();
+            });
+
+            this._optionSubscriptions = new Array<Subscription>();
+
+            this.listenForSelection();
+            setTimeout(() => {
+                    this.setHighlighted(0, true, true);
+                }
+            );
+        });
     }
 
     private handleClick(event) {
@@ -141,25 +153,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         }
     }
 
-    ngAfterContentInit() {
-        this.watchForContentChanges();
-    }
-
-    private watchForContentChanges() {
-        this._options.changes.subscribe(() => {
-            this._optionSubscriptions.forEach(subscription => {
-                subscription.unsubscribe();
-            });
-
-            this._optionSubscriptions = new Array<Subscription>();
-
-            this.listenForSelection();
-            setTimeout(() => {
-                    this.setHighlighted(0, true, true);
-                }
-            );
-        });
-    }
 
     private listenForSelection() {
         this._options.toArray().forEach(option => {
