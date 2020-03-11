@@ -103,20 +103,18 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     ngAfterContentInit() {
-        setTimeout(() => {
-            this._options.changes.subscribe(() => {
-                this._optionSubscriptions.forEach(subscription => {
-                    subscription.unsubscribe();
-                });
-
-                this._optionSubscriptions = new Array<Subscription>();
-
-                this.listenForSelection();
-                setTimeout(() => {
-                        this.setHighlighted(0, true, true);
-                    }
-                );
+        this._options.changes.subscribe(() => {
+            this._optionSubscriptions.forEach(subscription => {
+                subscription.unsubscribe();
             });
+
+            this._optionSubscriptions = new Array<Subscription>();
+
+            this.listenForSelection();
+            setTimeout(() => {
+                    this.setHighlighted(0, true, true);
+                }
+            );
         });
     }
 
