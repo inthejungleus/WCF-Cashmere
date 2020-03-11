@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    AfterContentInit,
     Component,
     ContentChildren,
     DoCheck,
@@ -31,7 +31,7 @@ import {Subscription} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => TypeaheadComponent)}]
 })
-export class TypeaheadComponent extends HcFormControlComponent implements OnInit, AfterViewInit, ControlValueAccessor, DoCheck {
+export class TypeaheadComponent extends HcFormControlComponent implements OnInit, AfterContentInit, ControlValueAccessor, DoCheck {
 
     private DIRECTION = {
         UP: 'up',
@@ -102,19 +102,21 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         document.body.addEventListener('click', this.handleClick.bind(this));
     }
 
-    ngAfterViewInit() {
-        this._options.changes.subscribe(() => {
-            this._optionSubscriptions.forEach(subscription => {
-                subscription.unsubscribe();
+    ngAfterContentInit() {
+        setTimeout(() => {
+            this._options.changes.subscribe(() => {
+                this._optionSubscriptions.forEach(subscription => {
+                    subscription.unsubscribe();
+                });
+
+                this._optionSubscriptions = new Array<Subscription>();
+
+                this.listenForSelection();
+                setTimeout(() => {
+                        this.setHighlighted(0, true, true);
+                    }
+                );
             });
-
-            this._optionSubscriptions = new Array<Subscription>();
-
-            this.listenForSelection();
-            setTimeout(() => {
-                    this.setHighlighted(0, true, true);
-                }
-            );
         });
     }
 
