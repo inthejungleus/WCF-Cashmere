@@ -1,0 +1,25 @@
+<table hc-table [dataSource]="dataSource">
+    <!-- Name Column -->
+    <ng-container hcColumnDef="name">
+        <th hc-header-cell *hcHeaderCellDef>Name</th>
+        <td hc-cell *hcCellDef="let dude" style="width: 50%;">{{ dude.name }}</td>
+    </ng-container>
+
+    <!-- Worth Column -->
+    <ng-container hcColumnDef="worth">
+        <th hc-header-cell *hcHeaderCellDef class="col-number">Net Worth (in billions)</th>
+        <td hc-cell *hcCellDef="let dude; let i = index" class="col-number" style="width: 50%;">
+            <hc-form-field inline="true">
+                <input hcInput
+                       [name]="'worth' + i"
+                       pattern="^[0-9]*$"
+                       [(ngModel)]="dude.worth"
+                       [id]="'worth' + i">
+                <hc-error>Must be a whole dollar amount.</hc-error>
+            </hc-form-field>
+        </td>
+    </ng-container>
+
+    <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
+    <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
+</table>

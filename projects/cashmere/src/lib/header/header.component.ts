@@ -18,7 +18,7 @@ export class HeaderComponent {
 
     /** Router link triggered when home icon is clicked */
     @Input()
-    homeUri: any[] | string = '';
+    homeUri: any[] | string = location.origin;
 
     /** Base URL to be used for logging out */
     @Input()

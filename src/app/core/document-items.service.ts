@@ -96,7 +96,7 @@ const docs: DocItem[] = [
         name: 'Input',
         category: 'forms',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area', 'input-toggle-visible', 'input-phone-number', 'input-currency']
+        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area', 'input-toggle-visible', 'input-phone-number', 'input-currency', 'input-password']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
@@ -175,7 +175,7 @@ const docs: DocItem[] = [
         id: 'table',
         name: 'Table',
         category: 'table',
-        examples: ['resizable-columns', 'table-sort', 'table-filter'],
+        examples: ['resizable-columns', 'table-sort', 'table-filter', 'table-editable'],
         usageDoc: true
     },
     {
