@@ -53,10 +53,10 @@
         <div class="sidenav-user" *ngIf="user?.name">
             <div class="header-username" [hcPop]="userMenu">
                 <span class="user-avatar">
-                    <img *ngIf="user.avatar" [src]="user.avatar"/>
-                    <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+                    <img *ngIf="user?.avatar" [src]="user?.avatar"/>
+                    <hc-icon *ngIf="!user?.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
                 </span>
-                <span class="hc-text-ellipsis username">{{ user.name }}</span>
+                <span class="hc-text-ellipsis username">{{ user?.name }}</span>
                 <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
                 <hc-pop #userMenu [showArrow]="false">
                     <div hcMenu>

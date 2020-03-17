@@ -30,11 +30,11 @@ export class HeaderComponent {
 
     /** Whether the logout url should append on a parameter to the current page. Default true */
     @Input()
-    logoutReturnToCurrent = true;
+    logoutReturnToCurrent: boolean = true;
 
     /** Whether the Sign In link should show in the header when a valid user is not already signed in. Default false */
     @Input()
-    showSignIn = false;
+    showSignIn: boolean = false;
 
     _logout() {
         let url = this.logoutUrl;

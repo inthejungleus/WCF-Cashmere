@@ -64,7 +64,7 @@ export class SidenavComponent {
 
     /** Whether the Sign In link should show in the header when a valid user is not already signed in. Default false */
     @Input()
-    showSignIn = false;
+    showSignIn: boolean = false;
 
     /** Icon to be used for the logout link */
     @Input()
@@ -83,7 +83,7 @@ export class SidenavComponent {
 
     @ViewChild('navbar') navbarContent: ElementRef;
 
-    sidenavOpen = false;
+    sidenavOpen: boolean = false;
 
     _logout() {
         let url = this.logoutUrl;
@@ -101,12 +101,12 @@ export class SidenavComponent {
         return this.sidenavOpen ? 'fa-times-circle' : 'fa-bars';
     }
 
-    triggerSidenavToggle(event) {
+    triggerSidenavToggle(event: any) {
         event.stopPropagation();
         this.toggleSidenav(event);
     }
 
-    dismissSidenavWhenOpen(event) {
+    dismissSidenavWhenOpen(event: any) {
         if (this.sidenavOpen) {
             event.stopPropagation();
             this.toggleSidenav(event);
