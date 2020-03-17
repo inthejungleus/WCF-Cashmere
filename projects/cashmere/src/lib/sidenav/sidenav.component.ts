@@ -50,13 +50,21 @@ export class SidenavComponent {
     @Input()
     homeUri: any[] | string = location.origin;
 
+    /** Base URL to be used for logging in */
+    @Input()
+    loginUrl: string = '/login';
+
     /** Base URL to be used for logging out */
     @Input()
-    logoutUrl: string;
+    logoutUrl: string = '/logout';
 
     /** Whether the logout url should append on a parameter to the current page. Default true */
     @Input()
     logoutReturnToCurrent = true;
+
+    /** Whether the Sign In link should show in the header when a valid user is not already signed in. Default false */
+    @Input()
+    showSignIn = false;
 
     /** Icon to be used for the logout link */
     @Input()
@@ -83,6 +91,10 @@ export class SidenavComponent {
             url += `?service=${window.location.href}`;
         }
         window.location.href = url;
+    }
+
+    _login() {
+        window.location.href = `${this.loginUrl}?service=${window.location.href}`;
     }
 
     get _mobileMenuIcon(): string {
