@@ -41,13 +41,22 @@
 
 <ng-template #navItems>
     <nav>
-        <div class="sidenav-user" *ngIf="user">
+        <div class="sidenav-user" *ngIf="showSignIn && !user?.name">
+            <div class="header-username">
+                <span class="user-avatar">
+                    <hc-icon fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+                </span>
+                <span><a (click)="_login()">Sign In</a></span>
+            </div>
+        </div>
+
+        <div class="sidenav-user" *ngIf="user?.name">
             <div class="header-username" [hcPop]="userMenu">
                 <span class="user-avatar">
-                    <img *ngIf="user.avatar" [src]="user.avatar"/>
-                    <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+                    <img *ngIf="user?.avatar" [src]="user?.avatar"/>
+                    <hc-icon *ngIf="!user?.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
                 </span>
-                <span class="hc-text-ellipsis username">{{ user.name }}</span>
+                <span class="hc-text-ellipsis username">{{ user?.name }}</span>
                 <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
                 <hc-pop #userMenu [showArrow]="false">
                     <div hcMenu>
@@ -72,7 +81,7 @@
             </div>
         </div>
 
-        <hr class="sidenav-hr" *ngIf="user">
+        <hr class="sidenav-hr" *ngIf="user?.name || showSignIn">
 
         <div [ngClass]="{'sidenav-links': true, 'contact': contactPhoneNumber, 'user': user}">
             <ng-content select="hc-sidenav-link"></ng-content>

@@ -20,13 +20,21 @@ export class HeaderComponent {
     @Input()
     homeUri: any[] | string = location.origin;
 
+    /** Base URL to be used for logging in */
+    @Input()
+    loginUrl: string = '/login';
+
     /** Base URL to be used for logging out */
     @Input()
-    logoutUrl: string;
+    logoutUrl: string = '/logout';
 
     /** Whether the logout url should append on a parameter to the current page. Default true */
     @Input()
-    logoutReturnToCurrent = true;
+    logoutReturnToCurrent: boolean = true;
+
+    /** Whether the Sign In link should show in the header when a valid user is not already signed in. Default false */
+    @Input()
+    showSignIn: boolean = false;
 
     _logout() {
         let url = this.logoutUrl;
@@ -34,6 +42,10 @@ export class HeaderComponent {
             url += `?service=${window.location.href}`;
         }
         window.location.href = url;
+    }
+
+    _login() {
+        window.location.href = `${this.loginUrl}?service=${window.location.href}`;
     }
 
     homeUriIsRelative() {
