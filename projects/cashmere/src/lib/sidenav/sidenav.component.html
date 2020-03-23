@@ -60,15 +60,15 @@
                 <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
                 <hc-pop #userMenu [showArrow]="false">
                     <div hcMenu>
-                        <a hcMenuItem href="/myWcfOnline/updateProfile">
+                        <a hcMenuItem href="/myWcfOnline/updateProfile" *ngIf="userMenuLinks">
                             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-briefcase"></hc-icon>
                             <span hcMenuText>My Profile</span>
                         </a>
-                        <a hcMenuItem href="/myWcfOnline/changePassword.wcf">
+                        <a hcMenuItem href="/myWcfOnline/changePassword.wcf" *ngIf="userMenuLinks">
                             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-file-signature"></hc-icon>
                             <span hcMenuText>Change My Password</span>
                         </a>
-                        <a hcMenuItem href="/manage_my_policy">
+                        <a hcMenuItem href="/manage_my_policy" *ngIf="userMenuLinks">
                             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-university"></hc-icon>
                             <span hcMenuText>Manage My Policy</span>
                         </a>

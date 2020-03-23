@@ -36,6 +36,10 @@ export class HeaderComponent {
     @Input()
     showSignIn: boolean = false;
 
+    /** Whether the User Menu should contain all links or just the Sign Out link. Default true */
+    @Input()
+    userMenuLinks: boolean = true;
+
     _logout() {
         let url = this.logoutUrl;
         if (this.logoutReturnToCurrent) {

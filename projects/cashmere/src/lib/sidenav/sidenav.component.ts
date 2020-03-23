@@ -78,6 +78,10 @@ export class SidenavComponent {
     @Input()
     contactPhoneNumber: string;
 
+    /** Whether the User Menu should contain all links or just the Sign Out link. Default true */
+    @Input()
+    userMenuLinks: boolean = true;
+
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
 
