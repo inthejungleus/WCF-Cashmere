@@ -59,7 +59,14 @@ const docs: DocItem[] = [
         category: 'layout',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
-    {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
+    {
+        id: 'ellipsis-pipe',
+        name: 'Ellipsis',
+        category: 'pipes',
+        usageDoc: true,
+        hideApi: true,
+        examples: ['ellipsis-overview']
+    },
     {
         id: 'environment-ribbon',
         name: 'Environment Ribbon',
@@ -90,6 +97,12 @@ const docs: DocItem[] = [
         category: 'nav',
         examples: ['header-overview']
     },
+    {
+        id: 'highlight',
+        name: 'Highlight',
+        category: 'pipes',
+        examples: ['highlight-overview']
+    },
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
         id: 'input',
@@ -113,6 +126,14 @@ const docs: DocItem[] = [
         category: 'nav',
         usageDoc: true,
         examples: ['pagination-standard', 'pagination-load-more', 'pagination-simple']
+    },
+    {
+        id: 'phone-pipe',
+        name: 'Phone',
+        category: 'pipes',
+        usageDoc: false,
+        hideApi: true,
+        examples: ['phone-overview']
     },
     {id: 'picklist', name: 'Picklist', category: 'layout', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
     {
@@ -170,6 +191,22 @@ const docs: DocItem[] = [
         examples: ['sidenav-overview']
     },
     {id: 'sort', name: 'Sort', category: 'table', usageDoc: true},
+    {
+        id: 'ssn-pipe',
+        name: 'SSN',
+        category: 'pipes',
+        usageDoc: false,
+        hideApi: true,
+        examples: ['ssn-overview']
+    },
+    {
+        id: 'ssn-masked-pipe',
+        name: 'SSN Masked',
+        category: 'pipes',
+        usageDoc: false,
+        hideApi: true,
+        examples: ['ssn-masked-overview']
+    },
     {id: 'subnav', name: 'Subnav', category: 'nav', examples: ['subnav-overview']},
     {
         id: 'table',
@@ -222,7 +259,15 @@ const docs: DocItem[] = [
         name: 'Xanthos File Upload',
         category: 'forms',
         examples: ['xanthos-file-upload-overview']
-    }
+    },
+    {
+        id: 'zipcode-pipe',
+        name: 'Zip Code',
+        category: 'pipes',
+        usageDoc: false,
+        hideApi: true,
+        examples: ['zipcode-overview']
+    },
 ];
 
 @Injectable()
