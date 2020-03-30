@@ -1,0 +1,11 @@
+<p>
+    <em>To use any of the pipes, import the `PipesModule` into your app's CashmereModule (which in turn is imported into your app).</em>
+</p>
+<hr/>
+
+<p>{{ value | ssnMasked }}</p>
+
+<hc-form-field>
+    <hc-label>Value</hc-label>
+    <input hcInput [(ngModel)]="value"/>
+</hc-form-field>

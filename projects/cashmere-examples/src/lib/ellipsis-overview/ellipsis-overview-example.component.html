@@ -1,3 +1,8 @@
+<p>
+    <em>To use any of the pipes, import the `PipesModule` into your app's CashmereModule (which in turn is imported into your app).</em>
+</p>
+<hr/>
+
 <p>{{ value | ellipsis: length:mode }}</p>
 
 <hc-form-field>
@@ -6,7 +11,7 @@
 </hc-form-field>
 <hc-form-field>
     <hc-label>Length</hc-label>
-    <input hcInput [(ngModel)]="length" type="number" />
+    <input hcInput [(ngModel)]="length" type="number"/>
 </hc-form-field>
 <hc-form-field>
     <hc-label>Mode</hc-label>
