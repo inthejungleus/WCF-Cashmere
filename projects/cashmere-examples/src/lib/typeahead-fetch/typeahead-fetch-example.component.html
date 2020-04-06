@@ -1,0 +1,15 @@
+<div class="example-content">
+    <form [formGroup]="form">
+        <hc-form-field [inline]="true">
+            <hc-label>States:</hc-label>
+            <hc-typeahead formControlName="item" (valueChange)="filterData($event)" (optionSelected)="optionSelected($event)"
+                          [showSpinner]="showSpinner">
+                <hc-typeahead-item *ngFor="let item of filteredData" [value]="item">
+                    {{formatItem(item)}}
+                </hc-typeahead-item>
+            </hc-typeahead>
+        </hc-form-field>
+    </form>
+
+    <pre *ngIf="selectedItem">{{selectedItem | json}}</pre>
+</div>
