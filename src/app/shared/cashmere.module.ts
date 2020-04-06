@@ -41,6 +41,7 @@ import {
     ToasterModule,
     ToggleSwitchModule,
     TypeaheadModule,
+    TypeaheadTitleModule,
     TypeformSurveyModule,
     WcfTabsModule,
     XanthosFileUploadModule
@@ -89,6 +90,7 @@ import {
         ToasterModule,
         ToggleSwitchModule,
         TypeaheadModule,
+        TypeaheadTitleModule,
         TypeformSurveyModule,
         WcfTabsModule,
         XanthosFileUploadModule

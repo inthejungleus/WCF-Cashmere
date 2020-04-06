@@ -52,6 +52,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Input()
     placeholder = '';
 
+    @Input()
+    hideChevron: boolean = false;
+
     /** Event emitted after each key stroke in the typeahead box (after minChars requirement has been met) */
     @Output()
     valueChange: EventEmitter<any> = new EventEmitter<any>();
@@ -252,12 +255,16 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     private showResultPanel() {
         this._resultPanelHidden = false;
         this._inputRef.nativeElement.focus();
-        this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+        if (!this.hideChevron) {
+            this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+        }
     }
 
     private hideResultPanel() {
         this._resultPanelHidden = true;
-        this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+        if (!this.hideChevron) {
+            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+        }
     }
 
     private itemSelectedDefault(item) {
@@ -326,6 +333,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     writeValue(value: string): void {
         this._value = value;
+        this.onChange(value);
         if (this._searchTerm) {
             this._searchTerm.setValue(value);
         }
@@ -341,8 +349,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         if (val !== this._value) {
             this.writeValue(val);
             this.onChange(val);
-            this.onTouched();
-        }
+            this.onTouched();        }
     }
 
     /** Enables or disables the component */
@@ -412,5 +419,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         });
 
         return foundIndex;
+    }
+
+    setFocus() {
+        this._inputRef.nativeElement.focus();
     }
 }

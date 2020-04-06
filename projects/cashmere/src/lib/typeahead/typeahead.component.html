@@ -6,8 +6,8 @@
         <hc-error style="display: none;">parent is showing error message</hc-error>
     </hc-form-field>
 
-    <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
-    <div class="toggle-button" #toggle>
+    <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm ></hc-icon>
+    <div class="toggle-button" #toggle *ngIf="!hideChevron">
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleShowResults()"></hc-icon>
     </div>
 
