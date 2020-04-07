@@ -22,7 +22,8 @@ import {TypeaheadItemComponent} from './typeahead-item/typeahead-item.component'
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 import {DOCUMENT} from '@angular/common';
-import {Subscription} from 'rxjs';
+import {fromEvent, Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
     selector: 'hc-typeahead',
@@ -54,6 +55,13 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     @Input()
     hideChevron: boolean = false;
+    /** DebounceTime is the amount of time to delay between keystrokes before emitting the valueChange event for the input */
+    @Input()
+    debounceTime: number = 500;
+
+    /** Toggle to show and hide the searching filter to give user feedback */
+    @Input()
+    showSpinner: boolean = false;
 
     /** Event emitted after each key stroke in the typeahead box (after minChars requirement has been met) */
     @Output()
@@ -103,6 +111,17 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
         document.body.addEventListener('click', this.handleClick.bind(this));
+
+        // add subscription and debouncer for value changing in input field
+        fromEvent(this._inputRef.nativeElement, 'keyup').pipe(
+            map((event: any) => {
+                return event.target.value;
+            }),
+            debounceTime(this.debounceTime),
+            distinctUntilChanged()
+        ).subscribe(term => {
+            this._filterData(term);
+        });
     }
 
     ngAfterContentInit() {
