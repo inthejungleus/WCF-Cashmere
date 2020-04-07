@@ -2,11 +2,12 @@
     <hc-form-field [inline]="true">
         <input #input hcInput [formControl]="_searchTerm" (keydown.tab)="_handleTabKey($event)" (keydown.enter)="_stopPropogation($event)"
                (keydown.arrowup)="_stopPropogation($event)" (keydown.arrowdown)="_stopPropogation($event)"
-               (keyup)="_filterData($event)" [placeholder]="placeholder" autocomplete="off" [title]="_value" (blur)="_blurHandler($event)"/>
+               [placeholder]="placeholder" autocomplete="off" [title]="_value" (blur)="_blurHandler($event)"/>
         <hc-error style="display: none;">parent is showing error message</hc-error>
     </hc-form-field>
 
-    <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
+    <hc-icon *ngIf="!showSpinner" fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
+    <hc-progress-spinner *ngIf="showSpinner" class="search-spinner" diameter="8" color="gray" [isCentered]="true"></hc-progress-spinner>
     <div class="toggle-button" #toggle>
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleShowResults()"></hc-icon>
     </div>
