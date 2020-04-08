@@ -11,8 +11,7 @@ import { TypeaheadComponent } from '../typeahead/typeahead.component';
 @Component({
   selector: 'hc-typeahead-title',
   templateUrl: './typeahead-title.component.html',
-  styleUrls: ['./typeahead-title.component.scss'],
-  host: { 'class': 'full-width' }
+  styleUrls: ['./typeahead-title.component.scss']
 })
 export class TypeaheadTitleComponent implements AfterViewInit {
 
