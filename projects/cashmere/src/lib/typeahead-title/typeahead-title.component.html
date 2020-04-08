@@ -1,0 +1,11 @@
+<div class="typeahead-title">
+    <div class="typeahead-before" *ngIf="!isTypeaheadShown" (click)="hideTitle()" >
+        <span class="title-text">{{startingValue}}</span>
+        <hc-icon fontSet="fa" fontIcon="fa-search" class="search"></hc-icon>
+        <hc-icon fontSet="fa" fontIcon="fa-search" class="search-right"></hc-icon>
+    </div>
+    <div class="typeahead-after" *ngIf="isTypeaheadShown">
+        <ng-content></ng-content>
+    </div>
+</div>
+

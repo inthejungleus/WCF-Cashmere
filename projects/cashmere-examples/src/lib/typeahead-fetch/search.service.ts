@@ -23,7 +23,6 @@ export class SearchService {
             .pipe(
                 tap(response => {
                     this.itemsSubject.next(response.data.items);
-                    console.log(`fetched items for ${term}`);
                 })
             );
     }

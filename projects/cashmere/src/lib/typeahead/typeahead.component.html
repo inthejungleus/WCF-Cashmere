@@ -7,8 +7,8 @@
     </hc-form-field>
 
     <hc-icon *ngIf="!showSpinner" fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
-    <hc-progress-spinner *ngIf="showSpinner" class="search-spinner" diameter="8" color="gray" [isCentered]="true"></hc-progress-spinner>
-    <div class="toggle-button" #toggle>
+    <hc-progress-spinner *ngIf="showSpinner" class="search-spinner" diameter="6" color="gray" [isCentered]="true"></hc-progress-spinner>
+    <div class="toggle-button" #toggle *ngIf="!hideChevron">
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleShowResults()"></hc-icon>
     </div>
 

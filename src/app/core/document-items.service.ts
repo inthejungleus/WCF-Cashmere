@@ -255,6 +255,12 @@ const docs: DocItem[] = [
         examples: ['typeahead-overview', 'typeahead-stacked', 'typeahead-highlighting', 'typeahead-highlighting-object', 'typeahead-error', 'typeahead-fetch']
     },
     {
+        id: 'typeahead-title',
+        name: 'Typeahead Title',
+        category: 'forms',
+        examples: ['typeahead-title']
+    },
+    {
         id: 'xanthos-file-upload',
         name: 'Xanthos File Upload',
         category: 'forms',
