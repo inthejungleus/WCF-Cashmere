@@ -1,0 +1,61 @@
+@import '../sass/_colors.scss';
+
+:host {
+    &.full-width {
+        width: 100%;
+    }
+}
+
+.typeahead-title {
+    width: 100%;
+}
+
+.typeahead-before {
+    position: relative;
+    border: 2px dashed $white;
+    border-radius: 4px;
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    span.title-text {
+        margin: 0;
+        font-size: 20px;
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        line-height: 24px;
+        text-transform: uppercase;
+        margin-right: 16px;
+    }
+
+    hc-icon.search {
+        color: $gray-05;
+        opacity: 1;
+        transition: 0.2s;
+    }
+
+    hc-icon.search-right {
+        color: $gray-05;
+        opacity: 0;
+        transition: 0.2s;
+        position: absolute;
+        right: 14px;
+        top: 15px;
+    }
+}
+
+.typeahead-before:hover {
+    border: 2px dashed $gray-50;
+
+    hc-icon.search {
+        opacity: 0;
+    }
+
+    hc-icon.search-right {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}

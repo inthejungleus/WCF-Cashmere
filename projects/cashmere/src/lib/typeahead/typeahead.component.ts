@@ -22,7 +22,8 @@ import {TypeaheadItemComponent} from './typeahead-item/typeahead-item.component'
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 import {DOCUMENT} from '@angular/common';
-import {Subscription} from 'rxjs';
+import {fromEvent, Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
     selector: 'hc-typeahead',
@@ -38,6 +39,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         DOWN: 'down'
     };
 
+    // keycodes that we don't want to debounce
+    private IGNORE_DEBOUNCE = [13, 27, 38, 40];
+
     _searchTerm: FormControl;
     _resultPanelHidden = true;
 
@@ -51,6 +55,18 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     /** Placeholder text for the input box of the typeahead */
     @Input()
     placeholder = '';
+
+    /** Hide the arrow on the far right of the typeahead input box, default false */
+    @Input()
+    hideChevron: boolean = false;
+
+    /** DebounceTime is the amount of time to delay between keystrokes before emitting the valueChange event for the input */
+    @Input()
+    debounceTime: number = 500;
+
+    /** Toggle to show and hide the searching filter to give user feedback */
+    @Input()
+    showSpinner: boolean = false;
 
     /** Event emitted after each key stroke in the typeahead box (after minChars requirement has been met) */
     @Output()
@@ -100,6 +116,23 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
         document.body.addEventListener('click', this.handleClick.bind(this));
+
+        // add subscription and debouncer for value changing in input field
+        fromEvent(this._inputRef.nativeElement, 'keyup').pipe(
+            map((event: any) => {
+                // handle any keystrokes before debouncing to avoid delay (such as arrow keys)
+                this._handleKeystrokes(event);
+                return event;
+            }),
+            debounceTime(this.debounceTime),
+            distinctUntilChanged()
+        ).subscribe(event => {
+            // we only want to run this on the kecodes that
+            // are not part of the IGNORE_DEBOUNCE
+            if (!this.IGNORE_DEBOUNCE.includes(event.keyCode)) {
+                this._filterData(event.target.value);
+            }
+        });
     }
 
     ngAfterContentInit() {
@@ -173,7 +206,23 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this.hideResultPanel();
     }
 
-    _filterData($event: any) {
+    _filterData(value: string) {
+        if (value.length === 0) {
+            this.valueChange.emit('');
+        }
+        if (value.length >= this.minChars && value !== this._value) {
+            if (this._resultPanelHidden) {
+                this.showResultPanel();
+            }
+
+            this._markAsDirty();
+            this.onTouched();
+
+            this.valueChange.emit(value);
+        }
+    }
+
+    _handleKeystrokes($event: any) {
         if ($event.keyCode === 27) {
             // handle esc key
             this.hideResultPanel();
@@ -200,21 +249,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                 this.itemSelectedDefault(theSelection.value);
             } else {
                 this.emptyOptionSelected.emit(this._inputRef.nativeElement.value);
-            }
-        } else {
-            const value = this._inputRef.nativeElement.value;
-            if (value.length === 0) {
-                this.valueChange.emit('');
-            }
-            if (value.length >= this.minChars && value !== this._value) {
-                if (this._resultPanelHidden) {
-                    this.showResultPanel();
-                }
-
-                this._markAsDirty();
-                this.onTouched();
-
-                this.valueChange.emit(value);
             }
         }
     }
@@ -252,12 +286,16 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     private showResultPanel() {
         this._resultPanelHidden = false;
         this._inputRef.nativeElement.focus();
-        this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+        if (!this.hideChevron) {
+            this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+        }
     }
 
     private hideResultPanel() {
         this._resultPanelHidden = true;
-        this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+        if (!this.hideChevron) {
+            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+        }
     }
 
     private itemSelectedDefault(item) {
@@ -326,6 +364,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     writeValue(value: string): void {
         this._value = value;
+        this.onChange(value);
         if (this._searchTerm) {
             this._searchTerm.setValue(value);
         }
@@ -412,5 +451,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         });
 
         return foundIndex;
+    }
+
+    setFocus() {
+        this._inputRef.nativeElement.focus();
     }
 }

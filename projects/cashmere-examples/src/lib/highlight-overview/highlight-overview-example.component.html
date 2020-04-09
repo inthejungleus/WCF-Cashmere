@@ -1,0 +1,34 @@
+<p>
+    <em>To use any of the pipes, import the `PipesModule` into your app's CashmereModule (which in turn is imported into
+        your app).</em>
+</p>
+<hr/>
+
+<p [innerHTML]="value | hcHighlight: highlightText:matchType:caseSensitive:highlightStyleName"></p>
+<p>Raw HTML Result: <code>{{ value | hcHighlight: highlightText:matchType:caseSensitive:highlightStyleName}}</code></p>
+
+<hc-form-field>
+    <hc-label>Value</hc-label>
+    <input hcInput [(ngModel)]="value"/>
+</hc-form-field>
+<hc-form-field>
+    <hc-label>Highlight Text</hc-label>
+    <input hcInput [(ngModel)]="highlightText"/>
+</hc-form-field>
+<hc-form-field>
+    <hc-label>Match Type</hc-label>
+    <hc-select [(ngModel)]="matchType">
+        <option [value]="MatchType.SINGLE_MATCH">Single Match</option>
+        <option [value]="MatchType.SINGLE_AND_STARTS_WITH_MATCH">Single and StartsWith Match</option>
+        <option [value]="MatchType.MULTI_MATCH">Multi Match</option>
+    </hc-select>
+</hc-form-field>
+<hc-form-field>
+    <hc-checkbox [(ngModel)]="caseSensitive">Case Sensitive</hc-checkbox>
+</hc-form-field>
+<hc-form-field>
+    <hc-label>Highlight Style Name</hc-label>
+    <input hcInput [(ngModel)]="highlightStyleName"/>
+</hc-form-field>
+<em>Try using highlight-pink just to see different styles applied based on class. You're consuming application will determine the styles
+    applied, this just decides the class that will be used to wrap the matched text.</em>
