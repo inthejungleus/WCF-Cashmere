@@ -3,14 +3,17 @@
 a {
     color: $white;
     font-size: 16px;
-    line-height: 1.19;
+    line-height: 19px;
     width: 100%;
     display: block;
-    padding: 19px 15px 18px 28px;
 
-    &:hover {
-        background-color: $dark-blue-hover;
-        text-decoration: none;
+    .top-most-link {
+        padding: 15px 15px 14px 26px;
+
+        &:hover {
+            background-color: $wcf-blue;
+            text-decoration: none;
+        }
     }
 
     &:active {
@@ -18,15 +21,42 @@ a {
     }
 
     hc-icon {
-        margin-right: 15px;
+        margin-right: 26px;
         vertical-align: middle;
     }
 
     .children {
-        margin-top: 20px;
+        .top-most-link {
+            padding-left: 44px;
+        }
+        .children {
+            .top-most-link {
+                padding-left: 62px;
+            }
+        }
+        // margin-top: 20px;
+        // opacity: 0;
+        // height: 0;
     }
 }
 
 .active {
     background-color: $wcf-blue;
+}
+
+.toggle-button {
+    position: absolute;
+    top: 17px;
+    right: 24px;
+    width: 14px;
+    height: 14px;
+    transition: 0.3s;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    cursor: pointer;
+}
+
+.flip-around {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
 }

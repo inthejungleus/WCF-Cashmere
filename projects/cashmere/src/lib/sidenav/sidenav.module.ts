@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+import {AccordionModule} from '../accordion/accordion.module';
 import {CommonModule} from '@angular/common';
 import {SidenavComponent} from './sidenav.component';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
@@ -8,7 +9,7 @@ import {PopModule} from '../pop/popover.module';
 import {DrawerModule} from '../drawer/drawer.module';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, DrawerModule, IconModule, PopModule],
+    imports: [AccordionModule, CommonModule, RouterModule, DrawerModule, IconModule, PopModule],
     declarations: [SidenavComponent, SidenavLinkComponent],
     exports: [SidenavComponent, SidenavLinkComponent]
 })

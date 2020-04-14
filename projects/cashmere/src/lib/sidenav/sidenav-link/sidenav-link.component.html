@@ -10,16 +10,24 @@
     >
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </a>
+    <div class="toggle-button" #toggle *ngIf="children?.length">
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleChildren()"></hc-icon>
+    </div>
+
 </ng-template>
 <ng-template #hrefTemplate>
     <a [title]="linkText" [href]="uri" class="sidenav-link" target="_blank">
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </a>
+    <div class="toggle-button" #toggle *ngIf="children?.length">
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleChildren()"></hc-icon>
+    </div>
 </ng-template>
 
 <ng-template #linkContent>
-    <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>
-    {{ linkText }}
+    <div class="top-most-link">
+        <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>{{ linkText }}
+    </div>
     <div class="children" *ngIf="children?.length">
         <ng-content></ng-content>
     </div>

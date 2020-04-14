@@ -1,4 +1,4 @@
-import {Component, Input, ContentChildren, QueryList} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input, ContentChildren, QueryList, Renderer2, ViewChild} from '@angular/core';
 
 /** Primary navigation links */
 @Component({
@@ -23,13 +23,43 @@ export class SidenavLinkComponent {
     @Input()
     linkText: string;
 
+    @HostBinding('style.position') position = 'relative';
+    @HostBinding('style.display') display = 'block';
+
+    @ViewChild('toggle') _resultToggle: ElementRef;
+
+    _hasLinkParent: boolean = false;
+    private _linkChildren;
+
     @ContentChildren(SidenavLinkComponent)
     private _children?: QueryList<SidenavLinkComponent>;
+
+    constructor(
+        private renderer: Renderer2,
+    ) {}
 
     get children() {
         if (!this._children) {
             return;
         }
-        return this._children.filter(c => c !== this);
+        // Check to see if link children exist
+        this._linkChildren = this._children.filter(c => c !== this);
+        return this._linkChildren;
     }
+
+    _toggleChildren() {
+
+        if (this._linkChildren) {
+            this._linkChildren.forEach( (val, i) => {
+                console.log(val);
+            })
+        }
+
+        if (this._resultToggle.nativeElement.classList.contains('flip-around')) {
+            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+        } else {
+            this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+        }
+    }
+
 }

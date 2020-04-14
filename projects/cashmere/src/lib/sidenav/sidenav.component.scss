@@ -7,6 +7,12 @@ $mobile-top-bar-height: 52px;
     outline: none;
 }
 
+.toggle-button {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+}
+
 .sidenav-brand {
     display: block;
     position: relative;
