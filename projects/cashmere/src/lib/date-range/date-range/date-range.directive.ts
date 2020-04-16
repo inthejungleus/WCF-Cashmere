@@ -37,9 +37,6 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
 
     private _overlayRef: OverlayRef;
 
-    // @HostBinding('class')
-    // elementClass = 'date-range-button';
-
     constructor(
         private _elementRef: ElementRef<HTMLInputElement>,
         private calendarOverlayService: CalendarOverlayService,
