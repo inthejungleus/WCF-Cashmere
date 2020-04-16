@@ -9,7 +9,8 @@ import {
     OnInit,
     Output,
     Renderer2,
-    SimpleChanges
+    SimpleChanges,
+    HostBinding
 } from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {OverlayRef} from '@angular/cdk/overlay';
@@ -35,6 +36,9 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     options: DateRangeOptions;
 
     private _overlayRef: OverlayRef;
+
+    // @HostBinding('class')
+    // elementClass = 'date-range-button';
 
     constructor(
         private _elementRef: ElementRef<HTMLInputElement>,
