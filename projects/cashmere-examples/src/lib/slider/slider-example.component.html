@@ -1,0 +1,65 @@
+<div class="slider-example">
+    <h5 class="docs-api-h5 title">Basic Slider</h5>
+    <hc-slider [min]="min" [max]="max" [disabled]="disabled" [value]="basicSliderValue" (input)="basicSliderValue = $event.value"></hc-slider>
+    <div class="example-info">
+        <div class="example-info-item">Input Value: {{basicSliderValue}}</div>
+    </div>
+</div>
+
+<div class="slider-example">
+    <h5 class="docs-api-h5 title">Slider With Min/Max Labels</h5>
+    <div class="slide-wrapper">
+        <span class="slider-left-value">30px</span>
+        <hc-slider [min]="min" [max]="max" [disabled]="disabled" [value]="basicExampleBindingToValueOfInputChangeEvent" (input)="updateBasicBindingExampleInputValue($event)"></hc-slider>
+        <span class="slider-right-value">75px</span>
+    </div>
+    <div class="example-info">
+        <div class="example-info-item">Input Value: {{basicExampleBindingToValueOfInputChangeEvent}}</div>
+    </div>
+</div>
+<hr>
+<div class="form-examples">
+
+    <h4 class="form-examples-title">Form Examples</h4>
+
+    <div class="slider-example">
+        <h5 class="docs-api-h5 title">Basic Form Slider</h5>
+        <div [formGroup]="sliderFormGroup">
+            <hc-slider [min]="min" [max]="max" formControlName="slider" (input)="updateFormExampleInputValue($event)"></hc-slider>
+            <div class="example-info">
+                <div class="example-info-item">User Input Event Output: {{formExampleUserInputEventOutputValue}}</div>
+                <div class="example-info-item">Form Value: {{sliderFormGroup.controls.slider.value}}</div>
+                <div class="example-info-item">Form is Pristine: {{sliderFormGroup.controls.slider.pristine}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-example">
+        <h5 class="docs-api-h5 title">Slider with HCFormField</h5>
+        <div [formGroup]="sliderFormGroup">
+            <div>
+                <span>Choose a value greater than 22*</span>
+            </div>
+            <br>
+            <hc-form-field>
+                <hc-label>HC Label:</hc-label>
+                <hc-slider [min]="min" [max]="max" formControlName="sliderWithHCFormField"></hc-slider>
+                <hc-error>Value must be greater than 22!</hc-error>
+            </hc-form-field>
+            <div class="example-info">
+                <div class="example-info-item">Form Value: {{sliderFormGroup.controls.sliderWithHCFormField.value}}</div>
+                <div class="example-info-item">Form is Pristine: {{sliderFormGroup.controls.sliderWithHCFormField.pristine}}</div>
+                <div class="example-info-item">Has Errors: {{!!sliderFormGroup.controls.sliderWithHCFormField.errors}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<h5 class="docs-api-h5 title">Example Controls</h5>
+<div class="slider-example-controls">
+    <hc-checkbox class="slider-example-control" id="light"  [checked]="disabled" (change)="disableClicked($event)">Disable All</hc-checkbox>
+    <button class="slider-example-control" hc-button title="Small Minimal Button" buttonStyle="minimal" size="sm" (click)="reset()">
+        <hc-icon hcIconSm fontSet="fa" fontIcon="fa-undo" class="icon-left"></hc-icon>
+        &nbsp; Reset Form
+    </button>
+</div>

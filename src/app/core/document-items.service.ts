@@ -190,6 +190,12 @@ const docs: DocItem[] = [
         category: 'nav',
         examples: ['sidenav-overview']
     },
+    {
+        id: 'slider',
+        name: 'Slider',
+        category: 'forms',
+        examples: ['slider']
+    },
     {id: 'sort', name: 'Sort', category: 'table', usageDoc: true},
     {
         id: 'ssn-pipe',
