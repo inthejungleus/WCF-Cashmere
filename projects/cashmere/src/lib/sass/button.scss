@@ -191,6 +191,16 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-button-link-big(){
+    .value {
+        font-size: 16px;
+        margin-top: 1px;
+    }
+    hc-icon.hc-icon {
+        color: $gray-50;
+    }
+}
+
 @mixin hc-button-link-inline() {
     padding: 0;
     height: auto;
@@ -208,6 +218,8 @@ $btn-icon-sz: 18px;
 
 @mixin hc-date-range() {
     text-decoration: none;
+    border: 2px solid $gray-50;
+    border-radius: 0px;
 }
 
 // Icon button
