@@ -28,7 +28,7 @@
     <div class="top-most-link">
         <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>{{ linkText }}
     </div>
-    <div class="children" *ngIf="children?.length">
+    <div [ngClass]="{children:true, shown:_childrenShown}" *ngIf="children?.length">
         <ng-content></ng-content>
     </div>
 </ng-template>

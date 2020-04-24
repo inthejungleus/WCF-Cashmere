@@ -30,6 +30,7 @@ export class SidenavLinkComponent {
 
     _hasLinkParent: boolean = false;
     private _linkChildren;
+    _childrenShown: boolean = false;
 
     @ContentChildren(SidenavLinkComponent)
     private _children?: QueryList<SidenavLinkComponent>;
@@ -48,17 +49,18 @@ export class SidenavLinkComponent {
     }
 
     _toggleChildren() {
+        this._childrenShown = !this._childrenShown;
 
         if (this._linkChildren) {
             this._linkChildren.forEach( (val, i) => {
                 console.log(val);
-            })
+            });
         }
 
-        if (this._resultToggle.nativeElement.classList.contains('flip-around')) {
-            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
-        } else {
+        if (this._childrenShown) {
             this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+        } else {
+            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
         }
     }
 
