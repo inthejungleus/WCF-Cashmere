@@ -1,10 +1,19 @@
 <hc-sidenav [mobileView]="mobileView" [user]="user" homeUri="/route-a" contactPhoneNumber="(800) 446-2667" [showSignIn]="true">
     <hc-sidenav-link routerLink="/components/sidenav/examples" routerLinkActive="hide" fontIcon="fa-arrow-circle-left"
                      linkText="Back to Guide"></hc-sidenav-link>
-    <hc-sidenav-link uri="https://google.com" fontIcon="fa-briefcase" linkText="Agency Home"></hc-sidenav-link>
-    <hc-sidenav-link routerLink="/route-a" fontIcon="fa-credit-card" linkText="Policy Information">
-        <hc-sidenav-link routerLink="/route-a-1" fontIcon="fa-credit-card" linkText="Sub Policy Info"></hc-sidenav-link>
+    <hc-sidenav-link uri="https://www.google.com" fontIcon="fa-briefcase" linkText="Google">
+        <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-briefcase" linkText="Bing">
+    
+        </hc-sidenav-link>
     </hc-sidenav-link>
+
+    <hc-sidenav-link routerLink="/route-a" fontIcon="fa-credit-card" linkText="Policy Information">
+        <hc-sidenav-link routerLink="/route-a-1" fontIcon="fa-credit-card" linkText="Sub Policy Info">
+            <hc-sidenav-link routerLink="/route-a-1-i" fontIcon="fa-credit-card" linkText="Sub Info 1"></hc-sidenav-link>
+            <hc-sidenav-link routerLink="/route-a-1-ii" fontIcon="fa-credit-card" linkText="Sub Info 2"></hc-sidenav-link>
+        </hc-sidenav-link>
+    </hc-sidenav-link>
+
     <hc-sidenav-link routerLink="/route-b" fontIcon="fa-paste" linkText="Quoting"></hc-sidenav-link>
     <hc-sidenav-link routerLink="/route-c" fontIcon="fa-th" linkText="Agent Tools"></hc-sidenav-link>
     <hc-sidenav-link routerLink="/route-b" fontIcon="fa-paste" linkText="Quoting"></hc-sidenav-link>
