@@ -96,10 +96,6 @@ $hc-calendar-weekday-table-font-size: 11px !default;
     background-color: $hc-calendar-body-disabled-color;
 }
 
-.hc-calendar-body-today.hc-calendar-body-selected {
-    box-shadow: inset 0 0 0 $hc-datepicker-selected-today-box-shadow-width $hc-calendar-body-disabled-color;
-}
-
 .hc-calendar-arrow {
     border-top-color: $wcf-blue;
 }

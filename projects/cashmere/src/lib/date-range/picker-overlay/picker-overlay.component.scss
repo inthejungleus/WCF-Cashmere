@@ -1,3 +1,5 @@
+@import '../../sass/colors';
+
 .hc-date-range-calendar-container {
     display: flex;
     justify-content: space-around;
@@ -6,7 +8,7 @@
 
 .hc-date-range-calendar-item {
     min-width: 210px;
-    padding: 1em;
+    padding: 16px;
     font-size: 14px;
     font-weight: 400;
 }
@@ -17,13 +19,27 @@
 
 .hc-date-range-menu {
     height: 100%;
+    hc-label {
+        display: block;
+        font-size: 16px;
+        color: $gray-50;
+        padding-top: 4px;
+    }
+    hc-radio-group {
+        padding-top: 12px;
+    }
 }
 .hc-date-range-controls {
     display: flex;
-    justify-content: space-around;
-    margin: 10% auto;
+    flex-flow: column;
+    padding: 16px 22px 0;
+    justify-content: flex-end;
+    height: calc(100% - 232px);
     & > .hc-button.hc-md {
         min-width: 100px;
+    }
+    .margin-top-md {
+        margin-top: 16px;
     }
 }
 

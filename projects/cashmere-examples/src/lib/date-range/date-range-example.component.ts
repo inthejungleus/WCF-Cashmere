@@ -3,7 +3,8 @@ import {DateRangeOptions, PresetItem, DateRange} from '@wcf-insurance/cashmere';
 
 @Component({
     selector: 'hc-date-range-example',
-    templateUrl: './date-range-example.component.html'
+    templateUrl: './date-range-example.component.html',
+    styleUrls: ['date-range-example.component.scss']
 })
 export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};

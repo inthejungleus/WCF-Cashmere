@@ -39,6 +39,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         DOWN: 'down'
     };
 
+    // keycodes that we don't want to debounce
+    private IGNORE_DEBOUNCE = [13, 27, 38, 40];
+
     _searchTerm: FormControl;
     _resultPanelHidden = true;
 
@@ -53,8 +56,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Input()
     placeholder = '';
 
+    /** Hide the arrow on the far right of the typeahead input box, default false */
     @Input()
     hideChevron: boolean = false;
+
     /** DebounceTime is the amount of time to delay between keystrokes before emitting the valueChange event for the input */
     @Input()
     debounceTime: number = 500;
@@ -115,12 +120,18 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         // add subscription and debouncer for value changing in input field
         fromEvent(this._inputRef.nativeElement, 'keyup').pipe(
             map((event: any) => {
-                return event.target.value;
+                // handle any keystrokes before debouncing to avoid delay (such as arrow keys)
+                this._handleKeystrokes(event);
+                return event;
             }),
             debounceTime(this.debounceTime),
             distinctUntilChanged()
-        ).subscribe(term => {
-            this._filterData(term);
+        ).subscribe(event => {
+            // we only want to run this on the kecodes that
+            // are not part of the IGNORE_DEBOUNCE
+            if (!this.IGNORE_DEBOUNCE.includes(event.keyCode)) {
+                this._filterData(event.target.value);
+            }
         });
     }
 
@@ -195,7 +206,23 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this.hideResultPanel();
     }
 
-    _filterData($event: any) {
+    _filterData(value: string) {
+        if (value.length === 0) {
+            this.valueChange.emit('');
+        }
+        if (value.length >= this.minChars && value !== this._value) {
+            if (this._resultPanelHidden) {
+                this.showResultPanel();
+            }
+
+            this._markAsDirty();
+            this.onTouched();
+
+            this.valueChange.emit(value);
+        }
+    }
+
+    _handleKeystrokes($event: any) {
         if ($event.keyCode === 27) {
             // handle esc key
             this.hideResultPanel();
@@ -222,21 +249,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                 this.itemSelectedDefault(theSelection.value);
             } else {
                 this.emptyOptionSelected.emit(this._inputRef.nativeElement.value);
-            }
-        } else {
-            const value = this._inputRef.nativeElement.value;
-            if (value.length === 0) {
-                this.valueChange.emit('');
-            }
-            if (value.length >= this.minChars && value !== this._value) {
-                if (this._resultPanelHidden) {
-                    this.showResultPanel();
-                }
-
-                this._markAsDirty();
-                this.onTouched();
-
-                this.valueChange.emit(value);
             }
         }
     }
@@ -368,7 +380,8 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         if (val !== this._value) {
             this.writeValue(val);
             this.onChange(val);
-            this.onTouched();        }
+            this.onTouched();
+        }
     }
 
     /** Enables or disables the component */
