@@ -40,8 +40,13 @@
     }
 
     &.hc-link,
+    &.hc-link-big,
     &.hc-link-inline {
         @include hc-button-link();
+    }
+
+    &.hc-link-big {
+        @include hc-button-link-big();
     }
 
     &.hc-link-inline {

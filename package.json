@@ -111,7 +111,7 @@
         "rxjs-tslint": "^0.1.4",
         "semantic-release": "^15.13.19",
         "ts-node": "^5.0.1",
-        "tsickle": ">=0.32.0",
+        "tsickle": "0.38.0",
         "tslib": "^1.9.3",
         "tslint": "^5.8.0",
         "tslint-config-prettier": "^1.13.0",
