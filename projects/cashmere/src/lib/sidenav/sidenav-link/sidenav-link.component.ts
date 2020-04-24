@@ -28,7 +28,6 @@ export class SidenavLinkComponent {
 
     @ViewChild('toggle') _resultToggle: ElementRef;
 
-    _hasLinkParent: boolean = false;
     private _linkChildren;
     _childrenShown: boolean = false;
 
@@ -50,12 +49,6 @@ export class SidenavLinkComponent {
 
     _toggleChildren() {
         this._childrenShown = !this._childrenShown;
-
-        if (this._linkChildren) {
-            this._linkChildren.forEach( (val, i) => {
-                console.log(val);
-            });
-        }
 
         if (this._childrenShown) {
             this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
