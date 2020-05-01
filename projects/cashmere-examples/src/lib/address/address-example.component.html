@@ -1,5 +1,5 @@
 <div class="example-content">
-    <form [formGroup]="parentForm">
+    <form [formGroup]="mainForm">
         <div class="row buffer">
             <div class="col-sm-5">
                 <hc-label>First Name</hc-label>
@@ -22,6 +22,6 @@
                 </hc-form-field>
             </div>
         </div>
-        <hc-address [parentForm]="parentForm" [showAddressTwo]="false"></hc-address>
+        <hc-address [parentForm]="mainForm" [showAddressTwo]="false"></hc-address>
     </form>
  </div>

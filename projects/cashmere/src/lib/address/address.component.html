@@ -1,0 +1,58 @@
+<div class="address-container">
+    <form [formGroup]="parentForm">
+        <div class="row buffer">
+            <div class="col-sm-5">
+                <hc-label>Address<span *ngIf="showAddressTwo"> 1</span></hc-label>
+            </div>
+            <div class="col-sm-7">
+                <hc-form-field inline="true">
+                    <input hcInput title="Address Line 1" placeholder="Address" [formControl]="addressControl">
+                    <hc-error>Address is required</hc-error>
+                </hc-form-field>
+            </div>
+        </div>
+        <div class="row buffer" *ngIf="showAddressTwo">
+            <div class="col-sm-5">
+                <hc-label>Address 2</hc-label>
+            </div>
+            <div class="col-sm-7">
+                <hc-form-field inline="true">
+                    <input hcInput title="Address Line 2" placeholder="Address 2" [formControl]="addressTwoControl">
+                    <hc-error>Address is required</hc-error>
+                </hc-form-field>
+            </div>
+        </div>
+        <div class="row buffer">
+            <div class="col-sm-5">
+                <hc-label>Zip Code</hc-label>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+                <hc-form-field inline="true">
+                    <input hcInput title="Zip Code" placeholder="Zip" [formControl]="zipControl">
+                    <hc-error>Zip code is required</hc-error>
+                </hc-form-field>
+            </div>
+        </div>
+        <div class="row buffer">
+            <div class="col-sm-5">
+                <hc-label>City and State</hc-label>
+            </div>
+            <div class="col-sm-4">
+                <hc-form-field inline="true">
+                    <input hcInput title="City" placeholder="City" [formControl]="cityControl">
+                    <hc-error>City is required</hc-error>
+                </hc-form-field>
+            </div>
+            <div class="col-sm-3 mobile-buffer">
+                <hc-form-field inline="true">
+                    <hc-typeahead formControlName="state" (valueChange)="filterData($event)"
+                        (optionSelected)="optionSelected($event)" placeholder="State">
+                        <hc-typeahead-item *ngFor="let state of filteredData" [value]="state">
+                            {{ state }}
+                        </hc-typeahead-item>
+                    </hc-typeahead>
+                </hc-form-field>
+            </div>
+        </div>
+    </form> 
+</div>
