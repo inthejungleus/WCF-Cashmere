@@ -1,0 +1,27 @@
+<div class="example-content">
+    <form [formGroup]="parentForm">
+        <div class="row buffer">
+            <div class="col-sm-5">
+                <hc-label>First Name</hc-label>
+            </div>
+            <div class="col-sm-7">
+                <hc-form-field inline="true">
+                    <input hcInput formControlName="firstName" required>
+                    <hc-error>First name is required</hc-error>
+                </hc-form-field>
+            </div>
+        </div>
+        <div class="row buffer">
+            <div class="col-sm-5">
+                <hc-label>Last Name</hc-label>
+            </div>
+            <div class="col-sm-7">
+                <hc-form-field inline="true">
+                    <input hcInput formControlName="lastName" required>
+                    <hc-error>Last name is required</hc-error>
+                </hc-form-field>
+            </div>
+        </div>
+        <hc-address [parentForm]="parentForm" [showAddressTwo]="false"></hc-address>
+    </form>
+ </div>
