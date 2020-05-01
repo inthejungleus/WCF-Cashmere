@@ -4,7 +4,8 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
-const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral',
+                        'secondary', 'minimal', 'link', 'link-big', 'link-inline'];
 const supportedSizes = ['sm', 'md', 'lg'];
 
 export function validateStyleInput(style: string) {

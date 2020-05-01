@@ -1,0 +1,13 @@
+<div class="slide-wrapper" [ngClass]="{'disabled': disabled}">
+    <input
+        #inputElement
+        type="range"
+        class="slider"
+        [min]="min"
+        [max]="max"
+        [value]="value"
+        [disabled]="disabled"
+        (blur)="_onBlur()"
+        (change)="_change($event, $event.target.value)"
+        (input)="_input($event, $event.target.value)">
+</div>

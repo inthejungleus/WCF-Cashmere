@@ -9,7 +9,8 @@ import {
     OnInit,
     Output,
     Renderer2,
-    SimpleChanges
+    SimpleChanges,
+    HostBinding
 } from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {OverlayRef} from '@angular/cdk/overlay';
