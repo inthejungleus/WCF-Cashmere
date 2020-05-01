@@ -8,12 +8,12 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class AddressExampleComponent implements OnInit {
 
-    parentForm: FormGroup;
+    mainForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-      this.parentForm = this.fb.group({
+      this.mainForm = this.fb.group({
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           address: ['', Validators.required],
