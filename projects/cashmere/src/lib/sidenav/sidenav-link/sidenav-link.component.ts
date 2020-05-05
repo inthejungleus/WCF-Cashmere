@@ -57,4 +57,8 @@ export class SidenavLinkComponent {
         }
     }
 
+    stop(event: Event) {
+        event.stopPropagation();
+    }
+
 }
