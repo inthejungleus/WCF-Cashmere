@@ -14,10 +14,10 @@ a {
             background-color: $wcf-blue;
             text-decoration: none;
         }
-    }
 
-    &:active {
-        background-color: $wcf-blue;
+        &:active {
+            background-color: $wcf-blue;
+        }
     }
 
     hc-icon {
