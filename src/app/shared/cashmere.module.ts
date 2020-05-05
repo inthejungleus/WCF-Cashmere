@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {
+    AddressModule,
     AccordionModule,
     AppSwitcherModule,
     BannerModule,
@@ -50,6 +51,7 @@ import {
 
 @NgModule({
     exports: [
+        AddressModule,
         AccordionModule,
         AppSwitcherModule,
         BreadcrumbsModule,

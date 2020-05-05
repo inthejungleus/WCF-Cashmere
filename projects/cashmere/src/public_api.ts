@@ -2,6 +2,7 @@
  * Public API Surface of cashmere
  */
 
+export * from './lib/address/index';
 export * from './lib/accordion/index';
 export * from './lib/app-switcher/index';
 export * from './lib/banner/index';
