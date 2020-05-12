@@ -8,10 +8,6 @@
     @include hc-modal();
 }
 
-.hc-modal-auto {
-    @include hc-modal-auto();
-}
-
 .hc-modal-sm {
     @include hc-modal-sm();
 }

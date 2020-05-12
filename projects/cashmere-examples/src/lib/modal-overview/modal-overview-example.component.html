@@ -1,4 +1,4 @@
-<ng-template #content let-close="close" let-dismiss="dismiss" let-data="data">
+<ng-template #basicTemplate let-close="close" let-dismiss="dismiss" let-data="data">
     <hc-modal>
         <hc-modal-header> Modal Title </hc-modal-header>
         <hc-modal-body> Data: {{data}}</hc-modal-body>
@@ -9,9 +9,96 @@
     </hc-modal>
 </ng-template>
 
-<button hc-button buttonStyle="primary" (click)="open()" class="demo-button">
+<ng-template #templateWithOnlyCloseButton let-close="close" let-dismiss="dismiss" let-data="data">
+    <hc-modal>
+        <hc-modal-header>Coverage Table  <hc-icon fontSet="fa" fontIcon="fa-times-circle" hcIconMd (click)="close()"></hc-icon></hc-modal-header>
+        <hc-modal-body>
+            <div class="description">Below is a reference table for coverages and their various reasons.</div>
+            <div class="coverage-table">
+                <div class="table-header">
+                    <div class="column-title">Coverage</div>
+                    <div class="column-title">Reason</div>
+                </div>
+                <div class="table-body">
+                    <div class="table-row">
+                        <div class="coverage-pill">
+                            <div class="pill gl">GL</div>
+                        </div>
+                        <div class="reason">Different Company</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="coverage-pill">
+                            <div class="pill wc">WC</div>
+                        </div>
+                        <div class="reason">Different Company</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="pill u">U</div>
+                        <div class="reason">Different Producer</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="pill a">A</div>
+                        <div class="reason">Different Producer Contact</div>
+                    </div>
+                </div>
+            </div>
+        </hc-modal-body>
+    </hc-modal>
+</ng-template>
+
+<ng-template #formTemplate let-close="close" let-dismiss="dismiss" let-data="data">
+    <hc-modal class=" hc-modal-md form-example">
+        <hc-modal-header>Filter Options</hc-modal-header>
+        <hc-modal-body [formGroup]="form">
+            <div class="coverage-year form-item">
+                <div class="form-item-label">Coverage Year</div>
+                <div class="year-options">
+                    <hc-checkbox checked="true" (change)="yearClicked($event, 2019)">2019</hc-checkbox>
+                    <hc-checkbox checked="true" (change)="yearClicked($event, 2018)">2018</hc-checkbox>
+                    <hc-checkbox checked="true" (change)="yearClicked($event, 2017)">2017</hc-checkbox>
+                    <hc-checkbox (change)="yearClicked($event, 2016)">2016</hc-checkbox>
+                </div>
+            </div>
+            <div class="coverage form-item">
+                <div class="form-item-label">Coverage</div>
+                <div class="coverage-options">
+                    <div class="pill gl">GL</div>
+                    <div class="pill a">A</div>
+                    <div class="pill u">U</div>
+                    <div class="pill wc">WC</div>
+                </div>
+            </div>
+            <div class="policy-period form-item">
+                <div class="form-item-label">Location *</div>
+                <div class="period-options">
+                    <hc-form-field>
+                        <hc-select placeholder="Select a city:" formControlName="location">
+                            <option value="1">Philadelphia</option>
+                            <option value="2">Atlanta</option>
+                            <option value="3">Salt Lake City</option>
+                            <option value="4">Chicago</option>
+                            <option value="5">Orlando</option>
+                        </hc-select>
+                    </hc-form-field>
+                </div>
+            </div>
+        </hc-modal-body>
+        <hc-modal-footer>
+            <button hc-button buttonStyle="link" (click)="dismiss()"> Cancel </button>
+            <button hc-button buttonStyle="primary" (click)="close()" [disabled]="!form.valid"> Apply Changes </button>
+        </hc-modal-footer>
+    </hc-modal>
+</ng-template>
+
+<button hc-button buttonStyle="secondary" (click)="open()" class="demo-button">
     Open Large Modal from Component
 </button>
-<button hc-button buttonStyle="secondary" (click)="openTemplate(content)" class="demo-button">
+<button hc-button buttonStyle="secondary" (click)="openTemplate(basicTemplate)" class="demo-button">
     Open Auto-Sized Modal from Template
+</button>
+<button hc-button buttonStyle="secondary" (click)="openTemplate(templateWithOnlyCloseButton)" class="demo-button">
+    Modal with only close icon
+</button>
+<button hc-button buttonStyle="secondary" (click)="openFormModal(formTemplate)" class="demo-button">
+    Modal with a form
 </button>

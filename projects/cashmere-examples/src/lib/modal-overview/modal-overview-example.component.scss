@@ -1,0 +1,83 @@
+.pill {
+    width: 50px;
+    height: 28px;
+    border-radius: 16px;
+    line-height: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    &.gl {
+        background-color: #97d2ce;
+    }
+    &.wc {
+        background-color: #0d1241;
+    }
+    &.u {
+        background-color: #254995;
+    }
+    &.a {
+        background-color: #40abd0;
+    }
+}
+
+.description {
+    margin-bottom: 38px;
+}
+
+
+.table-header {
+    font-size: 16px;
+    font-weight: 500;
+    color: #406181;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-bottom: 1px solid black;
+}
+
+.table-header, .table-row {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.table-row {
+    font-size: 14px;
+    font-family: Roboto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.table-row:nth-child(even) {
+    background-color: #f6f7f7;
+}
+
+.reason {
+    color: #363e44;
+}
+
+.form-example {
+    .form-item {
+        display: flex;
+        margin-bottom: 33px;
+        &.policy-period {
+            margin-bottom: 0;
+        }
+    }
+    .form-item-label {
+        min-width: 110px;
+        margin-bottom: 10px;
+    }
+    .year-options {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-gap: 40px;
+        grid-row-gap: 24px;
+    }
+    .coverage-options {
+        display: flex;
+        .pill {
+            margin-right: 4px;
+        }
+    }
+}
