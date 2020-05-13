@@ -10,9 +10,6 @@ import {ErrorPagesComponent} from './error/error-pages.component';
 import {LoginPageComponent} from './login/login-page.component';
 import {AboutModalComponent} from './about/about-modal.component';
 import {BrandColorDemoComponent} from './brand-color/brand-color-demo.component';
-import {LogoDemoComponent} from './logo/logo-demo.component';
-import {ProductsDemoComponent} from './products/products-demo.component';
-import {TrademarksDemoComponent} from './trademarks/trademarks-demo.component';
 import {FormsComponent} from './forms/forms.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
@@ -83,21 +80,6 @@ const routes: Routes = [
                 data: {title: 'Brand Colors'}
             },
             {
-                path: 'logo',
-                component: LogoDemoComponent,
-                data: {title: 'Logo'}
-            },
-            {
-                path: 'products',
-                component: ProductsDemoComponent,
-                data: {title: 'Product Icons'}
-            },
-            {
-                path: 'trademarks',
-                component: TrademarksDemoComponent,
-                data: {title: 'Trademarks'}
-            },
-            {
                 path: '**',
                 redirectTo: 'color'
             }
@@ -109,4 +91,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class StylesRoutesModule {}
+export class StylesRoutesModule {
+}

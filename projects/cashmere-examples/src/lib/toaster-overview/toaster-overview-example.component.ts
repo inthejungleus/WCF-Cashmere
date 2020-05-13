@@ -21,7 +21,8 @@ export class ToasterOverviewExampleComponent {
     toastProgress: string = '0';
     progressValue: number = 75;
 
-    constructor(private toasterService: HcToasterService) {}
+    constructor(private toasterService: HcToasterService) {
+    }
 
     showToast(content: TemplateRef<any>) {
         let showProgress = false;
@@ -46,7 +47,7 @@ export class ToasterOverviewExampleComponent {
             toastOutput = this.toasterService.addToast(options, content);
         } else if (this.toastType === 'custom-component') {
             let colorArray: Array<string> = ['#00acac', '#007bff', '#f05323', '#a94c9d', '#e7c447', '#776c7f'];
-            let iconArray: Array<string> = ['fa-pied-piper', 'fa-pied-piper-alt', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
+            let iconArray: Array<string> = ['fa-carrot', 'fa-tree', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
 
             options.type = 'custom';
 
