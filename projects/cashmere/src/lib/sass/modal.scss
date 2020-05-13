@@ -16,14 +16,9 @@
 @mixin hc-modal() {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 50px);
     justify-content: center;
-    max-height: calc(100% - 50px);
     min-height: 135px;
-}
-
-@mixin hc-modal-auto() {
-    width: auto;
+    margin: 1em;
 }
 
 @mixin hc-modal-sm() {
