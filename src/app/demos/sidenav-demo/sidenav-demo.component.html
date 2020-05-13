@@ -3,17 +3,24 @@
                      linkText="Back to Guide"></hc-sidenav-link>
     <hc-sidenav-link uri="https://www.google.com" fontIcon="fa-briefcase" linkText="Google">
         <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-briefcase" linkText="Bing">
-    
+
         </hc-sidenav-link>
         <hc-sidenav-link routerLink="/components/accordion/examples" fontIcon="fa-briefcase" linkText="Accordion">
-    
+
         </hc-sidenav-link>
     </hc-sidenav-link>
 
     <hc-sidenav-link routerLink="/components/button/examples" fontIcon="fa-credit-card" linkText="Button Examples">
         <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-credit-card" linkText="Child Example">
-            <hc-sidenav-link routerLink="/components/banner/examples" fontIcon="fa-credit-card" linkText="Child Router Link"></hc-sidenav-link>
+            <hc-sidenav-link routerLink="/demo/sidenav" fontIcon="fa-credit-card"
+                             linkText="Child Router Link Active Longer"></hc-sidenav-link>
             <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-credit-card" linkText="Child Uri Link"></hc-sidenav-link>
+        </hc-sidenav-link>
+    </hc-sidenav-link>
+
+    <hc-sidenav-link routerLink="/demo/sidenav" fontIcon="fa-snowman" linkText="Sidenav Demo">
+        <hc-sidenav-link routerLink="/demo/sidenav/child" fontIcon="fa-child" linkText="Sidenav Child">
+            <hc-sidenav-link routerLink="/demo/sidenav/grandchild" fontIcon="fa-baby" linkText="Sidenav Grandchild"></hc-sidenav-link>
         </hc-sidenav-link>
     </hc-sidenav-link>
 
