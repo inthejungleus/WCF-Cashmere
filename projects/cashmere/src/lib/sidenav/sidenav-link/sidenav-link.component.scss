@@ -7,6 +7,12 @@ a {
     width: 100%;
     display: block;
 
+    div {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
     .top-most-link {
         padding: 15px 15px 14px 26px;
 
@@ -60,6 +66,10 @@ a {
 
 .active {
     background-color: $wcf-blue;
+
+    .children {
+        background-color: $dark-blue-bg;
+    }
 }
 
 .toggle-button {
