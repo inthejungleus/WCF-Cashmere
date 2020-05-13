@@ -1,4 +1,4 @@
-hc-checkbox components may be nested within a hc-form-field component. hc-form-field acts as a coordinator between multiple components including label and error elements.
+Hc-checkbox components may be nested within a hc-form-field component. hc-form-field acts as a coordinator between multiple components including label and error elements.
 
 ```html
 <hc-form-field>
