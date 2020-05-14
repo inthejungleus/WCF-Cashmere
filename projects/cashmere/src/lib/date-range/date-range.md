@@ -21,12 +21,18 @@ export class MyComponent implements OnInit{
     }
 }
 ```
-
 ```html
 <button hc-button hcDateRange [options]="options">Click Me</button>
 ```
 
-The default if options are not setup
+You can customize the text of the input titles by adding the following parameters to the `options` object:
+
+```typescript
+startDatePrefix: 'Effective Date',
+endDatePrefix: 'Expiration Date',
+```
+
+The following are default values if the options are not setup
 
 ```typescript
 {
@@ -35,6 +41,8 @@ The default if options are not setup
     fromMinMax: { fromDate: undefined, toDate: undefined },
     toMinMax: { fromDate: undefined, toDate: undefined },
     presets: [],
+    startDatePrefix: 'Start Date',
+    endDatePrefix: 'End Date',
     format: '',
     range: { fromDate: undefined, toDate: undefined }
 }
