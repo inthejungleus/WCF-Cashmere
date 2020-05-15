@@ -25,21 +25,27 @@
         <hc-pop #userMenu [showArrow]="false">
             <div hcMenu>
                 <a hcMenuItem href="/portal" *ngIf="userMenuLinks">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-briefcase"></hc-icon>
                     <span hcMenuText>My Account</span>
                 </a>
                 <a hcMenuItem href="/myWcfOnline/updateProfile" *ngIf="userMenuLinks">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-id-card"></hc-icon>
                     <span hcMenuText>My Profile</span>
                 </a>
                 <a hcMenuItem href="/manage_my_policy" *ngIf="userMenuLinks && showManageMyPolicy">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-university"></hc-icon>
                     <span hcMenuText>Manage My Policy</span>
                 </a>
                 <a hcMenuItem href="/tools" *ngIf="userMenuLinks">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-tools"></hc-icon>
                     <span hcMenuText>Tools</span>
                 </a>
                 <a hcMenuItem href="/support-feedback" *ngIf="userMenuLinks">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
                     <span hcMenuText>Support and Feedback</span>
                 </a>
                 <a hcMenuItem (click)="_logout()">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-sign-out-alt"></hc-icon>
                     <span hcMenuText>Sign Out</span>
                 </a>
             </div>
