@@ -40,6 +40,10 @@ export class HeaderComponent {
     @Input()
     userMenuLinks: boolean = true;
 
+    /** Whether the User Menu should contain the Manage My Policy link. Default true */
+    @Input()
+    showManageMyPolicy: boolean = false;
+
     _logout() {
         let url = this.logoutUrl;
         if (this.logoutReturnToCurrent) {
