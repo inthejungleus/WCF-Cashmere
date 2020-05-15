@@ -62,13 +62,9 @@ export class SidenavComponent {
     @Input()
     logoutReturnToCurrent = true;
 
-    /** Whether the Sign In link should show in the header when a valid user is not already signed in. Default false */
+    /** Whether the Sign In link should show in the sidenav when a valid user is not already signed in. Default false */
     @Input()
     showSignIn: boolean = false;
-
-    /** Icon to be used for the logout link */
-    @Input()
-    logoutIcon: string = 'fa-sign-out-alt';
 
     /** Change positioning to absolute - mostly just for convenience of playing nice with example docs */
     @Input()
@@ -81,6 +77,10 @@ export class SidenavComponent {
     /** Whether the User Menu should contain all links or just the Sign Out link. Default true */
     @Input()
     userMenuLinks: boolean = true;
+
+    /** Whether the User Menu should contain the Manage My Policy link. Default true */
+    @Input()
+    showManageMyPolicy: boolean = false;
 
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
