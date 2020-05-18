@@ -9,7 +9,8 @@
     <hc-icon *ngIf="!showSpinner" fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
     <hc-progress-spinner *ngIf="showSpinner" class="search-spinner" diameter="6" color="gray" [isCentered]="true"></hc-progress-spinner>
 
-    <div #results [ngClass]="{'typeahead-results':true, 'hidden': _resultPanelHidden}" *ngIf="_options.length > 0">
+    <div #results [ngClass]="{'typeahead-results':true, 'hidden': _resultPanelHidden}">
+        <hc-typeahead-item *ngIf="_options.length < 1">No Results</hc-typeahead-item>
         <ng-content></ng-content>
     </div>
 </div>
