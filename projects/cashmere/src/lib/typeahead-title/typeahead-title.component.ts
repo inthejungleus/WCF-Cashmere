@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ContentChildren, QueryList,} from '@angular/core';
+import {AfterViewInit, Component, ContentChildren, QueryList} from '@angular/core';
 
 import {TypeaheadComponent} from '../typeahead/typeahead.component';
 
