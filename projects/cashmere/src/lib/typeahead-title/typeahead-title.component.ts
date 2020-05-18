@@ -40,6 +40,8 @@ export class TypeaheadTitleComponent implements AfterViewInit {
                     this._isTypeaheadShown = false;
                 }
             });
+
+            setTimeout(() => this._updateValue(this._typeahead.first.value));
         }
 
         this._refreshDisplayValue();
