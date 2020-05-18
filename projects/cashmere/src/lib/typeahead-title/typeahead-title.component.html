@@ -1,10 +1,10 @@
 <div class="typeahead-title">
-    <div [ngClass]="{'typeahead-before': true, hidden: isTypeaheadShown}" (click)="hideTitle()">
-        <span class="title-text">{{startingValue}}</span>
+    <div [ngClass]="{'typeahead-before': true, hidden: _isTypeaheadShown}" (click)="_hideTitle()">
+        <span class="title-text" [ngClass]="{'value-updated': _value}">{{_displayValue}}</span>
         <hc-icon fontSet="fa" fontIcon="fa-search" class="search"></hc-icon>
         <hc-icon fontSet="fa" fontIcon="fa-search" class="search-right"></hc-icon>
     </div>
-    <div [ngClass]="{'typeahead-after': true, hidden: !isTypeaheadShown}">
+    <div [ngClass]="{'typeahead-after': true, hidden: !_isTypeaheadShown}">
         <ng-content></ng-content>
     </div>
 </div>

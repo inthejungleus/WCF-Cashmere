@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'hc-typeahead-title-example',
-  templateUrl: './typeahead-title-example.component.html',
-  styleUrls: ['./typeahead-title-example.component.scss']
+    selector: 'hc-typeahead-title-example',
+    templateUrl: './typeahead-title-example.component.html'
 })
 export class TypeaheadTitleExampleComponent implements OnInit {
-
-    initialValue: string = 'An example title';
-    showTypeahead: boolean = false;
 
     form: FormGroup;
     filteredData: string[] = [];
@@ -26,7 +22,8 @@ export class TypeaheadTitleExampleComponent implements OnInit {
         'Georgia'
     ];
 
-    constructor(private fb: FormBuilder) { }
+    constructor(private fb: FormBuilder) {
+    }
 
     ngOnInit(): void {
         this.form = this.fb.group({

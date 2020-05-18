@@ -81,22 +81,6 @@ hc-typeahead {
     }
 }
 
-.toggle-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    transition: 0.3s;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg)
-}
-
-.flip-around {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
 .result div p {
     margin-bottom: 4px;
 }

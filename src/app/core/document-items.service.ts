@@ -118,7 +118,8 @@ const docs: DocItem[] = [
         name: 'Modal',
         category: 'popups',
         examples: ['modal-overview'],
-        usageDoc: true},
+        usageDoc: true
+    },
     {
         id: 'navbar',
         name: 'Navbar',
@@ -270,7 +271,7 @@ const docs: DocItem[] = [
         id: 'typeahead-title',
         name: 'Typeahead Title',
         category: 'forms',
-        examples: ['typeahead-title']
+        examples: ['typeahead-title', 'typeahead-title-multiple']
     },
     {
         id: 'xanthos-file-upload',
