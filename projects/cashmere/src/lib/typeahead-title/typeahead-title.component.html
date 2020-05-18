@@ -1,6 +1,6 @@
 <div class="typeahead-title">
     <div [ngClass]="{'typeahead-before': true, hidden: isTypeaheadShown}" (click)="hideTitle()">
-        <span class="title-text">{{startingValue}}</span>
+        <span class="title-text" [ngClass]="{'value-updated': updated}">{{startingValue}}</span>
         <hc-icon fontSet="fa" fontIcon="fa-search" class="search"></hc-icon>
         <hc-icon fontSet="fa" fontIcon="fa-search" class="search-right"></hc-icon>
     </div>

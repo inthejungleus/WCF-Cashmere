@@ -16,6 +16,7 @@ import { TypeaheadComponent } from '../typeahead/typeahead.component';
 export class TypeaheadTitleComponent implements AfterViewInit {
 
     isTypeaheadShown: boolean = false;
+    updated: boolean = false;
 
     @Input()
     startingValue: any;
@@ -51,6 +52,7 @@ export class TypeaheadTitleComponent implements AfterViewInit {
 
     updateStartingValue(val: string) {
         this.startingValue = val;
+        this.updated = true;
     }
 
 }

@@ -2,7 +2,7 @@
     <form [formGroup]="form">
         <hc-typeahead-title [startingValue]="initialValue" >
             <hc-typeahead formControlName="item" (valueChange)="filterData($event)" 
-            (optionSelected)="optionSelected($event)" placeholder="Find a state" [hideChevron]="true">
+            (optionSelected)="optionSelected($event)" placeholder="Find a state">
                 <hc-typeahead-item *ngFor="let item of filteredData" [value]="item">
                     {{item}}
                 </hc-typeahead-item>
