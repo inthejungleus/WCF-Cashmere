@@ -20,7 +20,7 @@
             <img *ngIf="user?.avatar" [src]="user?.avatar"/>
             <hc-icon *ngIf="!user?.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
         </span>
-        <span class="hc-text-ellipsis">{{ user?.name }}</span>
+        <span class="hc-text-ellipsis username">{{ user?.name }}</span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
         <hc-pop #userMenu [showArrow]="false">
             <div hcMenu>
@@ -40,7 +40,7 @@
                     <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-tools"></hc-icon>
                     <span hcMenuText>Tools</span>
                 </a>
-                <a hcMenuItem href="/support-feedback" *ngIf="userMenuLinks">
+                <a hcMenuItem href="/contact-us" *ngIf="userMenuLinks">
                     <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
                     <span hcMenuText>Support and Feedback</span>
                 </a>
