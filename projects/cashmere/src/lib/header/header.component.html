@@ -23,7 +23,7 @@
         <span class="hc-text-ellipsis username">{{ user?.name }}</span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
         <hc-pop #userMenu [showArrow]="false">
-            <div hcMenu>
+            <div hcMenu class="profile-menu">
                 <a hcMenuItem href="/portal" *ngIf="userMenuLinks">
                     <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-briefcase"></hc-icon>
                     <span hcMenuText>My Account</span>

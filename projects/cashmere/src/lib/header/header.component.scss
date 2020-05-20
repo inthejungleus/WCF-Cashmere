@@ -83,3 +83,17 @@
 .list-options a {
     color: inherit;
 }
+
+
+.profile-menu {
+    .hc-menu-item {
+        font-size: 16px;
+        color: $gray-90;
+        font-weight: 500;
+        line-height: 19px;
+
+        &:hover {
+            color: $white;
+        }
+    }
+}
