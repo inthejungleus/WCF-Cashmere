@@ -108,7 +108,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         }
     }
 
-
     ngOnInit() {
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
@@ -182,7 +181,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._options.toArray().forEach(option => {
             const sub = option._selected.subscribe(() => {
                 this.itemSelectedDefault(option.value);
-                // this.hideResultPanel();
             });
 
             this._optionSubscriptions.push(sub);
@@ -264,15 +262,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         }
 
         return currentScrollPosition;
-    }
-
-    _toggleShowResults() {
-        if (this._resultPanelHidden) {
-            this.showResultPanel();
-            this.valueChange.emit('');
-        } else {
-            this.hideResultPanel();
-        }
     }
 
     private showResultPanel() {
@@ -425,6 +414,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     _blurHandler(event) {
         this._markAsTouched();
+        this.hideResultPanel();
         this.blur.emit(event);
     }
 
