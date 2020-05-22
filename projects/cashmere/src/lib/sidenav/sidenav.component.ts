@@ -1,4 +1,14 @@
-import {ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, ViewChild} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChildren,
+    ElementRef,
+    HostBinding,
+    Input,
+    QueryList,
+    ViewChild
+} from '@angular/core';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {Drawer} from '../drawer/index';
 
@@ -9,7 +19,7 @@ import {Drawer} from '../drawer/index';
     styleUrls: ['./sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidenavComponent {
+export class SidenavComponent implements AfterViewInit {
 
     @ViewChild('leftOverDrawer') drawer: Drawer;
 
@@ -88,6 +98,16 @@ export class SidenavComponent {
     @ViewChild('navbar') navbarContent: ElementRef;
 
     sidenavOpen: boolean = false;
+
+    ngAfterViewInit(): void {
+        this._navLinks.toArray().forEach(child => {
+            // only check for the top level children (the ones with the toggle)
+            // because they are the only ones that can collapse and hide children
+            if (child._resultToggle && child._isActiveOrHasActiveChild()) {
+                setTimeout(() => child._toggleChildren());
+            }
+        });
+    }
 
     _logout() {
         let url = this.logoutUrl;
