@@ -113,7 +113,13 @@ const docs: DocItem[] = [
         examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area', 'input-toggle-visible', 'input-phone-number', 'input-currency', 'input-password']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
-    {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
+    {
+        id: 'modal',
+        name: 'Modal',
+        category: 'popups',
+        examples: ['modal-overview'],
+        usageDoc: true
+    },
     {
         id: 'navbar',
         name: 'Navbar',
@@ -265,7 +271,7 @@ const docs: DocItem[] = [
         id: 'typeahead-title',
         name: 'Typeahead Title',
         category: 'forms',
-        examples: ['typeahead-title']
+        examples: ['typeahead-title', 'typeahead-title-multiple']
     },
     {
         id: 'xanthos-file-upload',

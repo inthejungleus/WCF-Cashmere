@@ -1,69 +1,85 @@
-<hc-sidenav [mobileView]="mobileView" [user]="user" homeUri="/route-a" contactPhoneNumber="(800) 446-2667" [showSignIn]="true">
+<hc-sidenav [mobileView]="mobileView" [user]="user" homeUri="/route-a" contactPhoneNumber="(800) 446-2667"
+            [showSignIn]="showSignIn.value" [showManageMyPolicy]="showManageMyPolicy.value" [userMenuLinks]="userMenuLinks.value">
     <hc-sidenav-link routerLink="/components/sidenav/examples" routerLinkActive="hide" fontIcon="fa-arrow-circle-left"
                      linkText="Back to Guide"></hc-sidenav-link>
     <hc-sidenav-link uri="https://www.google.com" fontIcon="fa-briefcase" linkText="Google">
-        <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-briefcase" linkText="Bing">
-    
-        </hc-sidenav-link>
-        <hc-sidenav-link routerLink="/components/accordion/examples" fontIcon="fa-briefcase" linkText="Accordion">
-    
-        </hc-sidenav-link>
+        <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-briefcase" linkText="Bing"></hc-sidenav-link>
+        <hc-sidenav-link routerLink="/components/accordion/examples" fontIcon="fa-briefcase" linkText="Accordion"></hc-sidenav-link>
     </hc-sidenav-link>
 
     <hc-sidenav-link routerLink="/components/button/examples" fontIcon="fa-credit-card" linkText="Button Examples">
         <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-credit-card" linkText="Child Example">
-            <hc-sidenav-link routerLink="/components/banner/examples" fontIcon="fa-credit-card" linkText="Child Router Link"></hc-sidenav-link>
+            <hc-sidenav-link routerLink="/demo/sidenav" fontIcon="fa-credit-card"
+                             linkText="Child Router Link Active Longer"></hc-sidenav-link>
             <hc-sidenav-link uri="https://www.bing.com" fontIcon="fa-credit-card" linkText="Child Uri Link"></hc-sidenav-link>
+        </hc-sidenav-link>
+    </hc-sidenav-link>
+
+    <hc-sidenav-link routerLink="/demo/sidenav" fontIcon="fa-snowman" linkText="Sidenav Demo">
+        <hc-sidenav-link routerLink="/demo/sidenav/child" fontIcon="fa-child" linkText="Sidenav Child">
+            <hc-sidenav-link routerLink="/demo/sidenav/grandchild" fontIcon="fa-baby" linkText="Sidenav Grandchild"></hc-sidenav-link>
         </hc-sidenav-link>
     </hc-sidenav-link>
 
     <hc-sidenav-link routerLink="/route-b" fontIcon="fa-paste" linkText="Quoting"></hc-sidenav-link>
     <hc-sidenav-link routerLink="/route-c" fontIcon="fa-th" linkText="Agent Tools"></hc-sidenav-link>
-    <hc-sidenav-link routerLink="/route-b" fontIcon="fa-paste" linkText="Quoting"></hc-sidenav-link>
-    <hc-sidenav-link routerLink="/route-c" fontIcon="fa-th" linkText="Agent Tools"></hc-sidenav-link>
-    <hc-sidenav-link routerLink="/route-b" fontIcon="fa-paste" linkText="Quoting"></hc-sidenav-link>
-    <hc-sidenav-link routerLink="/route-c" fontIcon="fa-th" linkText="Agent Tools"></hc-sidenav-link>
+
     <div class="page-content">
         <h2 class="app-title">SideNav Demo</h2>
         <div class="main-content">
             <div class="row buffer">
                 <div class="col-sm-3">
-                    <hc-label>Job Name</hc-label>
+                    <hc-label>Signed In User</hc-label>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-3">
                     <hc-form-field inline="true">
-                        <input hcInput [formControl]="jobName" required>
-                        <hc-error>A job name is required</hc-error>
+                        <input hcInput [formControl]="userName" (keyup)="changeUsername()">
                     </hc-form-field>
                 </div>
             </div>
 
             <div class="row buffer">
                 <div class="col-sm-3">
-                    <hc-label>Run Frequency</hc-label>
+                    <hc-label>Show Sign In</hc-label>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-3">
                     <hc-form-field inline="true">
-                        <hc-select placeholder="Select frequency" [formControl]="runFrequency">
-                            <option value="daily">Daily</option>
-                            <option value="weekly">Weekly</option>
-                            <option value="monthly">Monthly</option>
-                        </hc-select>
-                        <hc-error>Please select the run frequency for this item</hc-error>
+                        <hc-checkbox [formControl]="showSignIn">
+                            <div class="fineprint">(only matters if there is no user signed in)</div>
+                        </hc-checkbox>
                     </hc-form-field>
                 </div>
             </div>
 
             <div class="row buffer">
-                <div class="col-sm-12">
-                    <hc-form-field>
-                        <hc-label>Not Inline:</hc-label>
-                        <input hcInput required [formControl]="notInline">
-                        <hc-error>A value is required</hc-error>
+                <div class="col-sm-3">
+                    <hc-label>Show Manage My Policy</hc-label>
+                </div>
+                <div class="col-sm-3">
+                    <hc-form-field inline="true">
+                        <hc-checkbox [formControl]="showManageMyPolicy"></hc-checkbox>
                     </hc-form-field>
                 </div>
             </div>
 
+            <div class="row buffer">
+                <div class="col-sm-3">
+                    <hc-label>Show Links in Profile Menu</hc-label>
+                </div>
+                <div class="col-sm-3">
+                    <hc-form-field inline="true">
+                        <hc-checkbox [formControl]="userMenuLinks"></hc-checkbox>
+                    </hc-form-field>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="buttons">
+                <button hc-button buttonStyle="primary" (click)="addDummyContent()" *ngIf="dummyContent.length < 1">Add Content</button>
+                <button hc-button buttonStyle="primary" (click)="removeDummyContent()" *ngIf="dummyContent.length > 0">Remove Content
+                </button>
+            </div>
             <div class="dummyItem" *ngFor="let item of dummyContent">{{item}}</div>
         </div>
     </div>

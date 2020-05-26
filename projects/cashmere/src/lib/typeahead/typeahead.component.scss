@@ -14,7 +14,7 @@ hc-typeahead {
     .typeahead-results {
         border: 1px solid $gray-10;
         position: absolute;
-        top: 42px;
+        top: 41px;
         left: 0;
         width: inherit;
         min-width: 100%;
@@ -79,22 +79,6 @@ hc-typeahead {
     .hc-form-field-flex-inline {
         width: 100%;
     }
-}
-
-.toggle-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    transition: 0.3s;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg)
-}
-
-.flip-around {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
 }
 
 .result div p {

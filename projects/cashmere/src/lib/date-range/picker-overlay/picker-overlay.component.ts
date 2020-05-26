@@ -49,6 +49,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         if (this.calendarWrappers.first) {
             this.calendarWrappers.first.focusInput();
+            this.cd.detectChanges();
         }
         setTimeout(() => {
             this._isRangePreset();

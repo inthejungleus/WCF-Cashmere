@@ -50,15 +50,13 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 }
 
 .hc-calendar-arrow {
+
     display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: $hc-calendar-arrow-size solid transparent;
-    border-right: $hc-calendar-arrow-size solid transparent;
-    border-top-width: $hc-calendar-arrow-size;
-    border-top-style: solid;
-    margin: 0 0 0 $hc-calendar-arrow-size;
+    width: 20px;
+    height: 12px;
+    margin: 0 0 0 5px;
     vertical-align: middle;
+    transition: 0.2s;
 
     &.hc-calendar-invert {
         transform: rotate(180deg);

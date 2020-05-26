@@ -1,5 +1,6 @@
 import {
     AfterContentInit,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     DoCheck,
@@ -56,10 +57,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Input()
     placeholder = '';
 
-    /** Hide the arrow on the far right of the typeahead input box, default false */
-    @Input()
-    hideChevron: boolean = false;
-
     /** DebounceTime is the amount of time to delay between keystrokes before emitting the valueChange event for the input */
     @Input()
     debounceTime: number = 500;
@@ -89,13 +86,13 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     @ViewChild('input') _inputRef: ElementRef;
     @ViewChild('results') _resultPanel: ElementRef;
-    @ViewChild('toggle') _resultToggle: ElementRef;
 
     _optionSubscriptions: Array<Subscription> = new Array<Subscription>();
 
     constructor(
         private _elementRef: ElementRef,
         private renderer: Renderer2,
+        private cd: ChangeDetectorRef,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional() @Inject(DOCUMENT) private _document: any,
@@ -110,7 +107,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             this._ngControl.valueAccessor = this;
         }
     }
-
 
     ngOnInit() {
         this._searchTerm = new FormControl(this._value);
@@ -152,37 +148,31 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     private handleClick(event) {
-        if (this._resultPanelHidden !== true) {
-            const clickTarget = event.target as HTMLElement;
-            let clickedTypeahead = false;
+        const clickTarget = event.target as HTMLElement;
+        let clickedTypeahead = false;
 
-            // check if the click was in the search input box
-            if (this._elementRef) {
-                if (clickTarget === this._elementRef.nativeElement ||
-                    this._elementRef.nativeElement.contains(clickTarget)) {
-                    clickedTypeahead = true;
-                }
+        // open results panel on click
+        if (clickTarget === this._inputRef.nativeElement) {
+            if (this._resultPanelHidden === true) {
+                this._resultPanelHidden = false;
+                this.valueChange.emit('');
+                clickedTypeahead = true;
+            } else {
+                clickedTypeahead = true;
             }
+        }
 
-            // check if the click was in the results panel
-            if (this._resultPanel) {
-                if (clickTarget === this._resultPanel.nativeElement ||
-                    this._resultPanel.nativeElement.contains(clickTarget)) {
-                    clickedTypeahead = true;
-                }
+        // check if results exist
+        if (this._resultPanel) {
+            if (clickTarget === this._resultPanel.nativeElement ||
+                this._resultPanel.nativeElement.contains(clickTarget)) {
+                clickedTypeahead = true;
             }
+        }
 
-            // check if the click was on the result toggle (chevron in input box)
-            if (this._resultToggle) {
-                if (this._resultToggle.nativeElement.contains(clickTarget)) {
-                    clickedTypeahead = true;
-                }
-            }
-
-            // if the click was not in the typeahead then close the results panel
-            if (!clickedTypeahead) {
-                this.hideResultPanel();
-            }
+        // if the click was not in the typeahead then close the results panel
+        if (!clickedTypeahead) {
+            this.hideResultPanel();
         }
     }
 
@@ -274,28 +264,13 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         return currentScrollPosition;
     }
 
-    _toggleShowResults() {
-        if (this._resultPanelHidden) {
-            this.showResultPanel();
-            this.valueChange.emit('');
-        } else {
-            this.hideResultPanel();
-        }
-    }
-
     private showResultPanel() {
         this._resultPanelHidden = false;
         this._inputRef.nativeElement.focus();
-        if (!this.hideChevron) {
-            this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
-        }
     }
 
     private hideResultPanel() {
         this._resultPanelHidden = true;
-        if (!this.hideChevron) {
-            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
-        }
     }
 
     private itemSelectedDefault(item) {
@@ -439,6 +414,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     _blurHandler(event) {
         this._markAsTouched();
+        this.hideResultPanel();
         this.blur.emit(event);
     }
 
@@ -455,5 +431,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     setFocus() {
         this._inputRef.nativeElement.focus();
+        this._resultPanelHidden = false;
+        this.valueChange.emit('');
     }
 }

@@ -1,4 +1,5 @@
-import {Component, ElementRef, HostBinding, Input, ContentChildren, QueryList, Renderer2, ViewChild} from '@angular/core';
+import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, Renderer2, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
 
 /** Primary navigation links */
 @Component({
@@ -34,9 +35,29 @@ export class SidenavLinkComponent {
     @ContentChildren(SidenavLinkComponent)
     private _children?: QueryList<SidenavLinkComponent>;
 
-    constructor(
-        private renderer: Renderer2,
-    ) {}
+    constructor(private renderer: Renderer2, private router: Router) {
+    }
+
+    _isActiveOrHasActiveChild(): boolean {
+        if (this.router.url === this.routerLink) {
+            return true;
+        }
+
+        if (this._children) {
+            return this._children.toArray().some(child => {
+                // The ComponentChildren selector also finds the component
+                // itself since it is the same component type. We want to ignore
+                // if or else we will end up in an infinite loop.
+                if (child !== this) {
+                    return child._isActiveOrHasActiveChild();
+                }
+
+                return false;
+            });
+        }
+
+        return false;
+    }
 
     get children() {
         if (!this._children) {

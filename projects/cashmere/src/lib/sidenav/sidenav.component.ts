@@ -1,4 +1,14 @@
-import {ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, ViewChild} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChildren,
+    ElementRef,
+    HostBinding,
+    Input,
+    QueryList,
+    ViewChild
+} from '@angular/core';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {Drawer} from '../drawer/index';
 
@@ -9,7 +19,7 @@ import {Drawer} from '../drawer/index';
     styleUrls: ['./sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidenavComponent {
+export class SidenavComponent implements AfterViewInit {
 
     @ViewChild('leftOverDrawer') drawer: Drawer;
 
@@ -62,13 +72,9 @@ export class SidenavComponent {
     @Input()
     logoutReturnToCurrent = true;
 
-    /** Whether the Sign In link should show in the header when a valid user is not already signed in. Default false */
+    /** Whether the Sign In link should show in the sidenav when a valid user is not already signed in. Default false */
     @Input()
     showSignIn: boolean = false;
-
-    /** Icon to be used for the logout link */
-    @Input()
-    logoutIcon: string = 'fa-sign-out-alt';
 
     /** Change positioning to absolute - mostly just for convenience of playing nice with example docs */
     @Input()
@@ -82,12 +88,26 @@ export class SidenavComponent {
     @Input()
     userMenuLinks: boolean = true;
 
+    /** Whether the User Menu should contain the Manage My Policy link. Default true */
+    @Input()
+    showManageMyPolicy: boolean = false;
+
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
 
     @ViewChild('navbar') navbarContent: ElementRef;
 
     sidenavOpen: boolean = false;
+
+    ngAfterViewInit(): void {
+        this._navLinks.toArray().forEach(child => {
+            // only check for the top level children (the ones with the toggle)
+            // because they are the only ones that can collapse and hide children
+            if (child._resultToggle && child._isActiveOrHasActiveChild()) {
+                setTimeout(() => child._toggleChildren());
+            }
+        });
+    }
 
     _logout() {
         let url = this.logoutUrl;

@@ -25,6 +25,8 @@ export class DateRangeExampleComponent implements OnInit {
             presets: this.presets,
             format: 'mediumDate',
             applyLabel: 'Apply',
+            startDatePrefix: 'Effective Date',
+            endDatePrefix: 'Expiration Date',
             fromMinMax: {fromDate: fromMin, toDate: fromMax},
             toMinMax: {fromDate: toMin, toDate: toMax}
         };

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IUser} from '@wcf-insurance/cashmere';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'hc-header-demo',
@@ -7,10 +8,15 @@ import {IUser} from '@wcf-insurance/cashmere';
     styleUrls: ['header-demo.component.scss']
 })
 export class HeaderDemoComponent {
-    user: IUser = {
+    user: IUser|null = {
         name: 'John Doe',
         // avatar: '/src/assets/avatar.jpg'
     };
+
+    userName = new FormControl(this.user ? this.user.name : '');
+    showSignIn = new FormControl(true);
+    showManageMyPolicy = new FormControl(false);
+    userMenuLinks = new FormControl(true);
 
     dummyContent: string[] = [];
 
@@ -22,5 +28,15 @@ export class HeaderDemoComponent {
 
     removeDummyContent() {
         this.dummyContent = [];
+    }
+
+    changeUsername() {
+        if (this.userName.value) {
+            this.user = {
+                name: this.userName.value
+            };
+        } else {
+            this.user = null;
+        }
     }
 }
