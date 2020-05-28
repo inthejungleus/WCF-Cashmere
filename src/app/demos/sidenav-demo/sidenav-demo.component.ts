@@ -23,6 +23,11 @@ export class SidenavDemoComponent implements OnInit {
 
     dummyContent: string[] = [];
 
+    // variable to allow us to simulate a link be added later
+    // based on an API call or something
+    showActiveLink = false;
+    showActiveLinkLater = false;
+
     constructor(public breakpointObserver: BreakpointObserver) {
     }
 
@@ -38,6 +43,15 @@ export class SidenavDemoComponent implements OnInit {
                     console.log('Viewport is getting bigger!');
                 }
             });
+
+        // simulate the result of a network request causing
+        // a new link to be displayed in the sidenav
+        setTimeout(() => {
+            this.showActiveLink = true;
+        }, 2000);
+        setTimeout(() => {
+            this.showActiveLinkLater = true;
+        }, 4000);
     }
 
     addDummyContent() {
