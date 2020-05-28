@@ -1,4 +1,16 @@
-import {Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, Renderer2, ViewChild} from '@angular/core';
+import {
+    AfterContentInit,
+    Component,
+    ContentChildren,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Input,
+    Output,
+    QueryList,
+    Renderer2,
+    ViewChild
+} from '@angular/core';
 import {Router} from '@angular/router';
 
 /** Primary navigation links */
@@ -7,7 +19,7 @@ import {Router} from '@angular/router';
     templateUrl: 'sidenav-link.component.html',
     styleUrls: ['sidenav-link.component.scss']
 })
-export class SidenavLinkComponent {
+export class SidenavLinkComponent implements AfterContentInit {
     /** RouterLink uri. See https://angular.io/api/router/RouterLink */
     @Input()
     routerLink?: string;
@@ -24,6 +36,14 @@ export class SidenavLinkComponent {
     @Input()
     linkText: string;
 
+    // non-top level links emit this when their children change
+    @Output()
+    _childrenChanged: EventEmitter<SidenavLinkComponent> = new EventEmitter<SidenavLinkComponent>();
+
+    // top level links emit this when any of their descendants have changed
+    @Output()
+    _refreshChildren: EventEmitter<SidenavLinkComponent> = new EventEmitter<SidenavLinkComponent>();
+
     @HostBinding('style.position') position = 'relative';
     @HostBinding('style.display') display = 'block';
 
@@ -32,10 +52,42 @@ export class SidenavLinkComponent {
     private _linkChildren;
     _childrenShown: boolean = false;
 
+    // indicate if this is a top-level link (it's parent is the sidenav component)
+    _topLevel = false;
+
     @ContentChildren(SidenavLinkComponent)
     private _children?: QueryList<SidenavLinkComponent>;
 
     constructor(private renderer: Renderer2, private router: Router) {
+    }
+
+    ngAfterContentInit() {
+        if (this._children) {
+            // Listen for direct children being added/removed
+            this._children.changes.subscribe(() => {
+                this._childrenChangeDetected();
+            });
+
+            // Subscribe to children's events for when the child has children added/removed
+            this._children.toArray().forEach(child => {
+                // The ContentChildren selector also finds the component
+                // itself since it is the same component type. We want to ignore
+                // it or else we will end up in an infinite loop.
+                if (this !== child) {
+                    child._childrenChanged.subscribe(link => {
+                        this._childrenChangeDetected();
+                    });
+                }
+            });
+        }
+    }
+
+    private _childrenChangeDetected() {
+        if (this._topLevel) {
+            this._refreshChildren.emit(this);
+        } else {
+            this._childrenChanged.emit(this);
+        }
     }
 
     _isActiveOrHasActiveChild(): boolean {
@@ -45,9 +97,9 @@ export class SidenavLinkComponent {
 
         if (this._children) {
             return this._children.toArray().some(child => {
-                // The ComponentChildren selector also finds the component
+                // The ContentChildren selector also finds the component
                 // itself since it is the same component type. We want to ignore
-                // if or else we will end up in an infinite loop.
+                // it or else we will end up in an infinite loop.
                 if (child !== this) {
                     return child._isActiveOrHasActiveChild();
                 }
@@ -68,8 +120,8 @@ export class SidenavLinkComponent {
         return this._linkChildren;
     }
 
-    _toggleChildren() {
-        this._childrenShown = !this._childrenShown;
+    _toggleChildren(expanded?: boolean) {
+        this._childrenShown = expanded || !this._childrenShown;
 
         if (this._childrenShown) {
             this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
@@ -80,6 +132,10 @@ export class SidenavLinkComponent {
 
     stop(event: Event) {
         event.stopPropagation();
+    }
+
+    setTopLevel(value: boolean) {
+        this._topLevel = value;
     }
 
 }

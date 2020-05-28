@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
@@ -19,7 +19,7 @@ import {Drawer} from '../drawer/index';
     styleUrls: ['./sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidenavComponent implements AfterViewInit {
+export class SidenavComponent implements AfterContentInit {
 
     @ViewChild('leftOverDrawer') drawer: Drawer;
 
@@ -99,14 +99,33 @@ export class SidenavComponent implements AfterViewInit {
 
     sidenavOpen: boolean = false;
 
-    ngAfterViewInit(): void {
-        this._navLinks.toArray().forEach(child => {
-            // only check for the top level children (the ones with the toggle)
-            // because they are the only ones that can collapse and hide children
-            if (child._resultToggle && child._isActiveOrHasActiveChild()) {
-                setTimeout(() => child._toggleChildren());
-            }
+    ngAfterContentInit(): void {
+        // Check all of the top level links for active state and expand as necessary
+        this._navLinks.toArray().forEach(link => {
+            link.setTopLevel(true);
+            this._autoExpandSidenav(link);
         });
+
+        // Listen for top level links being added/removed
+        this._navLinks.changes.subscribe(() => {
+            this._navLinks.toArray().forEach(link => {
+                link.setTopLevel(true);
+                this._autoExpandSidenav(link);
+                // Subscribe to top level link children's events for when descendants are added/removed
+                link._refreshChildren.subscribe(linkUpdated => this._autoExpandSidenav(linkUpdated));
+            });
+        });
+
+        // Subscribe to top level link children's events for when descendants are added/removed
+        this._navLinks.toArray().forEach(link => {
+            link._refreshChildren.subscribe(linkUpdated => this._autoExpandSidenav(linkUpdated));
+        });
+    }
+
+    private _autoExpandSidenav(link: SidenavLinkComponent) {
+        if (link._topLevel && link._isActiveOrHasActiveChild()) {
+            setTimeout(() => link._toggleChildren(true));
+        }
     }
 
     _logout() {
