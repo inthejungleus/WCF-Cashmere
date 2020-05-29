@@ -27,6 +27,7 @@ export class SidenavDemoComponent implements OnInit {
     // based on an API call or something
     showActiveLink = false;
     showActiveLinkLater = false;
+    showActiveLinkWayLater = false;
 
     constructor(public breakpointObserver: BreakpointObserver) {
     }
@@ -48,10 +49,13 @@ export class SidenavDemoComponent implements OnInit {
         // a new link to be displayed in the sidenav
         setTimeout(() => {
             this.showActiveLink = true;
-        }, 2000);
+        }, 1000);
         setTimeout(() => {
             this.showActiveLinkLater = true;
-        }, 4000);
+        }, 2000);
+        setTimeout(() => {
+            this.showActiveLinkWayLater = true;
+        }, 3000);
     }
 
     addDummyContent() {
