@@ -6,8 +6,7 @@
         [routerLink]="routerLink"
         routerLinkActive="active"
         class="sidenav-link"
-        [routerLinkActiveOptions]="{exact: !children?.length}"
-        (click)="stop($event)"
+        (click)="_stop($event)"
     >
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </a>
@@ -17,7 +16,7 @@
 
 </ng-template>
 <ng-template #hrefTemplate>
-    <a [title]="linkText" [href]="uri" class="sidenav-link" target="_blank" (click)="stop($event)">
+    <a [title]="linkText" [href]="uri" class="sidenav-link" target="_blank" (click)="_stop($event)">
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </a>
     <div class="toggle-button" #toggle *ngIf="children?.length">
@@ -27,7 +26,8 @@
 
 <ng-template #linkContent>
     <div class="top-most-link">
-        <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>{{ linkText }}
+        <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>
+        {{ linkText }}
     </div>
     <div [ngClass]="{children:true, shown:_childrenShown}" *ngIf="children?.length">
         <ng-content></ng-content>

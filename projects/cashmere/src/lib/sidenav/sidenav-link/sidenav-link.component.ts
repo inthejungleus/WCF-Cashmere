@@ -66,9 +66,16 @@ export class SidenavLinkComponent implements AfterContentInit {
             // Listen for direct children being added/removed
             this._children.changes.subscribe(() => {
                 this._childrenChangeDetected();
+                this._subscribeToChildrenChanges();
             });
 
-            // Subscribe to children's events for when the child has children added/removed
+            this._subscribeToChildrenChanges();
+        }
+    }
+
+    // Subscribe to children's events for when the child has children added/removed
+    private _subscribeToChildrenChanges() {
+        if (this._children) {
             this._children.toArray().forEach(child => {
                 // The ContentChildren selector also finds the component
                 // itself since it is the same component type. We want to ignore
@@ -91,7 +98,7 @@ export class SidenavLinkComponent implements AfterContentInit {
     }
 
     _isActiveOrHasActiveChild(): boolean {
-        if (this.router.url === this.routerLink) {
+        if (this.router.url.startsWith(this.routerLink || 'undefined')) {
             return true;
         }
 
@@ -130,11 +137,11 @@ export class SidenavLinkComponent implements AfterContentInit {
         }
     }
 
-    stop(event: Event) {
+    _stop(event: Event) {
         event.stopPropagation();
     }
 
-    setTopLevel(value: boolean) {
+    _setTopLevel(value: boolean) {
         this._topLevel = value;
     }
 
