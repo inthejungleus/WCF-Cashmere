@@ -98,7 +98,7 @@ export class SidenavLinkComponent implements AfterContentInit {
     }
 
     _isActiveOrHasActiveChild(): boolean {
-        if (this.router.url === this.routerLink) {
+        if (this.router.url.startsWith(this.routerLink || 'undefined')) {
             return true;
         }
 

@@ -6,7 +6,6 @@
         [routerLink]="routerLink"
         routerLinkActive="active"
         class="sidenav-link"
-        [routerLinkActiveOptions]="{exact: !children?.length}"
         (click)="_stop($event)"
     >
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
