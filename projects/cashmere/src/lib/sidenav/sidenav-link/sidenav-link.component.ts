@@ -137,11 +137,11 @@ export class SidenavLinkComponent implements AfterContentInit {
         }
     }
 
-    stop(event: Event) {
+    _stop(event: Event) {
         event.stopPropagation();
     }
 
-    setTopLevel(value: boolean) {
+    _setTopLevel(value: boolean) {
         this._topLevel = value;
     }
 

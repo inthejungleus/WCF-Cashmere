@@ -102,14 +102,14 @@ export class SidenavComponent implements AfterContentInit {
     ngAfterContentInit(): void {
         // Check all of the top level links for active state and expand as necessary
         this._navLinks.toArray().forEach(link => {
-            link.setTopLevel(true);
+            link._setTopLevel(true);
             this._autoExpandSidenav(link);
         });
 
         // Listen for top level links being added/removed
         this._navLinks.changes.subscribe(() => {
             this._navLinks.toArray().forEach(link => {
-                link.setTopLevel(true);
+                link._setTopLevel(true);
                 this._autoExpandSidenav(link);
                 // Subscribe to top level link children's events for when descendants are added/removed
                 link._refreshChildren.subscribe(linkUpdated => this._autoExpandSidenav(linkUpdated));
