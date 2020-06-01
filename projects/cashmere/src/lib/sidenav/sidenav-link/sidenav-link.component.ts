@@ -130,10 +130,12 @@ export class SidenavLinkComponent implements AfterContentInit {
     _toggleChildren(expanded?: boolean) {
         this._childrenShown = expanded || !this._childrenShown;
 
-        if (this._childrenShown) {
-            this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
-        } else {
-            this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+        if (this._resultToggle) {
+            if (this._childrenShown) {
+                this.renderer.addClass(this._resultToggle.nativeElement, 'flip-around');
+            } else {
+                this.renderer.removeClass(this._resultToggle.nativeElement, 'flip-around');
+            }
         }
     }
 
