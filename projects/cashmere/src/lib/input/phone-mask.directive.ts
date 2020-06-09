@@ -1,11 +1,16 @@
-import {AfterViewInit, Directive, Input, OnDestroy, Renderer2, ViewContainerRef} from '@angular/core';
-import {AbstractControl} from '@angular/forms';
+import {AfterViewInit, Directive, forwardRef, Input, OnDestroy, Renderer2, ViewContainerRef} from '@angular/core';
+import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
 import {SubscriptionLike} from 'rxjs';
 
 @Directive({
-    selector: '[hcPhoneMask]'
+    selector: '[hcPhoneMask]',
+    providers: [
+        {provide: NG_VALIDATORS, useExisting: forwardRef(() => PhoneMaskDirective), multi: true}
+    ]
 })
-export class PhoneMaskDirective implements AfterViewInit, OnDestroy {
+export class PhoneMaskDirective implements AfterViewInit, OnDestroy, Validator {
+    private _digitPattern = RegExp(/^\d*$/);
+    private _phonePattern = RegExp(/^\(\d{3}\)\s\d{3}-\d{4}(?:\s\sext\s\d+)?$/);
 
     private _phoneControl: AbstractControl;
     private _preValue: string;
@@ -75,12 +80,17 @@ export class PhoneMaskDirective implements AfterViewInit, OnDestroy {
                             start += 1;
                             end += 1;
                             break;
+                        case 'ext':
+                            start += 3;
+                            end += 3;
+                            break;
                     }
                     this._phoneControl.setValue(newVal, {emitEvent: false});
                     this.renderer.selectRootElement(id).setSelectionRange(start, end);
                 } else {
                     this._phoneControl.setValue(newVal, {emitEvent: false});
-                    this.renderer.selectRootElement(id).setSelectionRange(start + 2, end + 2);
+                    const additionalLength = newVal.length <= 10 ? 2 : 6;
+                    this.renderer.selectRootElement(id).setSelectionRange(start + additionalLength, end + additionalLength);
                 }
             }
         });
@@ -95,10 +105,20 @@ export class PhoneMaskDirective implements AfterViewInit, OnDestroy {
             newVal = newVal.replace(/^(\d{0,3})/, '($1)');
         } else if (newVal.length <= 6) {
             newVal = newVal.replace(/^(\d{0,3})(\d{0,3})/, '($1) $2');
+        } else if (newVal.length <= 10) {
+            newVal = newVal.replace(/^(\d{0,3})(\d{0,3})(.*)/, '($1) $2-$3');
         } else {
-            newVal = newVal.replace(/^(\d{0,3})(\d{0,3})(.*)/, '($1) $2-$3').substr(0, 14);
+            newVal = newVal.replace(/^(\d{0,3})(\d{0,3})(\d{0,4})(.*)/, '($1) $2-$3  ext $4');
         }
 
         return newVal;
+    }
+
+    validate(control: AbstractControl): ValidationErrors | null {
+        if (control.value && !this._digitPattern.test(control.value) && !this._phonePattern.test(control.value)) {
+            return {invalid: true};
+        }
+
+        return null;
     }
 }

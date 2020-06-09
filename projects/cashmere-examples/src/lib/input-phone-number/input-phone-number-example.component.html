@@ -5,7 +5,7 @@
             <input hcInput hcPhoneMask
                    [formControl]="formDemoPhone"
                    [preValue]="formDemoPhone.value"
-                   [phoneControl]="formDemoPhone" maxlength="14"
+                   [phoneControl]="formDemoPhone"
                    [ngClass]="(formDemoPhone.invalid)? 'errmsg' : 'validmsg'">
             <hc-error>A valid phone number is required</hc-error>
         </hc-form-field>
@@ -15,7 +15,7 @@
             <input hcInput hcPhoneMask
                    [formControl]="formDemoPhoneInitVal"
                    [preValue]="formDemoPhoneInitVal.value"
-                   [phoneControl]="formDemoPhoneInitVal" maxlength="14"
+                   [phoneControl]="formDemoPhoneInitVal"
                    [ngClass]="(formDemoPhoneInitVal.invalid)? 'errmsg' : 'validmsg'">
             <hc-error>A valid phone number is required</hc-error>
         </hc-form-field>
