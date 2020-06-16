@@ -11,5 +11,6 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class InputPhoneNumberExampleComponent {
 
-    formDemoPhone = new FormControl('', [Validators.pattern(/^\(\d{3}\)\s\d{3}-\d{4}$/), Validators.required]);
+    formDemoPhone = new FormControl('', [Validators.required]);
+    formDemoPhoneInitVal = new FormControl('801555123421', [Validators.required]);
 }

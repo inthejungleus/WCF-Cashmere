@@ -16,6 +16,10 @@ const routes: Routes = [
                 component: SidenavDemoComponent
             },
             {
+                path: 'sidenav/:id',
+                component: SidenavDemoComponent
+            },
+            {
                 path: 'header',
                 component: HeaderDemoComponent
             }

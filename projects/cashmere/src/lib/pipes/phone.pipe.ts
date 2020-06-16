@@ -19,19 +19,23 @@ export class PhonePipe implements PipeTransform {
             return tel;
         }
 
-        let area: string = value.substring(0, 3);
-        let front: string = value.substring(3, 6);
-        let end: string = value.substring(6, 10);
+        const area: string = value.substring(0, 3);
+        const prefix: string = value.substring(3, 6);
+        const num: string = value.substring(6, 10);
+        const ext: string = value.substr(10);
 
         if (area) {
             formattedNumber = '(' + area + ') ';
         }
 
-        if (front) {
-            formattedNumber += front;
+        if (prefix) {
+            formattedNumber += prefix;
         }
-        if (end) {
-            formattedNumber += '-' + end;
+        if (num) {
+            formattedNumber += '-' + num;
+        }
+        if (ext) {
+            formattedNumber += '  ext ' + ext;
         }
         return formattedNumber;
     }
