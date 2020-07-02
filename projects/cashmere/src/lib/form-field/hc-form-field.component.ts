@@ -72,6 +72,8 @@ export class HcFormFieldComponent implements AfterContentInit {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    @Input() required: boolean;
+
     inputFocused = false;
 
     constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
