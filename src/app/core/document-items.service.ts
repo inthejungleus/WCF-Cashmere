@@ -11,6 +11,12 @@ export interface DocItem {
 
 const docs: DocItem[] = [
     {id: 'accordion', name: 'Accordion', category: 'layout', examples: ['accordion-overview']},
+    {
+        id: 'action-bar',
+        name: 'Action Bar',
+        category: 'nav',
+        examples: ['action-bar']
+    },
     {id: 'address', name: 'Address', category: 'forms', examples: ['address'], usageDoc: true},
     {id: 'banner', name: 'Banner', category: 'popups', examples: ['banner-overview']},
     {id: 'breadcrumbs', name: 'Breadcrumbs', category: 'nav', usageDoc: true},
@@ -225,7 +231,7 @@ const docs: DocItem[] = [
         id: 'table',
         name: 'Table',
         category: 'table',
-        examples: ['resizable-columns', 'table-sort', 'table-filter', 'table-editable'],
+        examples: ['resizable-columns', 'table-sort', 'table-filter', 'table-editable', 'table-multi-select'],
         usageDoc: true
     },
     {
