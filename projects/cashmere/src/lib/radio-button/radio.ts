@@ -109,6 +109,10 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         this._markRadiosForCheck();
     }
 
+    setDisabledState(isDisabled: boolean) {
+        this.disabled = isDisabled;
+    }
+
     /** Boolean value of whether the radio group is required on a form */
     @Input()
     get required(): boolean {
