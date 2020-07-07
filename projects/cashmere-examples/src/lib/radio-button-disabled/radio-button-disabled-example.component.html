@@ -4,3 +4,29 @@
         <hc-radio-button>Seinfeld</hc-radio-button>
     </hc-radio-group>
 </form>
+
+<h6>Reactive Form Example</h6>
+<form [formGroup]="form">
+    <hc-form-field>
+        <hc-radio-group formControlName="gender" inline="true">
+            <hc-radio-button [value]="1">Male</hc-radio-button>
+            <hc-radio-button [value]="2">Female</hc-radio-button>
+            <hc-radio-button [value]="3">Unknown</hc-radio-button>
+        </hc-radio-group>
+        <hc-error>Gender is required</hc-error>
+    </hc-form-field>
+</form>
+<div>Selected value is: {{form.get('gender')?.value}}</div>
+
+<h6>Reactive Form Example (with delay)</h6>
+<form [formGroup]="formDelay">
+    <hc-form-field>
+        <hc-radio-group formControlName="gender" inline="true">
+            <hc-radio-button [value]="1">Male</hc-radio-button>
+            <hc-radio-button [value]="2">Female</hc-radio-button>
+            <hc-radio-button [value]="3">Unknown</hc-radio-button>
+        </hc-radio-group>
+        <hc-error>Gender is required</hc-error>
+    </hc-form-field>
+</form>
+<div>Selected value is: {{formDelay.get('gender')?.value}}</div>
