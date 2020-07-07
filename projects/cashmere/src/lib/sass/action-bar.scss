@@ -1,0 +1,41 @@
+@mixin action-bar-wrapper() {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 1em;
+    margin-bottom: .8em;
+    margin-left: .5em;
+}
+
+@mixin action-bar-wrapper-hidden() {
+    visibility: hidden; // we still want to take up the space so we are not using display:none
+}
+
+@mixin action-bar-action-item() {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 1.8em;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@mixin action-bar-action-item-hidden() {
+    display: none !important; // we want hidden items to not take up space in the dom
+}
+
+@mixin action-bar-action-item-disabled() {
+    cursor: not-allowed;
+    color: #AFB2B4;
+}
+
+@mixin action-bar-action-item-icon() {
+    height: unset;
+    width: unset;
+    margin-right: .5em;
+}
+
+@mixin action-bar-action-item-title() {
+    margin-right: .5em;
+}

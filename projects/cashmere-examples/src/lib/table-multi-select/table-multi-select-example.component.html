@@ -1,0 +1,76 @@
+<hc-action-bar>
+    <div class="hc-action-bar-wrapper" [ngClass]="{'hidden': actionBarHidden}">
+        <div class="hc-action-bar-action-item"
+             (click)="!isFuseDisabled && fuse()"
+             [ngClass]="{'hidden': isFuseHidden, 'disabled': allActionItemsDisabled || isFuseDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-compress-arrows-alt" hcIconLMd></hc-icon>
+            <div class="action-title">Fuse</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isDivideDisabled && divide()"
+             [ngClass]="{'hidden': isDivideHidden, 'disabled': allActionItemsDisabled || isDivideDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-divide" hcIconLMd></hc-icon>
+            <div class="action-title">Divide</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isPrintDisabled && print()"
+             [ngClass]="{'hidden': isPrintHidden, 'disabled': allActionItemsDisabled || isPrintDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-print" hcIconLMd></hc-icon>
+            <div class="action-title">Print</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isDeleteDisabled && delete()"
+             [ngClass]="{'hidden': isDeleteHidden, 'disabled': allActionItemsDisabled || isDeleteDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-trash" hcIconLMd></hc-icon>
+            <div class="action-title">Delete</div>
+        </div>
+    </div>
+</hc-action-bar>
+
+<table hc-table [dataSource]="dataSource" class="hc-elevation-z8">
+
+    <!-- Checkbox Column -->
+    <ng-container hcColumnDef="select">
+        <th hc-header-cell *hcHeaderCellDef>
+            <hc-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </hc-checkbox>
+        </th>
+        <td hc-cell *hcCellDef="let row">
+            <hc-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </hc-checkbox>
+        </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container hcColumnDef="position">
+        <th hc-header-cell *hcHeaderCellDef> No. </th>
+        <td hc-cell *hcCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container hcColumnDef="name">
+        <th hc-header-cell *hcHeaderCellDef> Name </th>
+        <td hc-cell *hcCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container hcColumnDef="weight">
+        <th hc-header-cell *hcHeaderCellDef> Weight </th>
+        <td hc-cell *hcCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container hcColumnDef="symbol">
+        <th hc-header-cell *hcHeaderCellDef> Symbol </th>
+        <td hc-cell *hcCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
+    <tr hc-row *hcRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+</table>

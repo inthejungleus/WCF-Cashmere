@@ -1,0 +1,36 @@
+<hc-action-bar>
+    <div class="hc-action-bar-wrapper" [ngClass]="{'hidden': actionBarHidden}">
+        <div class="hc-action-bar-action-item"
+             (click)="!isEditDisabled && edit()"
+             [ngClass]="{'hidden': isEditHidden, 'disabled': allActionItemsDisabled || isEditDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-edit" hcIconLMd></hc-icon>
+            <div class="action-title">Edit</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isCloseDisabled && close()"
+             [ngClass]="{'hidden': isCloseHidden, 'disabled': allActionItemsDisabled || isCloseDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-archive" hcIconLMd></hc-icon>
+            <div class="action-title">Close</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isDeleteDisabled && delete()"
+             [ngClass]="{'hidden': isDeleteHidden, 'disabled': allActionItemsDisabled || isDeleteDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-trash" hcIconLMd></hc-icon>
+            <div class="action-title">Delete</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isPrintDisabled && print()"
+             [ngClass]="{'hidden': isPrintHidden, 'disabled': allActionItemsDisabled || isPrintDisabled}">
+            <hc-icon fontSet="fa" fontIcon="fa-print" hcIconLMd></hc-icon>
+            <div class="action-title">Print</div>
+        </div>
+        <div class="hc-action-bar-action-item"
+             (click)="!isToggleDisabled && toggleEdit()"
+             [ngClass]="{'hidden': isToggleHidden, 'disabled': allActionItemsDisabled || isToggleDisabled}">
+            <hc-icon fontSet="fa" [fontIcon]="toggleIcon" hcIconLMd></hc-icon>
+            <div class="action-title">Toggle Edit</div>
+        </div>
+    </div>
+</hc-action-bar>
+
+<h5>{{sampleOutput}}</h5>

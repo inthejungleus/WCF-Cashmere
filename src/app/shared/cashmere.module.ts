@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {
     AddressModule,
     AccordionModule,
+    ActionBarModule,
     AppSwitcherModule,
     BannerModule,
     BreadcrumbsModule,
@@ -53,6 +54,7 @@ import {
     exports: [
         AddressModule,
         AccordionModule,
+        ActionBarModule,
         AppSwitcherModule,
         BreadcrumbsModule,
         BannerModule,
