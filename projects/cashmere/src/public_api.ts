@@ -4,6 +4,7 @@
 
 export * from './lib/address/index';
 export * from './lib/accordion/index';
+export * from './lib/action-bar/index';
 export * from './lib/app-switcher/index';
 export * from './lib/banner/index';
 export * from './lib/breadcrumbs/index';

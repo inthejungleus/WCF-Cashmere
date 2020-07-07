@@ -1,0 +1,28 @@
+@import "../sass/action-bar";
+
+.hc-action-bar-wrapper {
+    @include action-bar-wrapper();
+
+    &.hidden {
+        @include action-bar-wrapper-hidden();
+    }
+}
+
+.hc-action-bar-action-item {
+    @include action-bar-action-item();
+
+    &.hidden {
+        @include action-bar-action-item-hidden();
+    }
+    &.disabled {
+        @include action-bar-action-item-disabled();
+    }
+
+    .hc-icon {
+        @include action-bar-action-item-icon();
+    }
+
+    &-title {
+        @include action-bar-action-item-title();
+    }
+}
