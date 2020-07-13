@@ -22,7 +22,7 @@ export class PhoneMaskDirective implements AfterViewInit, OnDestroy, Validator {
 
     @Input()
     set preValue(value: string) {
-        this._preValue = value;
+        this._preValue = value.replace(/\D/g, '');
     }
 
     private sub: SubscriptionLike;
