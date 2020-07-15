@@ -32,7 +32,9 @@
             <span class="progress-bar-example-field-label">Height:</span>
             <span class="heavy">{{progressBarHeight}}</span>
             <div class="slide-wrapper">
-                <span class="slider-left-value">30px</span><input type="range" min="30" max="75" class="slider" [(ngModel)]="progressBarHeight"><span class="slider-right-value">75px</span>
+                <span class="slider-left-value">30px</span>
+                <input type="range" min="30" max="75" class="slider" [(ngModel)]="progressBarHeight">
+                <span class="slider-right-value">75px</span>
             </div>
         </div>
         <div class="progress-bar-example-field allow-skip-field">
@@ -42,5 +44,19 @@
         <div class="progress-bar-example-field">
             <button hc-button size="sm" buttonStyle="primary" (click)="completeCurrent()">Complete Step</button>
         </div>
+    </div>
+
+    <div class="secondary-title"><h5>Secondary Progress Bar Style</h5></div>
+    <div class="progress-bar-wrapper">
+        <hc-progress-bar
+            [allowSkipAhead]="allowSkipAhead"
+            progressBarStyle="secondary"
+            [showMobile]="showMobile"
+            [height]="progressBarHeight + 'px'"
+            [breakPoint]="breakPoint"
+            [items]="progressItems"
+            (progressItemSelected)="selectedProgressItem($event)"
+            (progressBarCompleted)="progressBarCompleted = true"
+        ></hc-progress-bar>
     </div>
 </div>
