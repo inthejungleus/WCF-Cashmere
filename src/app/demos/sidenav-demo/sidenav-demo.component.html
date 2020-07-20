@@ -2,7 +2,7 @@
             [showSignIn]="showSignIn.value" [showManageMyPolicy]="showManageMyPolicy.value" [userMenuLinks]="userMenuLinks.value">
     <hc-sidenav-link routerLink="/components/sidenav/examples" routerLinkActive="hide" fontIcon="fa-arrow-circle-left"
                      linkText="Back to Guide"></hc-sidenav-link>
-    <hc-sidenav-link *ngIf="showActiveLink" uri="https://www.google.com" fontIcon="fa-briefcase" linkText="Google">
+    <hc-sidenav-link *ngIf="showActiveLink" routerLink="/components/table/examples" fontIcon="fa-briefcase" linkText="Table Examples">
         <hc-sidenav-link *ngIf="showActiveLinkLater" routerLink="/demo/sidenav" fontIcon="fa-briefcase"
                          linkText="Child Link Active"></hc-sidenav-link>
         <hc-sidenav-link routerLink="/components/accordion/examples" fontIcon="fa-briefcase" linkText="Accordion"></hc-sidenav-link>
@@ -32,10 +32,10 @@
         <h2 class="app-title">SideNav Demo</h2>
         <div class="main-content">
             <div class="row buffer">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <hc-label>Signed In User</hc-label>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-7">
                     <hc-form-field inline="true">
                         <input hcInput [formControl]="userName" (keyup)="changeUsername()">
                     </hc-form-field>
@@ -43,10 +43,10 @@
             </div>
 
             <div class="row buffer">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <hc-label>Show Sign In</hc-label>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-7">
                     <hc-form-field inline="true">
                         <hc-checkbox [formControl]="showSignIn">
                             <div class="fineprint">(only matters if there is no user signed in)</div>
@@ -56,10 +56,10 @@
             </div>
 
             <div class="row buffer">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <hc-label>Show Manage My Policy</hc-label>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-7">
                     <hc-form-field inline="true">
                         <hc-checkbox [formControl]="showManageMyPolicy"></hc-checkbox>
                     </hc-form-field>
@@ -67,10 +67,10 @@
             </div>
 
             <div class="row buffer">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <hc-label>Show Links in Profile Menu</hc-label>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-7">
                     <hc-form-field inline="true">
                         <hc-checkbox [formControl]="userMenuLinks"></hc-checkbox>
                     </hc-form-field>

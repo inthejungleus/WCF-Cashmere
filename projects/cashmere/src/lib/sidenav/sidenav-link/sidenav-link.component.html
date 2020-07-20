@@ -16,7 +16,7 @@
 
 </ng-template>
 <ng-template #hrefTemplate>
-    <a [title]="linkText" [href]="uri" class="sidenav-link" target="_blank" (click)="_stop($event)">
+    <a [title]="linkText" [href]="uri" class="sidenav-link uri-link" target="_blank" (click)="_stop($event)">
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </a>
     <div class="toggle-button" #toggle *ngIf="children?.length">
@@ -28,6 +28,7 @@
     <div class="top-most-link">
         <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>
         {{ linkText }}
+        <span *ngIf="!routerLink" class="external-icon"><hc-icon hcIconSm fontSet="fas" fontIcon="fa-external-link-alt"></hc-icon></span>
     </div>
     <div [ngClass]="{children:true, shown:_childrenShown}" *ngIf="children?.length">
         <ng-content></ng-content>
