@@ -16,7 +16,7 @@
 
 </ng-template>
 <ng-template #hrefTemplate>
-    <a [title]="linkText" [href]="uri" class="sidenav-link uri-link" target="_blank" (click)="_stop($event)">
+    <a [title]="linkText" [href]="uri" class="sidenav-link" target="_blank" (click)="_stop($event)">
         <ng-container *ngTemplateOutlet="linkContent"></ng-container>
     </a>
     <div class="toggle-button" #toggle *ngIf="children?.length">
