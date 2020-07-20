@@ -88,3 +88,13 @@ a {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
+span.external-icon {
+    position: absolute;
+    top: 13px;
+    right: 0;
+
+    hc-icon {
+        color: $gray-70;
+    }
+}
