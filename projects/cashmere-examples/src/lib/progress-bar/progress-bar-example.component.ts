@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ProgressBarComponent, ProgressItem, ProgressItemStatus} from '@wcf-insurance/cashmere';
 
 @Component({
@@ -6,7 +6,7 @@ import {ProgressBarComponent, ProgressItem, ProgressItemStatus} from '@wcf-insur
     templateUrl: './progress-bar-example.component.html',
     styleUrls: ['./progress-bar-example.component.scss']
 })
-export class ProgressBarExampleComponent implements OnInit {
+export class ProgressBarExampleComponent {
     @ViewChild('progressBarComponent') progressBarComponent: ProgressBarComponent;
     currentSelectedItem: ProgressItem;
     progressBarCompleted = false;
@@ -21,13 +21,6 @@ export class ProgressBarExampleComponent implements OnInit {
     progressBarHeight: number = 35;
     breakPoint: string = '1024';
     showMobile: boolean;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-        // this.selectProgressItem(this.progressItems[1]);
-    }
 
     selectedProgressItem(item: ProgressItem) {
         this.currentSelectedItem = item;

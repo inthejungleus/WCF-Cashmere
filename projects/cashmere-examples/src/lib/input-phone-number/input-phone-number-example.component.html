@@ -5,8 +5,7 @@
             <input hcInput hcPhoneMask
                    [formControl]="formDemoPhone"
                    [preValue]="formDemoPhone.value"
-                   [phoneControl]="formDemoPhone"
-                   [ngClass]="(formDemoPhone.invalid)? 'errmsg' : 'validmsg'">
+                   [phoneControl]="formDemoPhone">
             <hc-error>A valid phone number is required</hc-error>
         </hc-form-field>
 
@@ -15,10 +14,17 @@
             <input hcInput hcPhoneMask
                    [formControl]="formDemoPhoneInitVal"
                    [preValue]="formDemoPhoneInitVal.value"
-                   [phoneControl]="formDemoPhoneInitVal"
-                   [ngClass]="(formDemoPhoneInitVal.invalid)? 'errmsg' : 'validmsg'">
+                   [phoneControl]="formDemoPhoneInitVal">
+            <hc-error>A valid phone number is required</hc-error>
+        </hc-form-field>
+
+        <hc-form-field>
+            <hc-label>Tel (with initial value preformatted):</hc-label>
+            <input hcInput hcPhoneMask
+                   [formControl]="formDemoPhoneFormattedInitVal"
+                   [preValue]="formDemoPhoneFormattedInitVal.value"
+                   [phoneControl]="formDemoPhoneFormattedInitVal">
             <hc-error>A valid phone number is required</hc-error>
         </hc-form-field>
     </div>
-    <button hc-button [disabled]="formDemoPhone.status == 'INVALID'" buttonStyle="primary" type="submit">Send</button>
 </form>

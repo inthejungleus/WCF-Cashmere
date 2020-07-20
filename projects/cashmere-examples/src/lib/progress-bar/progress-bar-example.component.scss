@@ -22,6 +22,7 @@
         color: #878b8f;
         margin-right: .3em;
     }
+
     .heavy {
         font-weight: bold;
     }
@@ -36,12 +37,15 @@
         display: flex;
         align-items: center;
         margin-top: .75em;
+
         .slider-left-value {
             margin-right: .5em;
         }
+
         .slider-right-value {
             margin-left: .5em;
         }
+
         /** Adapted graciously from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider_round **/
         .slider {
             -webkit-appearance: none;
@@ -78,4 +82,8 @@
         }
     }
 
+}
+
+.secondary-title {
+    margin-top: 75px;
 }
