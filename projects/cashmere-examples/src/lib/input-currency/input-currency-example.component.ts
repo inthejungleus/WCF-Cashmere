@@ -11,4 +11,6 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class InputCurrencyExampleComponent {
     formDemoCurrency = new FormControl('', [Validators.pattern(/^(\d{0,3},)?(\d{0,3},)?(\d{1,3})(\.\d{2})/), Validators.required]);
+    formDemoCurrencyInitVal = new FormControl('52000.23', [Validators.pattern(/^(\d{0,3},)?(\d{0,3},)?(\d{1,3})(\.\d{2})/), Validators.required]);
+    formDemoCurrencyFormattedInitVal = new FormControl('52,000.23', [Validators.pattern(/^(\d{0,3},)?(\d{0,3},)?(\d{1,3})(\.\d{2})/), Validators.required]);
 }
