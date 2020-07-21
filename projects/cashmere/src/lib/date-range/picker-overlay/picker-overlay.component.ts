@@ -83,6 +83,16 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     _updateRangeByPreset(range: DateRange) {
         this._fromDate = range.fromDate;
         this._toDate = range.toDate;
+
+        setTimeout(() => {
+            if ( this._fromDate ) {
+                this.calendarWrappers.first.hcCalendar.activeDate = this._fromDate;
+            }
+            if ( this._toDate ) {
+                this.calendarWrappers.last.hcCalendar.activeDate = this._toDate;
+            }
+        });
+
         this._setValidity();
     }
 

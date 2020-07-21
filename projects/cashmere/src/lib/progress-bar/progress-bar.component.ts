@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProgressItem} from './progress-item.interface';
 import {ProgressItemStatus} from './progress-item-status';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
     selector: 'hc-progress-bar',
@@ -13,10 +13,18 @@ export class ProgressBarComponent implements OnInit {
     @Input() height: string;
     @Input() breakPoint: string = '768';
 
+    /**
+     * Control whether the main color is $wcf-red (primary) or $wcf-blue (secondary). Default is primary.
+     */
+    @Input() progressBarStyle: string = 'primary';
+
+    _fillColor = '#ba160a';
+
     private _showMobile: boolean = false;
     get showMobile() {
         return this._showMobile;
     }
+
     @Input() set showMobile(bool: boolean) {
         this._showMobile = bool;
     }
@@ -25,6 +33,7 @@ export class ProgressBarComponent implements OnInit {
     get items(): ProgressItem[] {
         return this._items;
     }
+
     @Input() set items(itemsList: ProgressItem[]) {
         if (itemsList && itemsList.length) {
             this._items = itemsList;
@@ -52,14 +61,12 @@ export class ProgressBarComponent implements OnInit {
 
     ngOnInit() {
         this.breakpointObserver
-        .observe(['(max-width:' + this.breakPoint + 'px)'])
-        .subscribe((state: BreakpointState) => {
-            if (state.matches) {
-                this.showMobile = true;
-            } else {
-                this.showMobile = false;
-            }
-        });
+            .observe(['(max-width:' + this.breakPoint + 'px)'])
+            .subscribe((state: BreakpointState) => {
+                this.showMobile = state.matches;
+            });
+
+        this._fillColor = this.progressBarStyle === 'primary' ? '#ba160a' : '#406181';
     }
 
     /**
@@ -90,7 +97,7 @@ export class ProgressBarComponent implements OnInit {
         let previouslySelectedItem = this.currentSelectedItem;
         // Update progressItem entries to have proper focus
         let beforeSelected = true;
-        this._items = this._items.map((item, index) => {
+        this._items = this._items.map(item => {
             // Set clicked item as focused
             if (item.id === itemToSelect.id) {
                 beforeSelected = false;
@@ -147,14 +154,16 @@ export class ProgressBarComponent implements OnInit {
         }
     }
 
-    itemClicked(item: ProgressItem, index: number): void {
-        this.selectProgressItem(item, true);
-        this.dropdownVisible = false;
+    itemClicked(item: ProgressItem): void {
+        if (this._canNavigateTo(item)) {
+            this.selectProgressItem(item, true);
+            this.dropdownVisible = false;
+        }
     }
 
     previousItem(): void {
         let itemIndex = this._items.indexOf(this.currentSelectedItem);
-        if ( itemIndex > 0) {
+        if (itemIndex > 0) {
             this.selectProgressItem(this._items[itemIndex - 1], true);
         }
         this.dropdownVisible = false;
@@ -162,17 +171,34 @@ export class ProgressBarComponent implements OnInit {
 
     nextItem(): void {
         let itemIndex = this._items.indexOf(this.currentSelectedItem);
-        if ( itemIndex < this._items.length - 1) {
+        if (itemIndex < this._items.length - 1) {
             this.selectProgressItem(this._items[itemIndex + 1], true);
         }
         this.dropdownVisible = false;
     }
 
     toggleItemDropdown(): void {
-        if (this.dropdownVisible === false) {
-            this.dropdownVisible = true;
-        } else {
-            this.dropdownVisible = false;
+        this.dropdownVisible = !this.dropdownVisible;
+    }
+
+    _canNavigateTo(item: ProgressItem) {
+        return item.focused || item.beforeSelected || this.allowSkipAhead || this._itemAndPredecessorsComplete(item);
+    }
+
+    private _itemAndPredecessorsComplete(item: ProgressItem) {
+        if (item.status !== ProgressItemStatus.COMPLETE) {
+            return false;
         }
+
+        const index = this.items.findIndex(it => it.id === item.id);
+
+        let allComplete = true;
+        for (let i = index; i > 0; i--) {
+            if (this.items[i].status !== ProgressItemStatus.COMPLETE) {
+                allComplete = false;
+            }
+        }
+
+        return allComplete;
     }
 }

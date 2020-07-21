@@ -13,4 +13,5 @@ export class InputPhoneNumberExampleComponent {
 
     formDemoPhone = new FormControl('', [Validators.required]);
     formDemoPhoneInitVal = new FormControl('801555123421', [Validators.required]);
+    formDemoPhoneFormattedInitVal = new FormControl('(801) 555-1234 ext 21', [Validators.required]);
 }
