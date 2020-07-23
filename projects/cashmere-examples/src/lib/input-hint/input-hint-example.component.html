@@ -1,0 +1,11 @@
+<form>
+    <div class="form-container">
+        <hc-form-field>
+            <hc-label>Validate an email address</hc-label>
+            <input hcInput [formControl]="formDemo" required>
+            <hc-error>A valid email address is required</hc-error>
+            <hc-hint>Try something with @ in it.</hc-hint>
+        </hc-form-field>
+    </div>
+    <button hc-button title="Submit Form" buttonStyle="primary" type="submit">Submit</button>
+</form>

@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {HcFormControlComponent} from './hc-form-control.component';
 import {HcErrorComponent} from './hc-error.component';
+import {HcHintComponent} from './hc-hint.component';
 import {HcPrefixDirective} from './hc-prefix.directive';
 import {HcSuffixDirective} from './hc-suffix.directive';
 import {HcLabelComponent} from './hc-label.component';
@@ -35,6 +36,8 @@ export class HcFormFieldComponent implements AfterContentInit {
     _control: HcFormControlComponent;
     @ContentChildren(HcErrorComponent)
     _errorChildren: QueryList<HcErrorComponent>;
+    @ContentChildren(HcHintComponent)
+    _hintChildren: QueryList<HcHintComponent>;
     @ContentChildren(HcPrefixDirective)
     _prefixChildren: QueryList<HcPrefixDirective>;
     @ContentChildren(HcSuffixDirective)
@@ -98,6 +101,12 @@ export class HcFormFieldComponent implements AfterContentInit {
             this._control._errorState &&
             ((this._errorChildren && this._errorChildren.length > 0) ||
                 (!!this._control._errorMessage && this._control._errorMessage.length > 0))
+        );
+    }
+
+    _shouldShowHint(): boolean {
+        return (
+            this._control._errorState === false
         );
     }
 }

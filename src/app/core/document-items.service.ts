@@ -116,7 +116,7 @@ const docs: DocItem[] = [
         name: 'Input',
         category: 'forms',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area', 'input-toggle-visible', 'input-phone-number', 'input-currency', 'input-password']
+        examples: ['input-required', 'input-hint', 'input-suffix', 'input-prefix', 'input-text-area', 'input-toggle-visible', 'input-phone-number', 'input-currency', 'input-password']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {

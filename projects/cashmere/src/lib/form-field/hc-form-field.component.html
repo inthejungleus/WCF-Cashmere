@@ -29,6 +29,10 @@
         >
             <ng-content></ng-content>
         </div>
+        <div class="hc-form-field-hint-wrapper" *ngIf="_shouldShowHint()">
+            <hc-hint *ngIf="_control._hintMessage && _control._hintMessage.length">{{_control._hintMessage}}</hc-hint>
+            <ng-content select="hc-hint"></ng-content>
+        </div>
         <div class="hc-form-field-error-wrapper" *ngIf="_shouldShowErrorMessages()">
             <hc-error *ngIf="_control._errorMessage && _control._errorMessage.length">{{ _control._errorMessage }}</hc-error>
             <ng-content select="hc-error"></ng-content>
