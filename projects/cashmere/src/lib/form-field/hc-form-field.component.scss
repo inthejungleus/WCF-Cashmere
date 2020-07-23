@@ -110,6 +110,10 @@
     @include hc-error();
 }
 
+.hc-hint {
+    @include hc-hint();
+}
+
 .hc-required-marker {
     @include hc-required-marker();
 }
