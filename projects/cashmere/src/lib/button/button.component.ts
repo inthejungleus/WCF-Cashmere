@@ -6,7 +6,7 @@ import {parseBooleanAttribute} from '../util';
 
 const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral',
                         'secondary', 'minimal', 'link', 'link-big', 'link-inline'];
-const supportedSizes = ['sm', 'md', 'lg'];
+const supportedSizes = ['xs', 'sm', 'md', 'lg'];
 
 export function validateStyleInput(style: string) {
     if (supportedStyles.indexOf(style) < 0) {
@@ -64,7 +64,7 @@ export class ButtonComponent {
         this._style = btnStyle;
     }
 
-    /** Sets size of button. Choose from: `'sm' | 'md' | 'lg' |`. *Defaults to `md`.* */
+    /** Sets size of button. Choose from: `'xs' | 'sm' | 'md' | 'lg' |`. *Defaults to `md`.* */
     @Input()
     get size(): string {
         return this._size;

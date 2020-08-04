@@ -27,6 +27,10 @@
         @include hc-button-minimal();
     }
 
+    &.hc-xs {
+        @include hc-button-xs();
+    }
+
     &.hc-sm {
         @include hc-button-sm();
     }
