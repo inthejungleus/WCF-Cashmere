@@ -21,7 +21,7 @@
         <hc-error>Favorite Show is Required</hc-error>
     </hc-form-field>
 
-    <p>Current selection: {{this.form.get('favoriteTvShow') ? this.form.get('favoriteTvShow').value : 'none'}}</p>
+    <p>Current selection: {{this.form?.get('favoriteTvShow')?.value || 'none'}}</p>
     <button hc-button title="Primary-Alt Button" buttonStyle="primary-alt" (click)="resetReactive()">
         Clear Selection
     </button>
