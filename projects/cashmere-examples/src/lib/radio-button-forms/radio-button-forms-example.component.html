@@ -1,11 +1,31 @@
 <hc-form-field inline="true">
     <hc-label>Select your favorite:</hc-label>
-    <hc-radio-group [(ngModel)]="favoriteShow" inline="true">
+    <hc-radio-group [(ngModel)]="favoriteShow" [inline]="true" required>
         <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
     </hc-radio-group>
+    <hc-error>Favorite Show is Required</hc-error>
 </hc-form-field>
 
-<p>Current selection: {{favoriteShow ? favoriteShow : 'none'}}</p>
+<p>Current selection: {{favoriteShow || 'none'}}</p>
 <button hc-button title="Primary-Alt Button" buttonStyle="primary-alt" (click)="reset()">
     Clear Selection
 </button>
+
+<h5 style="margin-top: 60px;">Reactive Form</h5>
+<form [formGroup]="form">
+    <hc-form-field inline="true">
+        <hc-label>Select your favorite:</hc-label>
+        <hc-radio-group formControlName="favoriteTvShow" [inline]="true" required>
+            <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
+        </hc-radio-group>
+        <hc-error>Favorite Show is Required</hc-error>
+    </hc-form-field>
+
+    <p>Current selection: {{this.form.get('favoriteTvShow') ? this.form.get('favoriteTvShow').value : 'none'}}</p>
+    <button hc-button title="Primary-Alt Button" buttonStyle="primary-alt" (click)="resetReactive()">
+        Clear Selection
+    </button>
+    <button hc-button title="Primary Button" buttonStyle="primary" (click)="submitReactive()" style="margin-left: 10px;">
+        Submit
+    </button>
+</form>
