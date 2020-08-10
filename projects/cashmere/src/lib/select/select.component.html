@@ -14,7 +14,7 @@
         (blur)="_blurHandler($event)"
         [required]="required"
     >
-        <option *ngIf="placeholder" value="" selected disabled hidden>{{ placeholder }}</option>
+        <option *ngIf="placeholder && !value" value="" selected disabled hidden>{{ placeholder }}</option>
         <ng-content select="option"></ng-content>
     </select>
 </div>
