@@ -69,6 +69,13 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-button-xs() {
+    padding: 8px 10px;
+    min-width: 16px;
+    @include fontSize(12px);
+    line-height: 14px;
+}
+
 @mixin hc-button-sm() {
     padding: 8px 10px;
     min-width: 110px;

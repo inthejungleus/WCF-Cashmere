@@ -6,8 +6,16 @@ export abstract class HcFormControlComponent {
     /** An error message to be shown in the UI when there is an error state present */
     _errorMessage: string = '';
 
+    /** A hint to be shown in the UI when there is an error state present */
+    _hintMessage: string = '';
+
     /** An object that represents the Angular validation errors that are present on the form */
     _errors: {
+        [key: string]: any;
+    } = {};
+
+    /** An object that represents the hints that are present on the form */
+    _hints: {
         [key: string]: any;
     } = {};
 

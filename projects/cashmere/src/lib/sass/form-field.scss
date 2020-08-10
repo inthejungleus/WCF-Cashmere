@@ -201,6 +201,13 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     color: $error;
 }
 
+@mixin hc-hint() {
+    display: block;
+    color: $gray-50;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
 @mixin hc-required-marker() {
     color: $error;
     margin-left: -12px;
